@@ -18,6 +18,12 @@
 		44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CE02A9D463C00DC27E5 /* JournalViewController.swift */; };
 		44DF3CE32A9D464900DC27E5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CE22A9D464900DC27E5 /* MapViewController.swift */; };
 		44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CE42A9D465200DC27E5 /* ProfileViewController.swift */; };
+		44DF3CE72AB01BB100DC27E5 /* NewOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CE62AB01BB000DC27E5 /* NewOnboardingViewController.swift */; };
+		44DF3CE92AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CE82AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift */; };
+		44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CEA2AB0E68800DC27E5 /* OnboardingInfo.swift */; };
+		44DF3CED2AB0FE6100DC27E5 /* SetupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */; };
+		44DF3CF02AB22C9400DC27E5 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */; };
+		44DF3CF22AB2312700DC27E5 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CF12AB2312700DC27E5 /* DI.swift */; };
 		EAD1F7A47142A6C31606AAF7 /* Pods_autoService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14D6A0C1732B055E7002A66 /* Pods_autoService.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +42,12 @@
 		44DF3CE02A9D463C00DC27E5 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		44DF3CE22A9D464900DC27E5 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		44DF3CE42A9D465200DC27E5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		44DF3CE62AB01BB000DC27E5 /* NewOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOnboardingViewController.swift; sourceTree = "<group>"; };
+		44DF3CE82AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		44DF3CEA2AB0E68800DC27E5 /* OnboardingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInfo.swift; sourceTree = "<group>"; };
+		44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupService.swift; sourceTree = "<group>"; };
+		44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		44DF3CF12AB2312700DC27E5 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
 		D14D6A0C1732B055E7002A66 /* Pods_autoService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_autoService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2326CCE5FD336532538382 /* Pods-autoService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-autoService.release.xcconfig"; path = "Target Support Files/Pods-autoService/Pods-autoService.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,18 +87,32 @@
 			children = (
 				44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */,
 				44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */,
+				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
+				44DF3CF12AB2312700DC27E5 /* DI.swift */,
+				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
 				44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */,
 				44DF3CBC2A9A1C9200DC27E5 /* MainTabBabViewController.swift */,
 				44DF3CE02A9D463C00DC27E5 /* JournalViewController.swift */,
 				44DF3CE22A9D464900DC27E5 /* MapViewController.swift */,
 				44DF3CE42A9D465200DC27E5 /* ProfileViewController.swift */,
 				44DF3CBA2A9A19D200DC27E5 /* OnboardingViewController.swift */,
+				44DF3CEE2AB2259700DC27E5 /* Onboarding */,
 				44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */,
 				44DF3CAD2A9697C800DC27E5 /* LaunchScreen.storyboard */,
 				44DF3CB02A9697C800DC27E5 /* Info.plist */,
 				44DF3CB82A969BF800DC27E5 /* GoogleService-Info.plist */,
 			);
 			path = autoService;
+			sourceTree = "<group>";
+		};
+		44DF3CEE2AB2259700DC27E5 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				44DF3CE62AB01BB000DC27E5 /* NewOnboardingViewController.swift */,
+				44DF3CE82AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift */,
+				44DF3CEA2AB0E68800DC27E5 /* OnboardingInfo.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		CE757E01146453ADA2524822 /* Pods */ = {
@@ -223,10 +249,16 @@
 			files = (
 				44DF3CBD2A9A1C9200DC27E5 /* MainTabBabViewController.swift in Sources */,
 				44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */,
+				44DF3CE72AB01BB100DC27E5 /* NewOnboardingViewController.swift in Sources */,
+				44DF3CED2AB0FE6100DC27E5 /* SetupService.swift in Sources */,
 				44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */,
 				44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */,
+				44DF3CF22AB2312700DC27E5 /* DI.swift in Sources */,
+				44DF3CF02AB22C9400DC27E5 /* AuthService.swift in Sources */,
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,
 				44DF3CBB2A9A19D200DC27E5 /* OnboardingViewController.swift in Sources */,
+				44DF3CE92AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift in Sources */,
+				44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */,
 				44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */,
 				44DF3CE32A9D464900DC27E5 /* MapViewController.swift in Sources */,
 			);

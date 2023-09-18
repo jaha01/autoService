@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
 
     let scrollView = UIScrollView()
     
@@ -82,7 +82,7 @@ class OnboardingViewController: UIViewController {
     @objc func didTapButton(_ button: UIButton) {
         guard button.tag < 3 else {
             // dismiss
-            Core.shared.setIsNotNewUser()
+//            SetupService.shared.setIsNotNewUser()
             dismiss(animated: true, completion: nil)
             return
         }
