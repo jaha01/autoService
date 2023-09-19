@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NewOnboardingViewController: UIViewController {
+final class OnboardingViewController: UIViewController {
     
     // MARK: - Private properties
     //private currentIndexPath: Int()
@@ -50,7 +50,7 @@ final class NewOnboardingViewController: UIViewController {
     
 }
 // MARK: - UICollectionViewDataSource implementation
-extension NewOnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         onboardingDetails.count
@@ -59,11 +59,8 @@ extension NewOnboardingViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OnboardingCollectionViewCell.identifier, for: indexPath) as! OnboardingCollectionViewCell
         cell.setup(onboardingDetails[indexPath.row])
-        //cell.onButonTap = clouser
         cell.delegate = self
         currentIndexPath = indexPath
-        print("section = \(indexPath.section)")
-        print("row = \(indexPath.row)")
         return cell
     }
     
@@ -76,39 +73,43 @@ extension NewOnboardingViewController: UICollectionViewDelegate, UICollectionVie
     }
 }
 
-extension NewOnboardingViewController: OnboardingCollcetionViewCellDelegate {
+extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
+    
     
     func onButtonClick() {
-        print("!!! CLICK !!!")
+        
         guard let currentIndexPath = currentIndexPath else { return }
-        print("row = \(currentIndexPath.row + 1)")
-        let indexPath = IndexPath(row: currentIndexPath.row + 1, section: currentIndexPath.section)
-        print("indexPath = \(indexPath.row)")
-        onboardingCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
-        // dissmiss
-        self.dismiss(animated: true, completion: nil)
+        let indexPath = IndexPath(row: currentIndexPath.row + 1, section: 0)
+        if indexPath.row < 3 {
+            onboardingCollection.isPagingEnabled = false
+            onboardingCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            onboardingCollection.isPagingEnabled = true }
+        else {
+            
+            // userdefault
+            DI.shared.authService.setIsNotNewUser()
+            
+            // dissmiss
+            self.dismiss(animated: true, completion: nil)
+            
+            // window  rootview... AuthViewController
+            
+            let window = UIApplication.shared.windows.last { $0.isKeyWindow }
+            window?.rootViewController = AuthViewController()
+            
+//            window?.rootViewController = AuthViewController()
+            //        self.window = window
+            //        self.window?.makeKeyAndVisible()
+        }
         
-        // window  rootview... AuthViewController
-        if indexPath.row == 3 {
-            guard let windowsScene = (scene as? UIWindowScene) else { print("123123123"); return }
         
-        let window = UIWindow(windowScene: windowsScene)
-        window.rootViewController = AuthViewController()
-        self.window = window
-        self.window?.makeKeyAndVisible()
+        // VIP...
+        //
+        
+        
+        // Д/З GIT осмысленные описания
+        
     }
     
-    // userdefault
-        DI.shared.authService.setIsNotNewUser()
-        
-        
-    // VIP...
-    //
-    
-    
-    // Д/З GIT осмысленные описания
-    
-}
-
 }
