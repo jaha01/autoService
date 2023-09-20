@@ -82,7 +82,7 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
         
         let indexPath = IndexPath(row: currentIndexPath.row + 1, section: 0)
         if indexPath.row < 3 {
-            // fixes scrollToItem issue: ...link to SO/AppleDeveloper
+            // fixes scrollToItem issue: ...link to StackOverflow/AppleDeveloper
             onboardingCollection.isPagingEnabled = false
             onboardingCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             onboardingCollection.isPagingEnabled = true
