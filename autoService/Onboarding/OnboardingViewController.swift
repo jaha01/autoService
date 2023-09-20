@@ -9,11 +9,13 @@ import UIKit
 
 final class OnboardingViewController: UIViewController {
     
+    var interactor: OnboardingInteractor!
+    
     // MARK: - Private properties
     //private currentIndexPath: Int()
     private var currentIndexPath: IndexPath?
-    private var window: UIWindow?
-    private var scene: UIScene?
+    
+    private var onboardingDetails: [OnboardingInfo] = []
     
     private let onboardingCollection: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -31,9 +33,19 @@ final class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        
+        interactor.onViewDidLoad()
+        
         onboardingCollection.dataSource = self
         onboardingCollection.delegate = self
         setupConstraints()
+    }
+    
+    func showOnboarding(_ items: [OnboardingInfo]) {
+        onboardingDetails = items
+        DispatchQueue.main.async { [weak self] in
+            self?.onboardingCollection.reloadData()
+        }
     }
     
     // MARK: - Private methods
@@ -87,11 +99,12 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
             onboardingCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             onboardingCollection.isPagingEnabled = true
         } else {
-                DI.shared.authService.setIsNotNewUser()
-                
-                let window = UIApplication.shared.windows.last { $0.isKeyWindow }
-                window?.rootViewController = AuthViewController()
-            }
+            interactor.onOnboardingCompleted()
+            
+            let window = UIApplication.shared.windows.last { $0.isKeyWindow }
+            // let builder = AuthBuilder() ...
+            window?.rootViewController = AuthViewController()
+        }
         
         
         // TODO: VIP...

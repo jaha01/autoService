@@ -22,8 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         switch setupService.getEntryScreen() {
         case .onboarding:
-            window.rootViewController = OnboardingViewController() //OnboardingViewController()
+            let builder = OnboardingBuilder()
+            window.rootViewController = builder.build()
         case .auth:
+            // let builder = AuthBuilder() ...
             window.rootViewController = AuthViewController()
         case .mainTabBar:
             window.rootViewController = MainTabBabViewController()

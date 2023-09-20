@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B592ABB6C9100AB67B3 /* OnboardingInteractor.swift */; };
+		00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */; };
+		00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */; };
 		44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */; };
 		44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */; };
 		44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00BD3B592ABB6C9100AB67B3 /* OnboardingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingInteractor.swift; sourceTree = "<group>"; };
+		00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
+		00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		1CFC5FE41DBDB72DEABDE40A /* Pods-autoService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-autoService.debug.xcconfig"; path = "Target Support Files/Pods-autoService/Pods-autoService.debug.xcconfig"; sourceTree = "<group>"; };
 		44DF3C9F2A9697C200DC27E5 /* autoService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autoService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +114,9 @@
 				44DF3CE62AB01BB000DC27E5 /* OnboardingViewController.swift */,
 				44DF3CE82AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift */,
 				44DF3CEA2AB0E68800DC27E5 /* OnboardingInfo.swift */,
+				00BD3B592ABB6C9100AB67B3 /* OnboardingInteractor.swift */,
+				00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */,
+				00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -245,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44DF3CBD2A9A1C9200DC27E5 /* MainTabBabViewController.swift in Sources */,
+				00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */,
 				44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */,
 				44DF3CE72AB01BB100DC27E5 /* OnboardingViewController.swift in Sources */,
 				44DF3CED2AB0FE6100DC27E5 /* SetupService.swift in Sources */,
@@ -255,6 +265,8 @@
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,
 				44DF3CE92AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift in Sources */,
 				44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */,
+				00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */,
+				00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */,
 				44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */,
 				44DF3CE32A9D464900DC27E5 /* MapViewController.swift in Sources */,
 			);
