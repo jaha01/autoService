@@ -82,33 +82,20 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
         
         let indexPath = IndexPath(row: currentIndexPath.row + 1, section: 0)
         if indexPath.row < 3 {
+            // fixes scrollToItem issue: ...link to SO/AppleDeveloper
             onboardingCollection.isPagingEnabled = false
             onboardingCollection.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            onboardingCollection.isPagingEnabled = true }
-        else {
-            
-            // userdefault
-            DI.shared.authService.setIsNotNewUser()
-            
-            // dissmiss
-            self.dismiss(animated: true, completion: nil)
-            
-            // window  rootview... AuthViewController
-            
-            let window = UIApplication.shared.windows.last { $0.isKeyWindow }
-            window?.rootViewController = AuthViewController()
-            
-//            window?.rootViewController = AuthViewController()
-            //        self.window = window
-            //        self.window?.makeKeyAndVisible()
-        }
+            onboardingCollection.isPagingEnabled = true
+        } else {
+                DI.shared.authService.setIsNotNewUser()
+                
+                let window = UIApplication.shared.windows.last { $0.isKeyWindow }
+                window?.rootViewController = AuthViewController()
+            }
         
         
-        // VIP...
+        // TODO: VIP...
         //
-        
-        
-        // Д/З GIT осмысленные описания
         
     }
     
