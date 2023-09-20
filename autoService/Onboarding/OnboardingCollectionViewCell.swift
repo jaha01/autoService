@@ -16,9 +16,7 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "OnboardingCollectionViewCell"
     
-    //
-//    var onButtonClick: (() -> Void)? // 1 variant
-    weak var delegate: OnboardingCollcetionViewCellDelegate? // 2 variant
+    weak var delegate: OnboardingCollcetionViewCellDelegate?
     
     // MARK: - Private properties
     
@@ -28,13 +26,12 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
         return image
     }()
     
-    private let nextButton: UIButton = {
+    private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .black
         button.titleLabel?.textColor = .white
         button.titleLabel?.text = "HELLO"
-        button.setTitle("hola", for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(nextBtnClicked), for: .touchUpInside)
         return button
@@ -43,7 +40,7 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
-        //backgroundColor = .red
+
         addSubview(welcomeImages)
         addSubview(nextButton)
         setConstraints()
@@ -53,15 +50,12 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     // MARK: - Public methods
     func setup(_ data: OnboardingInfo) {
         print("img = \(data)")
         welcomeImages.image = UIImage(named: data.imageName)
         nextButton.setTitle("\(data.buttonName)", for: .normal)
-        
-        //        if obData.buttonName.last {
-        //            print("LAST button")
-        //        }
     }
     
     // MARK: - Private methods
@@ -69,18 +63,6 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
     @objc private func nextBtnClicked() {
         print("Button tapped")
         delegate?.onButtonClick()
-//        onButtonClick?()
-        
-        
-        // present SetupService
-        //        let visibleItems: NSArray = self.obCollectionView.indexPathsForVisibleItems as NSArray
-        //          let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
-        //          let nextItem: IndexPath = IndexPath(item: currentItem.item - 1, section: 0)
-        //          self.obCollectionView.scrollToItem(at: nextItem, at: .right, animated: true)
-        //        //nextButton.titleLabel = obDetails[currentItem].buttonName
-        //        print("currentItem = \(currentItem)")
-        //        print("nextItem = \(nextItem)")
-        //        print("my = \(obCollectionView.indexPathsForSelectedItems)")
     }
     
     // MARK: - Constraints
