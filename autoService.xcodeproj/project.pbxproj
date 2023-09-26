@@ -10,6 +10,9 @@
 		00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B592ABB6C9100AB67B3 /* OnboardingInteractor.swift */; };
 		00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */; };
 		00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */; };
+		44C614832AC3660500162DA9 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614822AC3660500162DA9 /* AuthInteractor.swift */; };
+		44C614852AC3661900162DA9 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614842AC3661900162DA9 /* AuthPresenter.swift */; };
+		44C614872AC37FA700162DA9 /* AuthBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614862AC37FA600162DA9 /* AuthBuilder.swift */; };
 		44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */; };
 		44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */; };
 		44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */; };
@@ -34,6 +37,9 @@
 		00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		1CFC5FE41DBDB72DEABDE40A /* Pods-autoService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-autoService.debug.xcconfig"; path = "Target Support Files/Pods-autoService/Pods-autoService.debug.xcconfig"; sourceTree = "<group>"; };
+		44C614822AC3660500162DA9 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		44C614842AC3661900162DA9 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		44C614862AC37FA600162DA9 /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
 		44DF3C9F2A9697C200DC27E5 /* autoService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autoService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +74,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44C614812AC3647300162DA9 /* Authentification */ = {
+			isa = PBXGroup;
+			children = (
+				44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */,
+				44C614822AC3660500162DA9 /* AuthInteractor.swift */,
+				44C614842AC3661900162DA9 /* AuthPresenter.swift */,
+				44C614862AC37FA600162DA9 /* AuthBuilder.swift */,
+			);
+			path = Authentification;
+			sourceTree = "<group>";
+		};
 		44DF3C962A9697C200DC27E5 = {
 			isa = PBXGroup;
 			children = (
@@ -94,7 +111,7 @@
 				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
 				44DF3CF12AB2312700DC27E5 /* DI.swift */,
 				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
-				44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */,
+				44C614812AC3647300162DA9 /* Authentification */,
 				44DF3CBC2A9A1C9200DC27E5 /* MainTabBabViewController.swift */,
 				44DF3CE02A9D463C00DC27E5 /* JournalViewController.swift */,
 				44DF3CE22A9D464900DC27E5 /* MapViewController.swift */,
@@ -256,7 +273,10 @@
 				44DF3CBD2A9A1C9200DC27E5 /* MainTabBabViewController.swift in Sources */,
 				00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */,
 				44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */,
+				44C614872AC37FA700162DA9 /* AuthBuilder.swift in Sources */,
 				44DF3CE72AB01BB100DC27E5 /* OnboardingViewController.swift in Sources */,
+				44C614852AC3661900162DA9 /* AuthPresenter.swift in Sources */,
+				44C614832AC3660500162DA9 /* AuthInteractor.swift in Sources */,
 				44DF3CED2AB0FE6100DC27E5 /* SetupService.swift in Sources */,
 				44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */,
 				44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */,

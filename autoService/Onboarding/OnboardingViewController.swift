@@ -102,13 +102,9 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
             interactor.onOnboardingCompleted()
             
             let window = UIApplication.shared.windows.last { $0.isKeyWindow }
-            // let builder = AuthBuilder() ...
-            window?.rootViewController = AuthViewController()
+            let builder = AuthBuilder()
+            window?.rootViewController = builder.build()
         }
-        
-        
-        // TODO: VIP...
-        //
         
     }
     

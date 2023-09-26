@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 final class AuthService {
     
@@ -15,6 +16,10 @@ final class AuthService {
     
     func setIsNotNewUser() {
         UserDefaults.standard.set(true, forKey: "isNewUser")
+    }
+    
+    func firebaseAuth() -> Auth {
+        return FirebaseAuth.Auth.auth()
     }
     
 }

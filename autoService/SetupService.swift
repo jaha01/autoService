@@ -38,7 +38,7 @@ final class SetupService {
 //            vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
 //            self.present(vc, animated: true, completion: nil)
         }
-        
+        print("type - \(type(of: FirebaseAuth.Auth.auth()))")
         return .mainTabBar //.mainTabBar
         
     }

@@ -25,8 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let builder = OnboardingBuilder()
             window.rootViewController = builder.build()
         case .auth:
-            // let builder = AuthBuilder() ...
-            window.rootViewController = AuthViewController()
+            let builder = AuthBuilder()
+            window.rootViewController = builder.build()
         case .mainTabBar:
             window.rootViewController = MainTabBabViewController()
         }

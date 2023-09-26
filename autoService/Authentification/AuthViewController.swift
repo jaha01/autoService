@@ -8,10 +8,13 @@
 import UIKit
 import FirebaseAuth
 
-class AuthViewController: UIViewController {
+final class AuthViewController: UIViewController {
+    
+    var interactor: AuthInteactor!
     
     static let shared = AuthViewController()
     
+    // MARK:  - Private Properties
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -60,6 +63,7 @@ class AuthViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Public methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -68,9 +72,11 @@ class AuthViewController: UIViewController {
         view.addSubview(passwordField)
         view.addSubview(button)
         
+        interactor.onViewDidLoad()
+        
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         //isCurrentUser()
-        if FirebaseAuth.Auth.auth().currentUser != nil {
+        if interactor.authentification().currentUser != nil {
             label.isHidden = true
             emailField.isHidden = true
             passwordField.isHidden = true
@@ -80,6 +86,10 @@ class AuthViewController: UIViewController {
             signOutButton.frame = CGRect(x: 20, y: 150, width: view.frame.size.width-40, height: 52)
             signOutButton.addTarget(self, action: #selector(logOutTapped), for: .touchUpInside)
         }
+    }
+    
+    func showAuthViewController() {
+        
     }
     
 //    func isCurrentUser() {
@@ -92,20 +102,6 @@ class AuthViewController: UIViewController {
 //        }
 //    }
     
-    @objc public func logOutTapped() {
-        do {
-            try FirebaseAuth.Auth.auth().signOut()
-            label.isHidden = false
-            emailField.isHidden = false
-            passwordField.isHidden = false
-            button.isHidden = false
-            
-            signOutButton.removeFromSuperview()
-        }
-        catch {
-            print("Ошибка при выходе")
-        }
-    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -126,8 +122,24 @@ class AuthViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if FirebaseAuth.Auth.auth().currentUser == nil {
+        if interactor.authentification().currentUser == nil {
             emailField.becomeFirstResponder()
+        }
+    }
+    
+    // MARK: - Private methods
+    @objc private func logOutTapped() {
+        do {
+            try interactor.authentification().signOut()
+            label.isHidden = false
+            emailField.isHidden = false
+            passwordField.isHidden = false
+            button.isHidden = false
+            
+            signOutButton.removeFromSuperview()
+        }
+        catch {
+            print("Ошибка при выходе")
         }
     }
     
@@ -145,7 +157,7 @@ class AuthViewController: UIViewController {
         // check sign in on app launch
         // allow user to sign out with button
         
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
+        interactor.authentification().signIn(withEmail: email, password: password) { [weak self] result, error in
             guard let self = self else {
                 return
             }
@@ -170,12 +182,12 @@ class AuthViewController: UIViewController {
         }
     }
     
-    func showCreateAccount(_ email: String, _ password: String) {
+    private func showCreateAccount(_ email: String, _ password: String) {
         let alert = UIAlertController(title: "Создать аккаунт",
                                       message: "Хотите создать аккаунт?",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Продолжить", style: .default, handler: { _ in
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            self.interactor.authentification().createUser(withEmail: email, password: password) { [weak self] result, error in
                 guard let self = self else {
                     return
                 }
