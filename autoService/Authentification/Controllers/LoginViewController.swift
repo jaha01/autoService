@@ -108,27 +108,27 @@ class LoginViewController: UIViewController {
             emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
             emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             emailField.heightAnchor.constraint(equalToConstant: 55),
-            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
             passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             passwordField.heightAnchor.constraint(equalToConstant: 55),
-            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             signInButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
             signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             signInButton.heightAnchor.constraint(equalToConstant: 55),
-            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             newUserButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 11),
             newUserButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             newUserButton.heightAnchor.constraint(equalToConstant: 44),
-            newUserButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            newUserButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             forgotPasswordButton.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: 6),
             forgotPasswordButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             forgotPasswordButton.heightAnchor.constraint(equalToConstant: 44),
-            forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
+            forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50)
         ])
     }
 }

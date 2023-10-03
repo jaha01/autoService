@@ -66,12 +66,12 @@ class ForgotPasswordViewController: UIViewController {
             emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 11),
             emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             emailField.heightAnchor.constraint(equalToConstant: 55),
-            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             resetPasswordButton.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
             resetPasswordButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             resetPasswordButton.heightAnchor.constraint(equalToConstant: 55),
-            resetPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
+            resetPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50)
         ])
         
     }

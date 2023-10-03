@@ -106,10 +106,6 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
             window?.rootViewController = AuthViewController()
         }
         
-        
-        // TODO: VIP...
-        //
-        
     }
     
 }

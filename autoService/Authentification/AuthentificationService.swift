@@ -8,13 +8,13 @@
 import Foundation
 import FirebaseFirestore
 import FirebaseAuth
-
+ /// THIS FILE IS NOT CURRENTLY IN USAGE
 class AuthentificationService {
     public static let shared = AuthentificationService()
+    
     private init() {
         
     }
-    
     
     public func registerUser(with userRequest: RegisterUserRequest, completion: @escaping(Error?) -> Void) {
         let username = userRequest.username

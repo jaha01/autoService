@@ -8,8 +8,11 @@
 import UIKit
 import FirebaseAuth
 
-class AuthViewController: UIViewController {
-
+final class AuthViewController: UIViewController {
+    
+    var interactor: AuthInteractor!
+    
+    // MARK: - Properties
     private let label: UILabel = {
         let label = UILabel()
         label.textColor = .label
@@ -25,36 +28,23 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        
+        interactor.onViewDidLoad()
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
         view.addSubview(label)
         setupConstraints()
         
-        AuthentificationService.shared.fetchUser { [weak self] user, error in
-            guard let self = self else { return }
-            if let error = error {
-                AlertManager.showError(title: "Error fetching user", message: "\(error.localizedDescription)")
-                return
-            }
-            
-            if let user = user {
-                self.label.text = "\(user.username)\n\(user.email)"
-            }
-        }
+        self.label.text =  interactor.getUserShortInfo()
+    }
+    
+    func showAuthViewController() {
+        
     }
     
     // MARK: - Private methods
     @objc private func didTapLogout() {
-        AuthentificationService.shared.signOut { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                AlertManager.showError(title: "Unknown Signin in Error", message: "\(error.localizedDescription)")
-                return
-            }
-            
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                sceneDelegate.checkAuthentification()
-            }
-        }
+        interactor.userSignOut()
     }
     
     private func setupConstraints() {

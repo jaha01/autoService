@@ -122,31 +122,31 @@ class RegisterViewController: UIViewController {
             usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
             usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             usernameField.heightAnchor.constraint(equalToConstant: 55),
-            usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             emailField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 12),
             emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             emailField.heightAnchor.constraint(equalToConstant: 55),
-            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
             passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             passwordField.heightAnchor.constraint(equalToConstant: 55),
-            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             signUpButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
             signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: 55),
-            signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             termsTextView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 6),
             termsTextView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
             signInButton.topAnchor.constraint(equalTo: termsTextView.bottomAnchor, constant: 11),
             signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             signInButton.heightAnchor.constraint(equalToConstant: 44),
-            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
             
         ])
     }
