@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,17 +28,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         case .auth:
             // let builder = AuthBuilder() ...
             // it's all will move to builder file
-            if Auth.auth().currentUser == nil {
-                window.rootViewController = LoginViewController()
-            } else {
-                window.rootViewController = AuthViewController()
-            }
+            checkAuthentification()
         case .mainTabBar:
             window.rootViewController = MainTabBabViewController()
         }
         
         self.window = window
         self.window?.makeKeyAndVisible()
+    }
+    
+    public func checkAuthentification() {
+        if Auth.auth().currentUser == nil {
+            window?.rootViewController = LoginViewController()
+        } else {
+            window?.rootViewController = AuthViewController()
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
