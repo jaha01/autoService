@@ -44,7 +44,6 @@ class AuthViewController: UIViewController {
     
     // MARK: - Private methods
     @objc private func didTapLogout() {
-        print("HERE")
         AuthentificationService.shared.signOut { [weak self] error in
             guard let self = self else { return }
             if let error = error {
