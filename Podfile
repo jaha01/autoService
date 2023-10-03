@@ -8,5 +8,7 @@ target 'autoService' do
   # Pods for autoService
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
+pod 'FirebaseFirestore'
+pod 'FirebaseStorage'
 
 end

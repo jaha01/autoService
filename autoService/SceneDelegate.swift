@@ -26,7 +26,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window.rootViewController = builder.build()
         case .auth:
             // let builder = AuthBuilder() ...
-            window.rootViewController = AuthViewController()
+            // it's all will move to builder file
+            if Auth.auth().currentUser == nil {
+                window.rootViewController = LoginViewController()
+            } else {
+                window.rootViewController = AuthViewController()
+            }
         case .mainTabBar:
             window.rootViewController = MainTabBabViewController()
         }
@@ -34,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         self.window?.makeKeyAndVisible()
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
