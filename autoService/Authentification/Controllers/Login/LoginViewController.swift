@@ -52,7 +52,6 @@ final class LoginViewController: UIViewController {
     
     func changeViewController(vc: UIViewController) {
         let window = UIApplication.shared.windows.last { $0.isKeyWindow }
-        // let builder...
         window?.rootViewController = vc
     }
     
@@ -64,22 +63,22 @@ final class LoginViewController: UIViewController {
                                             password: self.passwordField.text ?? "")
         
         if !Validator.isValidEmail(for: loginRequest.email) {
-//            AlertManager.showAlert(title: "Invalid Email", message: "Please enter a valid Email") // rewrite it!!! make red text on button click
             emailField.textColor = .red
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.emailField.textColor = .black
+            }
             return
         }
         
         if !Validator.isPasswordValid(for: loginRequest.password) {
-//            AlertManager.showAlert(title: "Invalid Password", message: "Please enter a valid Password")
             passwordField.textColor = .red
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.passwordField.textColor = .black
+            }
             return
         }
 
         interactor.signIn(loginRequest: loginRequest)
-        //        let vc = ViewController()
-//        let nav = UINavigationController(rootViewController: vc)
-//        nav.modalPresentationStyle = .fullScreen
-//        self.present(nav, animated: true, completion: nil)
     }
 
     @objc private func didTapNewUser() {

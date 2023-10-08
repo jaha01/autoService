@@ -103,7 +103,7 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
             
             let window = UIApplication.shared.windows.last { $0.isKeyWindow }
             // let builder = AuthBuilder() ...
-            window?.rootViewController = AuthViewController()
+            window?.rootViewController = MainTabBabViewController()
         }
         
     }

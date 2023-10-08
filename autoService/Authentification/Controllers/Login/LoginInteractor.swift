@@ -25,7 +25,7 @@ final class LoginInteractor {
                 return
             }
             
-            self.presenter.presentViewController(vc: AuthBuilder().build())
+            self.presenter.presentViewController(vc: MainTabBabViewController())
             
 //            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
 //                sceneDelegate.checkAuthentification()

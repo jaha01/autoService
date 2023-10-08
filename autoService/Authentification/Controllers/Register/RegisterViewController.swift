@@ -28,7 +28,6 @@ final class RegisterViewController: UIViewController {
         
         let tv = UITextView()
         tv.linkTextAttributes = [.foregroundColor: UIColor.systemBlue]
-        //        tv.text = "Terms & Conditions"
         tv.backgroundColor = .clear
         tv.attributedText = attributedString
         tv.textColor = .label
@@ -70,7 +69,6 @@ final class RegisterViewController: UIViewController {
     
     func changeViewController(vc: UIViewController) {
         let window = UIApplication.shared.windows.last { $0.isKeyWindow }
-        // let builder...
         window?.rootViewController = vc
     }
     
@@ -86,20 +84,26 @@ final class RegisterViewController: UIViewController {
                                                       password: passwordField.text ?? "")
         
         if !Validator.isValidUsername(for: registerUserRequest.username) {
-//            AlertManager.showAlert(title: "Invalid User", message: "Please enter a valid User")
             usernameField.textColor = .red
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.usernameField.textColor = .black
+            }
             return
         }
         
         if !Validator.isValidEmail(for: registerUserRequest.email) {
-//            AlertManager.showAlert(title: "Invalid Email", message: "Please enter a valid Email")
             emailField.textColor = .red
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.emailField.textColor = .black
+            }
             return
         }
         
         if !Validator.isPasswordValid(for: registerUserRequest.password) {
-//            AlertManager.showAlert(title: "Invalid Password", message: "Please enter a valid Password")
             passwordField.textColor = .red
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.passwordField.textColor = .black
+            }
             return
         }
         

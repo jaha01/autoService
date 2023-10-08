@@ -46,8 +46,10 @@ final class ForgotPasswordViewController: UIViewController {
         let email = self.emailField.text ?? ""
         
         if !Validator.isValidEmail(for: email) {
-//            AlertManager.showAlert(title: "Invalid Email", message: "Please enter a valid Email")
             emailField.textColor = .red
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                self.emailField.textColor = .black
+            }
             return
         }
         

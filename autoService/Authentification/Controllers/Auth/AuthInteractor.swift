@@ -17,12 +17,6 @@ final class AuthInteractor {
         self.authService = authService
     }
     
-    func onViewDidLoad() {
-       //  business logic on screen startup
-        
-//         ... async loading of onboarding data
-//        presenter.prepareToShowAuthViewControllerData()
-    }
     
     func getUserShortInfo() -> String {
         var name: String?
