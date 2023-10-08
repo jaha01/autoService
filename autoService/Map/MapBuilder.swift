@@ -1,17 +1,17 @@
 //
-//  AuthBuilder.swift
+//  MapBuilder.swift
 //  autoService
 //
-//  Created by Jahongir Anvarov on 04.10.2023.
+//  Created by Jahongir Anvarov on 08.10.2023.
 //
 
 import UIKit
 
-final class AuthBuilder {
+final class MapBuilder {
     func build() -> UIViewController {
-        let controller = AuthViewController()
-        let interactor = AuthInteractor(authService: DI.shared.authService)
-        let presenter = AuthPresenter()
+        let controller = MapViewController()
+        let interactor = MapInteractor(authService: DI.shared.authService)
+        let presenter = MapPresenter()
         
         controller.interactor = interactor
         interactor.presenter = presenter

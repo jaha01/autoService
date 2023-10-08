@@ -8,7 +8,8 @@
 import UIKit
 
 class MapViewController: UIViewController {
-
+    var interactor: MapInteractor!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

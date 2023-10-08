@@ -25,7 +25,7 @@ final class RegisterInteractor {
                 return
             }
             
-            self.presenter.presentViewController(vc: AuthBuilder().build())
+            self.presenter.presentViewController(vc: MainTabBabViewController())
         }
     }
 }

@@ -7,10 +7,13 @@
 
 import UIKit
 
-class JournalViewController: UIViewController {
+final class JournalViewController: UIViewController {
 
-    var items = UserDefaults.standard.stringArray(forKey: "items") ?? []
+    var interactor: JournalInteractor!
     
+    var items = [String]()
+    
+    // MARK: - Pivate properties
     private let journalList: UITableView = {
        let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -45,7 +48,7 @@ class JournalViewController: UIViewController {
                         print("add")
                         self.items.append(text)
                         self.journalList.reloadData()
-                        UserDefaults.standard.setValue(self.items, forKey: "items")
+//                        UserDefaults.standard.setValue(self.items, forKey: "items")
                     }
                 }
             }
@@ -67,7 +70,7 @@ extension JournalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = items[indexPath.row] as! String
         return cell
     }
     
@@ -76,7 +79,7 @@ extension JournalViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             self.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            UserDefaults.standard.setValue(self.items, forKey: "items")
+//            UserDefaults.standard.setValue(self.items, forKey: "items")
         }
     }
 }
