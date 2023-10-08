@@ -98,4 +98,12 @@ final class AuthService {
                 }
             }
     }
+    
+    public func isCurrentUser() -> Bool {
+        if FirebaseAuth.Auth.auth().currentUser == nil {
+            return false
+        } else {
+            return true
+        }
+    }
 }

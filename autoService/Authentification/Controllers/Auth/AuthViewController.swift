@@ -29,18 +29,26 @@ final class AuthViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .blue
         
-        interactor.onViewDidLoad()
+//        interactor.onViewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
         view.addSubview(label)
         setupConstraints()
         
-        self.label.text =  interactor.getUserShortInfo()
-    }
-    
-    func showAuthViewController() {
+//        self.label.text =  interactor.getUserShortInfo()
         
     }
+
+    func changeViewController(vc: UIViewController) {
+        let window = UIApplication.shared.windows.last { $0.isKeyWindow }
+        // let builder...
+        window?.rootViewController = vc
+    }
+    
+    func showErrorAlert(title: String, message: String?) {
+        AlertManager.showAlert(title: title, message: message)
+    }
+    
     
     // MARK: - Private methods
     @objc private func didTapLogout() {
@@ -57,3 +65,4 @@ final class AuthViewController: UIViewController {
 
 }
 
+// 

@@ -7,7 +7,9 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+final class RegisterViewController: UIViewController {
+    
+    var interactor: RegisterInteractor!
     
     // MARK: - Private properties
     private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create your account")
@@ -62,6 +64,15 @@ class RegisterViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+    func showErrorAlert(alertRequest: AlertRequest) {
+        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+    }
+    
+    func changeViewController(vc: UIViewController) {
+        let window = UIApplication.shared.windows.last { $0.isKeyWindow }
+        // let builder...
+        window?.rootViewController = vc
+    }
     
     // MARK: Private methods
     
@@ -75,33 +86,24 @@ class RegisterViewController: UIViewController {
                                                       password: passwordField.text ?? "")
         
         if !Validator.isValidUsername(for: registerUserRequest.username) {
-            AlertManager.showError(title: "Invalid User", message: "Please enter a valid User")
+//            AlertManager.showAlert(title: "Invalid User", message: "Please enter a valid User")
+            usernameField.textColor = .red
             return
         }
         
         if !Validator.isValidEmail(for: registerUserRequest.email) {
-            AlertManager.showError(title: "Invalid Email", message: "Please enter a valid Email")
+//            AlertManager.showAlert(title: "Invalid Email", message: "Please enter a valid Email")
+            emailField.textColor = .red
             return
         }
         
         if !Validator.isPasswordValid(for: registerUserRequest.password) {
-            AlertManager.showError(title: "Invalid Password", message: "Please enter a valid Password")
+//            AlertManager.showAlert(title: "Invalid Password", message: "Please enter a valid Password")
+            passwordField.textColor = .red
             return
         }
         
-        AuthentificationService.shared.registerUser(with: registerUserRequest) { [weak self] error in
-            
-            guard let self = self else { return }
-            
-            if let error = error {
-                AlertManager.showError(title: "Unknown Registration Error", message: "\(error.localizedDescription)")
-                return
-            }
-            
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                sceneDelegate.checkAuthentification()
-            }
-        }
+        interactor.registerUser(registerUserRequest: registerUserRequest)
     }
     
     private func setupConstraints() {
@@ -122,31 +124,37 @@ class RegisterViewController: UIViewController {
             usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
             usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             usernameField.heightAnchor.constraint(equalToConstant: 55),
-            usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
+            usernameField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            usernameField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             emailField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 12),
             emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             emailField.heightAnchor.constraint(equalToConstant: 55),
-            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
+            emailField.leadingAnchor.constraint(equalTo: usernameField.leadingAnchor),
+            emailField.trailingAnchor.constraint(equalTo: usernameField.trailingAnchor),
             
             passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
             passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             passwordField.heightAnchor.constraint(equalToConstant: 55),
-            passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
+            passwordField.leadingAnchor.constraint(equalTo: emailField.leadingAnchor),
+            passwordField.trailingAnchor.constraint(equalTo: emailField.trailingAnchor),
             
             signUpButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
             signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             signUpButton.heightAnchor.constraint(equalToConstant: 55),
-            signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
+            signUpButton.leadingAnchor.constraint(equalTo: emailField.leadingAnchor),
+            signUpButton.trailingAnchor.constraint(equalTo: emailField.trailingAnchor),
             
             termsTextView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 6),
             termsTextView.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
+            termsTextView.leadingAnchor.constraint(equalTo: emailField.leadingAnchor),
+            termsTextView.trailingAnchor.constraint(equalTo: emailField.trailingAnchor),
             
             signInButton.topAnchor.constraint(equalTo: termsTextView.bottomAnchor, constant: 11),
             signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             signInButton.heightAnchor.constraint(equalToConstant: 44),
-            signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 50),
+            signInButton.leadingAnchor.constraint(equalTo: emailField.leadingAnchor),
+            signInButton.trailingAnchor.constraint(equalTo: emailField.trailingAnchor),
             
         ])
     }

@@ -33,7 +33,7 @@ final class SetupService {
 //            self.present(vc, animated: true, completion: nil)
         }
 
-        if FirebaseAuth.Auth.auth().currentUser == nil {
+        if !authService.isCurrentUser() {
             return .auth// .auth
 //            vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
 //            self.present(vc, animated: true, completion: nil)

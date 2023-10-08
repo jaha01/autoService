@@ -6,29 +6,33 @@
 //
 
 import Foundation
-
 import UIKit
-// 2 scrennshot
-struct AlertConfig {
+
+struct AlertRequest {
     var title: String
     var message: String?
 }
 
 class AlertManager {
     
-    public static func showError(title: String, message: String?) {
+    public static func showAlert(title: String, message: String?) {
         let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-
+        //        view.windowScene.keyWindow
+        
+        // will return tabBar or navBar instead View
         if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
-            }
-
-        DispatchQueue.main.async {
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dissmiss", style: .default, handler: nil))
-            topController.present(alert, animated: true)
+            } // func!!!
+            
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dissmiss", style: .default, handler: nil))
+                topController.present(alert, animated: true)
             }
         }
     }
+    
+    // func 
+    
 }

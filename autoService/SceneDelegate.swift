@@ -31,14 +31,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             checkAuthentification()
         case .mainTabBar:
             window.rootViewController = MainTabBabViewController()
+//            let vc = AuthViewController()
+//            let nav = UINavigationController(rootViewController: vc)
+//            nav.modalPresentationStyle = .fullScreen
+//            self.window?.rootViewController = nav
         }
         
         self.window = window
         self.window?.makeKeyAndVisible()
+        let vc = AuthBuilder().build()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        self.window?.rootViewController = nav
+
     }
     
     public func checkAuthentification() {
-        if Auth.auth().currentUser == nil {
+        if Auth.auth().currentUser == nil { // new func in AuthService
             window?.rootViewController = LoginViewController()
         } else {
             window?.rootViewController = AuthViewController()

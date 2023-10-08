@@ -18,10 +18,10 @@ final class AuthInteractor {
     }
     
     func onViewDidLoad() {
-        // business logic on screen startup
+       //  business logic on screen startup
         
-        // ... async loading of onboarding data
-        presenter.prepareToShowAuthViewControllerData()
+//         ... async loading of onboarding data
+//        presenter.prepareToShowAuthViewControllerData()
     }
     
     func getUserShortInfo() -> String {
@@ -30,7 +30,7 @@ final class AuthInteractor {
         authService.fetchUser { user, error in
 //            guard let self = self else { return }  is it correct?
             if let error = error {
-                AlertManager.showError(title: "Error fetching user", message: "\(error.localizedDescription)")
+                self.presenter.showError(title: "Error fetching user", message: "\(error.localizedDescription)")
                 return
             }
             
@@ -45,13 +45,11 @@ final class AuthInteractor {
         
         authService.signOut { error in
             if let error = error {
-                AlertManager.showError(title: "Unknown Signin in Error", message: "\(error.localizedDescription)")
+                self.presenter.showError(title: "Unknown Signin in Error", message: "\(error.localizedDescription)")
                 return
             }
-            // INDK how to fix it
-//            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-//                sceneDelegate.checkAuthentification()
-//            }
+            
+            self.presenter.presentViewController(vc: LoginBuilder().build())
         }
         
     }
