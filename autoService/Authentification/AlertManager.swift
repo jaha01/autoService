@@ -16,14 +16,18 @@ struct AlertRequest {
 class AlertManager {
     
     public static func showAlert(title: String, message: String?) {
-        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let keyWindow = UIApplication
+                                    .shared
+                                    .connectedScenes
+                                    .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                                    .last  
         //        view.windowScene.keyWindow
         
         // will return tabBar or navBar instead View
         if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
-            } // func!!!
+            }
             
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -32,7 +36,5 @@ class AlertManager {
             }
         }
     }
-    
-    // func 
     
 }

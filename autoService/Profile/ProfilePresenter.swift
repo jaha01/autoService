@@ -15,7 +15,7 @@ final class ProfilePresenter {
         viewController.showErrorAlert(alertRequest: alertRequest)
     }
     
-    func presentViewController(vc: UIViewController) {
-        viewController.changeViewController(vc: vc)
+    func didTapSignOut() {
+        viewController.present()
     }
 }

@@ -17,8 +17,11 @@ final class ForgotPasswordInteractor {
         self.authService = authService
     }
     
-    func forgotPassword(email: String) {
-        authService.forgotPassword(with: email) { error in
+    func resetPassword(email: String) {
+        authService.resetPassword(with: email) { [weak self] error in
+            
+            guard let self = self else { return }
+            
             if let error = error {
                 self.presenter.showError(alertRequest: AlertRequest(title: "", message: error.localizedDescription))
                 return

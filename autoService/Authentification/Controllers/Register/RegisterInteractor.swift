@@ -18,14 +18,16 @@ final class RegisterInteractor {
     }
     
     func registerUser(registerUserRequest: RegisterUserRequest) {
-        authService.registerUser(with: registerUserRequest) { error in
+        authService.registerUser(with: registerUserRequest) { [weak self] error in
+            
+            guard let self = self else { return }
             
             if let error = error {
                 self.presenter.showError(alertRequest: AlertRequest( title: "Unknown Registration Error", message: "\(error.localizedDescription)"))
                 return
             }
             
-            self.presenter.presentViewController(vc: AuthBuilder().build())
+            self.presenter.goToMainView()
         }
     }
 }

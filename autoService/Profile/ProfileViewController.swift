@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
     var interactor: ProfileInteractor!
     
@@ -21,9 +21,13 @@ class ProfileViewController: UIViewController {
     }
 
     
-    func changeViewController(vc: UIViewController) {
-        let window = UIApplication.shared.windows.last { $0.isKeyWindow }
-        window?.rootViewController = vc
+    func present() {
+        let window = UIApplication
+                                .shared
+                                .connectedScenes
+                                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                                .last  
+        window?.rootViewController = LoginBuilder().build()
     }
     
     func showErrorAlert(alertRequest: AlertRequest) {

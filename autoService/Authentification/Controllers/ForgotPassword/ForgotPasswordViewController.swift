@@ -43,17 +43,14 @@ final class ForgotPasswordViewController: UIViewController {
     
     // MARK: - Private methods
     @objc private func didTapForgotPass(){
-        let email = self.emailField.text ?? ""
+        guard let email = self.emailField.text  else { return }
         
         if !Validator.isValidEmail(for: email) {
-            emailField.textColor = .red
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.emailField.textColor = .black
-            }
+            emailField.animateError()
             return
         }
         
-        interactor.forgotPassword(email: email)
+        interactor.resetPassword(email: email)
     }
     
     private func setupConstraints() {

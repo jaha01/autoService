@@ -23,5 +23,4 @@ final class DI {
         return SetupService(authService: authService)
     }
     
-    
 }

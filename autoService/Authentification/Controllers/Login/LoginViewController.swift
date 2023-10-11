@@ -50,9 +50,14 @@ final class LoginViewController: UIViewController {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     
-    func changeViewController(vc: UIViewController) {
-        let window = UIApplication.shared.windows.last { $0.isKeyWindow }
-        window?.rootViewController = vc
+    func present() {
+        let window = UIApplication
+                                .shared
+                                .connectedScenes
+                                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
+                                .last
+        window?.rootViewController = MainTabBabViewController()
+        
     }
     
     // MARK: Private methods
@@ -63,18 +68,11 @@ final class LoginViewController: UIViewController {
                                             password: self.passwordField.text ?? "")
         
         if !Validator.isValidEmail(for: loginRequest.email) {
-            emailField.textColor = .red
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.emailField.textColor = .black
-            }
-            return
+            emailField.animateError()
         }
         
         if !Validator.isPasswordValid(for: loginRequest.password) {
-            passwordField.textColor = .red
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.passwordField.textColor = .black
-            }
+            passwordField.animateError()
             return
         }
 
@@ -137,3 +135,5 @@ final class LoginViewController: UIViewController {
         ])
     }
 }
+
+

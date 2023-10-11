@@ -19,7 +19,7 @@ class MainTabBabViewController: UITabBarController {
 
     }
 
-    // MARK: - Private mothods
+    // MARK: - Private methods
     
     private func setupUpTabs() {
         

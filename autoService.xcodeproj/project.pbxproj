@@ -19,13 +19,9 @@
 		44C6149A2ACB6D8700162DA9 /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614992ACB6D8700162DA9 /* RegisterUserRequest.swift */; };
 		44C6149C2ACB6D9C00162DA9 /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6149B2ACB6D9C00162DA9 /* LoginUserRequest.swift */; };
 		44C6149F2ACB6DDF00162DA9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */; };
-		44C614A12ACB6E9800162DA9 /* AuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A02ACB6E9800162DA9 /* AuthentificationService.swift */; };
 		44C614A32ACB6EB700162DA9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A22ACB6EB700162DA9 /* User.swift */; };
 		44C614A52ACB6EC800162DA9 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A42ACB6EC800162DA9 /* AlertManager.swift */; };
 		44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A62ACB6EF000162DA9 /* Validator.swift */; };
-		44C614A92ACCAEA900162DA9 /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A82ACCAEA800162DA9 /* AuthInteractor.swift */; };
-		44C614AB2ACCAEBC00162DA9 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614AA2ACCAEBC00162DA9 /* AuthPresenter.swift */; };
-		44C614AE2ACCBE8D00162DA9 /* AuthBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614AD2ACCBE8D00162DA9 /* AuthBuilder.swift */; };
 		44C614B12ACE0D3F00162DA9 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614B02ACE0D3E00162DA9 /* LoginInteractor.swift */; };
 		44C614B32ACE0D5000162DA9 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614B22ACE0D4F00162DA9 /* LoginPresenter.swift */; };
 		44C614B62ACE150900162DA9 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614B52ACE150900162DA9 /* LoginBuilder.swift */; };
@@ -40,7 +36,6 @@
 		44DD0B5D2AD2D2D0005019B6 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */; };
 		44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */; };
 		44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */; };
-		44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */; };
 		44DF3CAC2A9697C800DC27E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */; };
 		44DF3CAF2A9697C800DC27E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44DF3CAD2A9697C800DC27E5 /* LaunchScreen.storyboard */; };
 		44DF3CB92A969BF800DC27E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44DF3CB82A969BF800DC27E5 /* GoogleService-Info.plist */; };
@@ -71,13 +66,9 @@
 		44C614992ACB6D8700162DA9 /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
 		44C6149B2ACB6D9C00162DA9 /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		44C614A02ACB6E9800162DA9 /* AuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationService.swift; sourceTree = "<group>"; };
 		44C614A22ACB6EB700162DA9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44C614A42ACB6EC800162DA9 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		44C614A62ACB6EF000162DA9 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		44C614A82ACCAEA800162DA9 /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
-		44C614AA2ACCAEBC00162DA9 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
-		44C614AD2ACCBE8D00162DA9 /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
 		44C614B02ACE0D3E00162DA9 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		44C614B22ACE0D4F00162DA9 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		44C614B52ACE150900162DA9 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
@@ -93,7 +84,6 @@
 		44DF3C9F2A9697C200DC27E5 /* autoService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autoService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44DF3CAE2A9697C800DC27E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44DF3CB02A9697C800DC27E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,7 +121,6 @@
 				44C614982ACB6D6100162DA9 /* Views */,
 				44C6149D2ACB6DAC00162DA9 /* Requests */,
 				44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */,
-				44C614A02ACB6E9800162DA9 /* AuthentificationService.swift */,
 				44C614A22ACB6EB700162DA9 /* User.swift */,
 				44C614A42ACB6EC800162DA9 /* AlertManager.swift */,
 				44C614A62ACB6EF000162DA9 /* Validator.swift */,
@@ -142,7 +131,6 @@
 		44C6148B2ACB6C3900162DA9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				44C614AC2ACCAEFC00162DA9 /* Auth */,
 				44C614B42ACE0E1D00162DA9 /* Login */,
 				44DD0B4D2AD204E5005019B6 /* Register */,
 				44DD0B562AD20C62005019B6 /* ForgotPassword */,
@@ -169,21 +157,11 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
-		44C614AC2ACCAEFC00162DA9 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */,
-				44C614A82ACCAEA800162DA9 /* AuthInteractor.swift */,
-				44C614AA2ACCAEBC00162DA9 /* AuthPresenter.swift */,
-				44C614AD2ACCBE8D00162DA9 /* AuthBuilder.swift */,
-			);
-			path = Auth;
-			sourceTree = "<group>";
-		};
 		44C614AF2ACDED9900162DA9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
+				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -255,7 +233,6 @@
 			children = (
 				44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */,
 				44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */,
-				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
 				44DF3CF12AB2312700DC27E5 /* DI.swift */,
 				44C614AF2ACDED9900162DA9 /* Services */,
 				44C6148A2ACB6C1C00162DA9 /* Authentification */,
@@ -417,14 +394,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44C614AB2ACCAEBC00162DA9 /* AuthPresenter.swift in Sources */,
 				44DF3CBD2A9A1C9200DC27E5 /* MainTabBabViewController.swift in Sources */,
 				44C614B62ACE150900162DA9 /* LoginBuilder.swift in Sources */,
 				44DD0B5D2AD2D2D0005019B6 /* ProfileBuilder.swift in Sources */,
 				00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */,
 				44C6149C2ACB6D9C00162DA9 /* LoginUserRequest.swift in Sources */,
-				44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */,
-				44C614AE2ACCBE8D00162DA9 /* AuthBuilder.swift in Sources */,
 				44DD0B4C2AD20152005019B6 /* RegisterPresenter.swift in Sources */,
 				44DD0B5A2AD2CF97005019B6 /* ProfilePresenter.swift in Sources */,
 				44DF3CE72AB01BB100DC27E5 /* OnboardingViewController.swift in Sources */,
@@ -439,7 +413,6 @@
 				44C614A52ACB6EC800162DA9 /* AlertManager.swift in Sources */,
 				44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */,
 				44DF3CF02AB22C9400DC27E5 /* AuthService.swift in Sources */,
-				44C614A12ACB6E9800162DA9 /* AuthentificationService.swift in Sources */,
 				44C6148F2ACB6CC900162DA9 /* RegisterViewController.swift in Sources */,
 				44C6149F2ACB6DDF00162DA9 /* WebViewController.swift in Sources */,
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,
@@ -456,7 +429,6 @@
 				44DD0B582AD2CF7B005019B6 /* ProfileInteractor.swift in Sources */,
 				44C614972ACB6D4E00162DA9 /* AuthButton.swift in Sources */,
 				44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */,
-				44C614A92ACCAEA900162DA9 /* AuthInteractor.swift in Sources */,
 				44DD0B532AD20B61005019B6 /* ForgotPasswordPresenter.swift in Sources */,
 				00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */,
 				44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */,

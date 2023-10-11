@@ -19,13 +19,14 @@ final class ProfileInteractor {
     
     func userSignOut() {
         
-        authService.signOut { error in
+        authService.signOut { [weak self] error in
+            guard let self = self else { return }
             if let error = error {
                 self.presenter.showError(alertRequest: AlertRequest(title: "Unknown Signin in Error", message: "\(error.localizedDescription)"))
                 return
             }
             
-            self.presenter.presentViewController(vc: LoginBuilder().build())
+            self.presenter.didTapSignOut()
         }
         
     }

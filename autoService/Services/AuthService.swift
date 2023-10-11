@@ -53,11 +53,7 @@ final class AuthService {
     public func signIn(with userRequest: LoginUserRequest, completion: @escaping(Error?)->Void) {
         Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) {
             result, error in
-            if let error = error {
-                completion(error)
-            } else {
-                completion(nil)
-            }
+            completion(error)
         }
     }
     
@@ -70,7 +66,7 @@ final class AuthService {
         }
     }
     
-    public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
+    public func resetPassword(with email: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             completion(error)
         }
@@ -93,17 +89,14 @@ final class AuthService {
                    let snapshotData = snapshot.data(),
                    let username = snapshotData["username"] as? String,
                    let email = snapshotData["email"] as? String {
-                    let user = User(username: username, email: email, userUID: userUID)
-                    completion(user, nil)
+                     let user = User(username: username, email: email, userUID: userUID)
+                     completion(user, nil)
+                   completion(user, nil)
                 }
             }
     }
     
-    public func isCurrentUser() -> Bool {
-        if FirebaseAuth.Auth.auth().currentUser == nil {
-            return false
-        } else {
-            return true
-        }
+    public func isCurrentUserExists() -> Bool {
+        return FirebaseAuth.Auth.auth().currentUser == nil ? false : true
     }
 }

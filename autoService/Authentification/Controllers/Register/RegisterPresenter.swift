@@ -15,7 +15,7 @@ final class RegisterPresenter {
         viewController.showErrorAlert(alertRequest: alertRequest)
     }
     
-    func presentViewController(vc: UIViewController) {
-        viewController.changeViewController(vc: vc)
+    func goToMainView() {
+        viewController.present()
     }
 }

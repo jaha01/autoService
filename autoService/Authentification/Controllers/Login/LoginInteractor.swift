@@ -18,18 +18,17 @@ final class LoginInteractor {
     }
     
     func signIn(loginRequest: LoginUserRequest) {
-        authService.signIn(with: loginRequest) { error in // Do we need [weak self] here?
+        authService.signIn(with: loginRequest) { [weak self] error in
+            
+            guard let self = self else { return }
             
             if let error = error {
-                self.presenter.showError(alertRequest: AlertRequest(title: "Signin in Error", message: "\(error.localizedDescription)"))
+                self.presenter.showError(alertRequest: AlertRequest(title: "Sign in Error", message: "\(error.localizedDescription)"))
                 return
             }
             
-            self.presenter.presentViewController(vc: MainTabBabViewController())
+            self.presenter.goToMainView()
             
-//            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-//                sceneDelegate.checkAuthentification()
-//            }
         }
     }
 }
