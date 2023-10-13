@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class RegisterInteractor {
+final class RegistrationInteractor {
     
-    var presenter: RegisterPresenter!
+    var presenter: RegistrationPresenter!
     
     private let authService: AuthService
     
@@ -17,13 +17,13 @@ final class RegisterInteractor {
         self.authService = authService
     }
     
-    func registerUser(registerUserRequest: RegisterUserRequest) {
-        authService.registerUser(with: registerUserRequest) { [weak self] error in
+    func registerUser(registerUserCredentials: RegisterUserCredentials) {
+        authService.registerUser(with: registerUserCredentials) { [weak self] error in
             
             guard let self = self else { return }
             
             if let error = error {
-                self.presenter.showError(alertRequest: AlertRequest( title: "Unknown Registration Error", message: "\(error.localizedDescription)"))
+                self.presenter.showError(alertRequest: AlertConfig( title: "Unknown Registration Error", message: "\(error.localizedDescription)"))
                 return
             }
             

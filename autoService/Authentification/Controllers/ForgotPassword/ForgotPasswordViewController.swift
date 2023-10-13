@@ -33,11 +33,11 @@ final class ForgotPasswordViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
-    func showErrorAlert(alertRequest: AlertRequest) {
+    func showErrorAlert(alertRequest: AlertConfig) {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     
-    func showSuccessAlert(alertRequest: AlertRequest) {
+    func showSuccessAlert(alertRequest: AlertConfig) {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     

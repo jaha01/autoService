@@ -23,11 +23,11 @@ final class ForgotPasswordInteractor {
             guard let self = self else { return }
             
             if let error = error {
-                self.presenter.showError(alertRequest: AlertRequest(title: "", message: error.localizedDescription))
+                self.presenter.showError(alertRequest: AlertConfig(title: "", message: error.localizedDescription))
                 return
             }
             
-            self.presenter.showSuccess(alertRequest: AlertRequest(title: "", message: "Password reset sent"))
+            self.presenter.showSuccess(alertRequest: AlertConfig(title: "", message: "Password reset sent"))
         }
     }
     

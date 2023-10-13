@@ -11,11 +11,11 @@ final class ForgotPasswordPresenter {
     
     weak var viewController: ForgotPasswordViewController!
     
-    func showError(alertRequest: AlertRequest) {
+    func showError(alertRequest: AlertConfig) {
         viewController.showErrorAlert(alertRequest: alertRequest)
     }
     
-    func showSuccess(alertRequest: AlertRequest) {
+    func showSuccess(alertRequest: AlertConfig) {
         viewController.showSuccessAlert(alertRequest: alertRequest)
     }
 }

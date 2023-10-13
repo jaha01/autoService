@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class RegisterViewController: UIViewController {
+final class RegistrationViewController: UIViewController {
     
-    var interactor: RegisterInteractor!
+    var interactor: RegistrationInteractor!
     
     // MARK: - Private properties
     private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create your account")
@@ -63,7 +63,7 @@ final class RegisterViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    func showErrorAlert(alertRequest: AlertRequest) {
+    func showErrorAlert(alertRequest: AlertConfig) {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     
@@ -83,26 +83,26 @@ final class RegisterViewController: UIViewController {
     }
     
     @objc private func didTapSignUp() {
-        let registerUserRequest = RegisterUserRequest(username: usernameField.text ?? "",
+        let registerUserCredentials = RegisterUserCredentials(username: usernameField.text ?? "",
                                                       email: emailField.text ?? "",
                                                       password: passwordField.text ?? "")
         
-        if !Validator.isValidUsername(for: registerUserRequest.username) {
+        if !Validator.isValidUsername(for: registerUserCredentials.username) {
             usernameField.animateError()
             return
         }
         
-        if !Validator.isValidEmail(for: registerUserRequest.email) {
+        if !Validator.isValidEmail(for: registerUserCredentials.email) {
             emailField.animateError()
             return
         }
         
-        if !Validator.isPasswordValid(for: registerUserRequest.password) {
+        if !Validator.isPasswordValid(for: registerUserCredentials.password) {
             passwordField.animateError()
             return
         }
         
-        interactor.registerUser(registerUserRequest: registerUserRequest)
+        interactor.registerUser(registerUserCredentials: registerUserCredentials)
     }
     
     private func setupConstraints() {
@@ -159,7 +159,7 @@ final class RegisterViewController: UIViewController {
     }
 }
 
-extension RegisterViewController: UITextViewDelegate {
+extension RegistrationViewController: UITextViewDelegate {
     // MARK: - Public methods
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         

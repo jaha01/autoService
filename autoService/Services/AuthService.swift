@@ -15,13 +15,13 @@ final class AuthService {
     }
     
     func setIsNotNewUser() {
-        UserDefaults.standard.set(true, forKey: "isNewUser")
+        UserDefaults.standard.set(true, forKey: "isNotNewUser")
     }
     
-    public func registerUser(with userRequest: RegisterUserRequest, completion: @escaping(Error?) -> Void) {
-        let username = userRequest.username
-        let email = userRequest.email
-        let password = userRequest.password
+    public func registerUser(with userCredentials: RegisterUserCredentials, completion: @escaping(Error?) -> Void) {
+        let username = userCredentials.username
+        let email = userCredentials.email
+        let password = userCredentials.password
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -50,8 +50,8 @@ final class AuthService {
         }
     }
     
-    public func signIn(with userRequest: LoginUserRequest, completion: @escaping(Error?)->Void) {
-        Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) {
+    public func signIn(with userCredentials: LoginUserCredentials, completion: @escaping(Error?)->Void) {
+        Auth.auth().signIn(withEmail: userCredentials.email, password: userCredentials.password) {
             result, error in
             completion(error)
         }
@@ -91,12 +91,13 @@ final class AuthService {
                    let email = snapshotData["email"] as? String {
                      let user = User(username: username, email: email, userUID: userUID)
                      completion(user, nil)
-                   completion(user, nil)
+                } else {
+                    completion(nil, ("Local Error while log in" as! Error))
                 }
             }
     }
     
     public func isCurrentUserExists() -> Bool {
-        return FirebaseAuth.Auth.auth().currentUser == nil ? false : true
+        return FirebaseAuth.Auth.auth().currentUser != nil
     }
 }

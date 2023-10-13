@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct AlertRequest {
+struct AlertConfig {
     var title: String
     var message: String?
 }
@@ -23,7 +23,9 @@ class AlertManager {
                                     .last  
         //        view.windowScene.keyWindow
         
-        // will return tabBar or navBar instead View
+        // will return tabBar or navBar instead View, will not work
+        // честно не понял как это решить, может подсказку дашь? или сразу ответ?
+        // один из моих варинтов был засунуть его в DispatchQueue.main
         if var topController = keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController

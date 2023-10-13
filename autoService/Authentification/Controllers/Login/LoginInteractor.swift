@@ -17,13 +17,13 @@ final class LoginInteractor {
         self.authService = authService
     }
     
-    func signIn(loginRequest: LoginUserRequest) {
+    func signIn(loginRequest: LoginUserCredentials) {
         authService.signIn(with: loginRequest) { [weak self] error in
             
             guard let self = self else { return }
             
             if let error = error {
-                self.presenter.showError(alertRequest: AlertRequest(title: "Sign in Error", message: "\(error.localizedDescription)"))
+                self.presenter.showError(alertRequest: AlertConfig(title: "Sign in Error", message: "\(error.localizedDescription)"))
                 return
             }
             

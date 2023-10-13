@@ -46,11 +46,11 @@ final class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
 
-    func showErrorAlert(alertRequest: AlertRequest) {
+    func showErrorAlert(alertRequest: AlertConfig) {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     
-    func present() {
+    func present() { // все такие present уйдут в router
         let window = UIApplication
                                 .shared
                                 .connectedScenes
@@ -64,7 +64,7 @@ final class LoginViewController: UIViewController {
     
     @objc private func didTapSignIn() {
 
-        let loginRequest = LoginUserRequest(email: self.emailField.text ?? "",
+        let loginRequest = LoginUserCredentials(email: self.emailField.text ?? "",
                                             password: self.passwordField.text ?? "")
         
         if !Validator.isValidEmail(for: loginRequest.email) {
@@ -80,7 +80,7 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func didTapNewUser() {
-        let vc = RegisterBuilder().build()
+        let vc = RegistrationBuilder().build()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

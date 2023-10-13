@@ -11,7 +11,7 @@ import UIKit
 final class LoginPresenter{
     weak var viewController: LoginViewController!
     
-    func showError(alertRequest: AlertRequest) {
+    func showError(alertRequest: AlertConfig) {
         viewController.showErrorAlert(alertRequest: alertRequest)
     }
     

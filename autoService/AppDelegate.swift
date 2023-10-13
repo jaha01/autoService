@@ -32,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
 
+// У меня этот extension не сработал
+// !!! это все равно уйдет в роутер там у меня есть решение...
+// extension UIApplication {
+//    var currentKeyWindow: UIWindow {
+//        return self.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow
+//        }.last
+//    }
+// }
+// No 'last' candidates produce the expected contextual result type 'UIWindow'

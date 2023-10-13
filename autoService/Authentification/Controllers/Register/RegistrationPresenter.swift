@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class RegisterPresenter {
+final class RegistrationPresenter {
     
-    weak var viewController: RegisterViewController!
+    weak var viewController: RegistrationViewController!
     
-    func showError(alertRequest: AlertRequest) {
+    func showError(alertRequest: AlertConfig) {
         viewController.showErrorAlert(alertRequest: alertRequest)
     }
     

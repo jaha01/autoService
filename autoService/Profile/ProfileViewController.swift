@@ -30,7 +30,7 @@ final class ProfileViewController: UIViewController {
         window?.rootViewController = LoginBuilder().build()
     }
     
-    func showErrorAlert(alertRequest: AlertRequest) {
+    func showErrorAlert(alertRequest: AlertConfig) {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     

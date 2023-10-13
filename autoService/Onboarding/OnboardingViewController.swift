@@ -105,7 +105,7 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
                                     .shared
                                     .connectedScenes
                                     .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                                    .last  
+                                    .last
             window?.rootViewController = MainTabBabViewController()
         }
         

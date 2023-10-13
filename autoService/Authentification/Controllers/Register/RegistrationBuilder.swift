@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class RegisterBuilder {
+final class RegistrationBuilder {
     func build() -> UIViewController {
-        let controller = RegisterViewController()
-        let interactor = RegisterInteractor(authService: DI.shared.authService)
-        let presenter = RegisterPresenter()
+        let controller = RegistrationViewController()
+        let interactor = RegistrationInteractor(authService: DI.shared.authService)
+        let presenter = RegistrationPresenter()
         
         controller.interactor = interactor
         interactor.presenter = presenter
