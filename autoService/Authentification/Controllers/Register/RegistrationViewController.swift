@@ -67,14 +67,6 @@ final class RegistrationViewController: UIViewController {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     
-    func present() {
-        let window = UIApplication
-                                .shared
-                                .connectedScenes
-                                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                                .last  
-        window?.rootViewController = MainTabBabViewController()
-    }
     
     // MARK: Private methods
     

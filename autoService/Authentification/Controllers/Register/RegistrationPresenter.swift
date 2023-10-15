@@ -14,8 +14,4 @@ final class RegistrationPresenter {
     func showError(alertRequest: AlertConfig) {
         viewController.showErrorAlert(alertRequest: alertRequest)
     }
-    
-    func goToMainView() {
-        viewController.present()
-    }
 }
