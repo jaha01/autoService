@@ -34,12 +34,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-// У меня этот extension не сработал
-// !!! это все равно уйдет в роутер там у меня есть решение...
-// extension UIApplication {
-//    var currentKeyWindow: UIWindow {
-//        return self.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow
-//        }.last
-//    }
-// }
-// No 'last' candidates produce the expected contextual result type 'UIWindow'
+extension UIApplication {
+    
+
+    func getTopViewController(base: UIViewController? = UIApplication.shared.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow }.last?.rootViewController) -> UIViewController? {
+
+   if let nav = base as? UINavigationController {
+       return getTopViewController(base: nav.visibleViewController)
+
+   } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+       return getTopViewController(base: selected)
+
+   } else if let presented = base?.presentedViewController {
+       return getTopViewController(base: presented)
+   }
+   return base
+    }
+}

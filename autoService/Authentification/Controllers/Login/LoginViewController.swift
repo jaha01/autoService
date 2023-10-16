@@ -51,12 +51,8 @@ final class LoginViewController: UIViewController {
     }
     
     func present() { // все такие present уйдут в router
-        let window = UIApplication
-                                .shared
-                                .connectedScenes
-                                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                                .last
-        window?.rootViewController = MainTabBabViewController()
+        guard let window = self.view.window else { return }
+        window.rootViewController = MainTabBabViewController()
         
     }
     

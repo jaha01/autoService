@@ -101,12 +101,8 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
         } else {
             interactor.onOnboardingCompleted()
             
-            let window = UIApplication
-                                    .shared
-                                    .connectedScenes
-                                    .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                                    .last
-            window?.rootViewController = MainTabBabViewController()
+            guard let window = self.view.window else { return }
+            window.rootViewController = MainTabBabViewController()
         }
         
     }

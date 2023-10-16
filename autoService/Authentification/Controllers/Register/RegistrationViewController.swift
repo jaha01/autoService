@@ -68,12 +68,8 @@ final class RegistrationViewController: UIViewController {
     }
     
     func present() {
-        let window = UIApplication
-                                .shared
-                                .connectedScenes
-                                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                                .last  
-        window?.rootViewController = MainTabBabViewController()
+        guard let window = self.view.window else { return }
+        window.rootViewController = MainTabBabViewController()
     }
     
     // MARK: Private methods

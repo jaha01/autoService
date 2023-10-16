@@ -11,7 +11,7 @@ import FirebaseFirestore
 final class AuthService {
     
     func isNewUser() -> Bool {
-        return !UserDefaults.standard.bool(forKey: "isNewUser")
+        return !UserDefaults.standard.bool(forKey: "isNotNewUser")
     }
     
     func setIsNotNewUser() {
@@ -92,7 +92,7 @@ final class AuthService {
                      let user = User(username: username, email: email, userUID: userUID)
                      completion(user, nil)
                 } else {
-                    completion(nil, ("Local Error while log in" as! Error))
+                    completion(nil, Fetch.error("Local Error while log in"))
                 }
             }
     }
