@@ -11,21 +11,33 @@
 		00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */; };
 		00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */; };
 		44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */; };
-		44C6148F2ACB6CC900162DA9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegisterViewController.swift */; };
+		44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */; };
 		44C614912ACB6CE500162DA9 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */; };
 		44C614932ACB6D1C00162DA9 /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614922ACB6D1C00162DA9 /* AuthHeaderView.swift */; };
 		44C614952ACB6D3300162DA9 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614942ACB6D3300162DA9 /* AuthTextField.swift */; };
 		44C614972ACB6D4E00162DA9 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614962ACB6D4E00162DA9 /* AuthButton.swift */; };
-		44C6149A2ACB6D8700162DA9 /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614992ACB6D8700162DA9 /* RegisterUserRequest.swift */; };
-		44C6149C2ACB6D9C00162DA9 /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6149B2ACB6D9C00162DA9 /* LoginUserRequest.swift */; };
+		44C6149A2ACB6D8700162DA9 /* RegisterUserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614992ACB6D8700162DA9 /* RegisterUserCredentials.swift */; };
+		44C6149C2ACB6D9C00162DA9 /* LoginUserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6149B2ACB6D9C00162DA9 /* LoginUserCredentials.swift */; };
 		44C6149F2ACB6DDF00162DA9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */; };
-		44C614A12ACB6E9800162DA9 /* AuthentificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A02ACB6E9800162DA9 /* AuthentificationService.swift */; };
 		44C614A32ACB6EB700162DA9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A22ACB6EB700162DA9 /* User.swift */; };
 		44C614A52ACB6EC800162DA9 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A42ACB6EC800162DA9 /* AlertManager.swift */; };
 		44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614A62ACB6EF000162DA9 /* Validator.swift */; };
+		44C614B12ACE0D3F00162DA9 /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614B02ACE0D3E00162DA9 /* LoginInteractor.swift */; };
+		44C614B32ACE0D5000162DA9 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614B22ACE0D4F00162DA9 /* LoginPresenter.swift */; };
+		44C614B62ACE150900162DA9 /* LoginBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614B52ACE150900162DA9 /* LoginBuilder.swift */; };
+		44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B492AD2012F005019B6 /* RegistrationInteractor.swift */; };
+		44DD0B4C2AD20152005019B6 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B4B2AD20152005019B6 /* RegistrationPresenter.swift */; };
+		44DD0B4F2AD209B4005019B6 /* RegistrationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B4E2AD209B4005019B6 /* RegistrationBuilder.swift */; };
+		44DD0B512AD20B4F005019B6 /* ForgorPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B502AD20B4F005019B6 /* ForgorPasswordInteractor.swift */; };
+		44DD0B532AD20B61005019B6 /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B522AD20B61005019B6 /* ForgotPasswordPresenter.swift */; };
+		44DD0B552AD20C32005019B6 /* ForgotPasswordBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B542AD20C32005019B6 /* ForgotPasswordBuilder.swift */; };
+		44DD0B582AD2CF7B005019B6 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B572AD2CF7B005019B6 /* ProfileInteractor.swift */; };
+		44DD0B5A2AD2CF97005019B6 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B592AD2CF97005019B6 /* ProfilePresenter.swift */; };
+		44DD0B5D2AD2D2D0005019B6 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */; };
+		44DD0B772ADDD761005019B6 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B762ADDD761005019B6 /* Errors.swift */; };
+		44DD0B792ADF2CE5005019B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B782ADF2CE5005019B6 /* Extensions.swift */; };
 		44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */; };
 		44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */; };
-		44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */; };
 		44DF3CAC2A9697C800DC27E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */; };
 		44DF3CAF2A9697C800DC27E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44DF3CAD2A9697C800DC27E5 /* LaunchScreen.storyboard */; };
 		44DF3CB92A969BF800DC27E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44DF3CB82A969BF800DC27E5 /* GoogleService-Info.plist */; };
@@ -48,22 +60,34 @@
 		00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		1CFC5FE41DBDB72DEABDE40A /* Pods-autoService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-autoService.debug.xcconfig"; path = "Target Support Files/Pods-autoService/Pods-autoService.debug.xcconfig"; sourceTree = "<group>"; };
 		44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		44C6148E2ACB6CC900162DA9 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		44C614922ACB6D1C00162DA9 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		44C614942ACB6D3300162DA9 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		44C614962ACB6D4E00162DA9 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
-		44C614992ACB6D8700162DA9 /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
-		44C6149B2ACB6D9C00162DA9 /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
+		44C614992ACB6D8700162DA9 /* RegisterUserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserCredentials.swift; sourceTree = "<group>"; };
+		44C6149B2ACB6D9C00162DA9 /* LoginUserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserCredentials.swift; sourceTree = "<group>"; };
 		44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		44C614A02ACB6E9800162DA9 /* AuthentificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationService.swift; sourceTree = "<group>"; };
 		44C614A22ACB6EB700162DA9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44C614A42ACB6EC800162DA9 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		44C614A62ACB6EF000162DA9 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		44C614B02ACE0D3E00162DA9 /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		44C614B22ACE0D4F00162DA9 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		44C614B52ACE150900162DA9 /* LoginBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBuilder.swift; sourceTree = "<group>"; };
+		44DD0B492AD2012F005019B6 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
+		44DD0B4B2AD20152005019B6 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		44DD0B4E2AD209B4005019B6 /* RegistrationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationBuilder.swift; sourceTree = "<group>"; };
+		44DD0B502AD20B4F005019B6 /* ForgorPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgorPasswordInteractor.swift; sourceTree = "<group>"; };
+		44DD0B522AD20B61005019B6 /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
+		44DD0B542AD20C32005019B6 /* ForgotPasswordBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordBuilder.swift; sourceTree = "<group>"; };
+		44DD0B572AD2CF7B005019B6 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		44DD0B592AD2CF97005019B6 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
+		44DD0B762ADDD761005019B6 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		44DD0B782ADF2CE5005019B6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		44DF3C9F2A9697C200DC27E5 /* autoService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autoService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44DF3CAE2A9697C800DC27E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		44DF3CB02A9697C800DC27E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,12 +123,13 @@
 			children = (
 				44C6148B2ACB6C3900162DA9 /* Controllers */,
 				44C614982ACB6D6100162DA9 /* Views */,
-				44C6149D2ACB6DAC00162DA9 /* Requests */,
+				44C6149D2ACB6DAC00162DA9 /* Credentials */,
+				44DD0B7A2ADF2CEF005019B6 /* Extensions */,
 				44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */,
-				44C614A02ACB6E9800162DA9 /* AuthentificationService.swift */,
 				44C614A22ACB6EB700162DA9 /* User.swift */,
 				44C614A42ACB6EC800162DA9 /* AlertManager.swift */,
 				44C614A62ACB6EF000162DA9 /* Validator.swift */,
+				44DD0B762ADDD761005019B6 /* Errors.swift */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -112,10 +137,9 @@
 		44C6148B2ACB6C3900162DA9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				44DF3CA62A9697C200DC27E5 /* AuthViewController.swift */,
-				44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */,
-				44C6148E2ACB6CC900162DA9 /* RegisterViewController.swift */,
-				44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */,
+				44C614B42ACE0E1D00162DA9 /* Login */,
+				44DD0B4D2AD204E5005019B6 /* Register */,
+				44DD0B562AD20C62005019B6 /* ForgotPassword */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -130,13 +154,74 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		44C6149D2ACB6DAC00162DA9 /* Requests */ = {
+		44C6149D2ACB6DAC00162DA9 /* Credentials */ = {
 			isa = PBXGroup;
 			children = (
-				44C614992ACB6D8700162DA9 /* RegisterUserRequest.swift */,
-				44C6149B2ACB6D9C00162DA9 /* LoginUserRequest.swift */,
+				44C614992ACB6D8700162DA9 /* RegisterUserCredentials.swift */,
+				44C6149B2ACB6D9C00162DA9 /* LoginUserCredentials.swift */,
 			);
-			path = Requests;
+			path = Credentials;
+			sourceTree = "<group>";
+		};
+		44C614AF2ACDED9900162DA9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
+				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		44C614B42ACE0E1D00162DA9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */,
+				44C614B02ACE0D3E00162DA9 /* LoginInteractor.swift */,
+				44C614B22ACE0D4F00162DA9 /* LoginPresenter.swift */,
+				44C614B52ACE150900162DA9 /* LoginBuilder.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		44DD0B4D2AD204E5005019B6 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */,
+				44DD0B492AD2012F005019B6 /* RegistrationInteractor.swift */,
+				44DD0B4B2AD20152005019B6 /* RegistrationPresenter.swift */,
+				44DD0B4E2AD209B4005019B6 /* RegistrationBuilder.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		44DD0B562AD20C62005019B6 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */,
+				44DD0B502AD20B4F005019B6 /* ForgorPasswordInteractor.swift */,
+				44DD0B522AD20B61005019B6 /* ForgotPasswordPresenter.swift */,
+				44DD0B542AD20C32005019B6 /* ForgotPasswordBuilder.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		44DD0B5B2AD2D2BE005019B6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				44DF3CE42A9D465200DC27E5 /* ProfileViewController.swift */,
+				44DD0B572AD2CF7B005019B6 /* ProfileInteractor.swift */,
+				44DD0B592AD2CF97005019B6 /* ProfilePresenter.swift */,
+				44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		44DD0B7A2ADF2CEF005019B6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				44DD0B782ADF2CE5005019B6 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		44DF3C962A9697C200DC27E5 = {
@@ -162,14 +247,13 @@
 			children = (
 				44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */,
 				44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */,
-				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
 				44DF3CF12AB2312700DC27E5 /* DI.swift */,
-				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
+				44C614AF2ACDED9900162DA9 /* Services */,
 				44C6148A2ACB6C1C00162DA9 /* Authentification */,
 				44DF3CBC2A9A1C9200DC27E5 /* MainTabBabViewController.swift */,
 				44DF3CE02A9D463C00DC27E5 /* JournalViewController.swift */,
 				44DF3CE22A9D464900DC27E5 /* MapViewController.swift */,
-				44DF3CE42A9D465200DC27E5 /* ProfileViewController.swift */,
+				44DD0B5B2AD2D2BE005019B6 /* Profile */,
 				44DF3CEE2AB2259700DC27E5 /* Onboarding */,
 				44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */,
 				44DF3CAD2A9697C800DC27E5 /* LaunchScreen.storyboard */,
@@ -325,31 +409,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				44DF3CBD2A9A1C9200DC27E5 /* MainTabBabViewController.swift in Sources */,
+				44C614B62ACE150900162DA9 /* LoginBuilder.swift in Sources */,
+				44DD0B5D2AD2D2D0005019B6 /* ProfileBuilder.swift in Sources */,
 				00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */,
-				44C6149C2ACB6D9C00162DA9 /* LoginUserRequest.swift in Sources */,
-				44DF3CA72A9697C200DC27E5 /* AuthViewController.swift in Sources */,
+				44C6149C2ACB6D9C00162DA9 /* LoginUserCredentials.swift in Sources */,
+				44DD0B4C2AD20152005019B6 /* RegistrationPresenter.swift in Sources */,
+				44DD0B5A2AD2CF97005019B6 /* ProfilePresenter.swift in Sources */,
 				44DF3CE72AB01BB100DC27E5 /* OnboardingViewController.swift in Sources */,
 				44C614A32ACB6EB700162DA9 /* User.swift in Sources */,
 				44DF3CED2AB0FE6100DC27E5 /* SetupService.swift in Sources */,
 				44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */,
 				44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */,
 				44C614912ACB6CE500162DA9 /* ForgotPasswordViewController.swift in Sources */,
+				44DD0B512AD20B4F005019B6 /* ForgorPasswordInteractor.swift in Sources */,
 				44DF3CF22AB2312700DC27E5 /* DI.swift in Sources */,
 				44C614952ACB6D3300162DA9 /* AuthTextField.swift in Sources */,
 				44C614A52ACB6EC800162DA9 /* AlertManager.swift in Sources */,
 				44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */,
 				44DF3CF02AB22C9400DC27E5 /* AuthService.swift in Sources */,
-				44C614A12ACB6E9800162DA9 /* AuthentificationService.swift in Sources */,
-				44C6148F2ACB6CC900162DA9 /* RegisterViewController.swift in Sources */,
+				44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */,
 				44C6149F2ACB6DDF00162DA9 /* WebViewController.swift in Sources */,
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,
 				44DF3CE92AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift in Sources */,
-				44C6149A2ACB6D8700162DA9 /* RegisterUserRequest.swift in Sources */,
+				44C6149A2ACB6D8700162DA9 /* RegisterUserCredentials.swift in Sources */,
+				44DD0B792ADF2CE5005019B6 /* Extensions.swift in Sources */,
+				44C614B12ACE0D3F00162DA9 /* LoginInteractor.swift in Sources */,
 				44C614932ACB6D1C00162DA9 /* AuthHeaderView.swift in Sources */,
 				44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */,
+				44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */,
+				44C614B32ACE0D5000162DA9 /* LoginPresenter.swift in Sources */,
+				44DD0B552AD20C32005019B6 /* ForgotPasswordBuilder.swift in Sources */,
 				00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */,
+				44DD0B4F2AD209B4005019B6 /* RegistrationBuilder.swift in Sources */,
+				44DD0B582AD2CF7B005019B6 /* ProfileInteractor.swift in Sources */,
 				44C614972ACB6D4E00162DA9 /* AuthButton.swift in Sources */,
 				44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */,
+				44DD0B532AD20B61005019B6 /* ForgotPasswordPresenter.swift in Sources */,
+				44DD0B772ADDD761005019B6 /* Errors.swift in Sources */,
 				00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */,
 				44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */,
 				44DF3CE32A9D464900DC27E5 /* MapViewController.swift in Sources */,

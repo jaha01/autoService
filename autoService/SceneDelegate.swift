@@ -26,24 +26,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let builder = OnboardingBuilder()
             window.rootViewController = builder.build()
         case .auth:
-            // let builder = AuthBuilder() ...
-            // it's all will move to builder file
-            checkAuthentification()
+            let builder = LoginBuilder()
+            window.rootViewController = builder.build()
         case .mainTabBar:
             window.rootViewController = MainTabBabViewController()
         }
         
         self.window = window
         self.window?.makeKeyAndVisible()
+
     }
     
-    public func checkAuthentification() {
-        if Auth.auth().currentUser == nil {
-            window?.rootViewController = LoginViewController()
-        } else {
-            window?.rootViewController = AuthViewController()
-        }
-    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

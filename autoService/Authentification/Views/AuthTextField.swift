@@ -52,3 +52,12 @@ class AuthTextField: UITextField {
     }
     
 }
+
+extension UITextField {
+    func animateError() {
+        textColor = .red
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.textColor = .black
+        }
+    }
+}

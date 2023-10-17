@@ -1,25 +1,28 @@
 //
-//  AuthentificationService.swift
+//  AuthService.swift
 //  autoService
 //
-//  Created by Jahongir Anvarov on 03.10.2023.
+//  Created by Jahongir Anvarov on 13.09.2023.
 //
 
-import Foundation
-import FirebaseFirestore
 import FirebaseAuth
+import FirebaseFirestore
 
-class AuthentificationService {
-    public static let shared = AuthentificationService()
-    private init() {
-        
+final class AuthService {
+    private let isNotNewUserKey = "isNotNewUser"
+    
+    func isNewUser() -> Bool {
+        return !UserDefaults.standard.bool(forKey: isNotNewUserKey)
     }
     
+    func setIsNotNewUser() {
+        UserDefaults.standard.set(true, forKey: isNotNewUserKey)
+    }
     
-    public func registerUser(with userRequest: RegisterUserRequest, completion: @escaping(Error?) -> Void) {
-        let username = userRequest.username
-        let email = userRequest.email
-        let password = userRequest.password
+    public func registerUser(with userCredentials: RegisterUserCredentials, completion: @escaping(Error?) -> Void) {
+        let username = userCredentials.username
+        let email = userCredentials.email
+        let password = userCredentials.password
         
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             if let error = error {
@@ -48,15 +51,10 @@ class AuthentificationService {
         }
     }
     
-    public func signIn(with userRequest: LoginUserRequest, completion: @escaping(Error?)->Void) {
-        Auth.auth().signIn(withEmail: userRequest.email, password: userRequest.password) {
+    public func signIn(with userCredentials: LoginUserCredentials, completion: @escaping(Error?)->Void) {
+        Auth.auth().signIn(withEmail: userCredentials.email, password: userCredentials.password) {
             result, error in
-            if let error = error {
-                completion(error)
-//                result
-            } else {
-                completion(nil)
-            }
+            completion(error)
         }
     }
     
@@ -69,7 +67,7 @@ class AuthentificationService {
         }
     }
     
-    public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
+    public func resetPassword(with email: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             completion(error)
         }
@@ -92,9 +90,15 @@ class AuthentificationService {
                    let snapshotData = snapshot.data(),
                    let username = snapshotData["username"] as? String,
                    let email = snapshotData["email"] as? String {
-                    let user = User(username: username, email: email, userUID: userUID)
-                    completion(user, nil)
+                     let user = User(username: username, email: email, userUID: userUID)
+                     completion(user, nil)
+                } else {
+                    completion(nil, NetworkError.fetching("Local Error while log in"))
                 }
             }
+    }
+    
+    public func isCurrentUserExists() -> Bool {
+        return FirebaseAuth.Auth.auth().currentUser != nil
     }
 }

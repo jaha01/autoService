@@ -10,39 +10,20 @@ import FirebaseAuth
 
 class MainTabBabViewController: UITabBarController {
 
+    // MARK: - Public methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
         setupUpTabs()
 
     }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        print("viewWillAppear")
-//        if SetupService.shared.isNewUser(){
-//            // onboarding
-//            print("onboarding")
-//            let vc = OnboardingViewController()
-//            vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-//            self.present(vc, animated: true, completion: nil)
-//        }
-//        
-//        print("viewDidAppear")
-//        if FirebaseAuth.Auth.auth().currentUser == nil {
-//            print("auth")
-//            let vc = AuthViewController()
-//            vc.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-//            self.present(vc, animated: true, completion: nil)
-//        }
-    }
-    
+
+    // MARK: - Private methods
     
     private func setupUpTabs() {
         
-        let controllers = [JournalViewController(), MapViewController(), ProfileViewController()]
+        let controllers = [JournalViewController(), MapViewController(), ProfileBuilder().build()]
         let navControllers: [UINavigationController] = controllers.map {
             let navController = UINavigationController(rootViewController: $0)
             navController.navigationBar.prefersLargeTitles = false
@@ -58,11 +39,11 @@ class MainTabBabViewController: UITabBarController {
         nav2.tabBarItem = UITabBarItem(title: "Карты", image: UIImage(systemName: "map"), tag: 2)
         nav3.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 3)
         
-        
+       /*
         for nav in [nav1, nav2, nav3] {
             nav.navigationBar.prefersLargeTitles = false
         }
-        
+        */
         setViewControllers([nav1, nav2, nav3], animated: true)
         
     }

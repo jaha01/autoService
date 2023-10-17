@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ForgotPasswordViewController: UIViewController {
+final class ForgotPasswordViewController: UIViewController {
+    
+    var interactor: ForgotPasswordInteractor!
     
     //MARK: - Properties
     private let headerView = AuthHeaderView(title: "Forgot Password", subTitle: "Reset your password")
@@ -31,24 +33,24 @@ class ForgotPasswordViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
     
+    func showErrorAlert(alertRequest: AlertConfig) {
+        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+    }
+    
+    func showSuccessAlert(alertRequest: AlertConfig) {
+        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+    }
+    
     // MARK: - Private methods
     @objc private func didTapForgotPass(){
-        let email = self.emailField.text ?? ""
+        guard let email = self.emailField.text  else { return }
         
         if !Validator.isValidEmail(for: email) {
-            AlertManager.showError(title: "Invalid Email", message: "Please enter a valid Email")
+            emailField.animateError()
             return
         }
         
-        AuthentificationService.shared.forgotPassword(with: email) { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                AlertManager.showError(title: "", message: error.localizedDescription)
-                return
-            }
-            
-            AlertManager.showError(title: "", message: "Password reset sent")
-        }
+        interactor.resetPassword(email: email)
     }
     
     private func setupConstraints() {
@@ -66,12 +68,14 @@ class ForgotPasswordViewController: UIViewController {
             emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 11),
             emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             emailField.heightAnchor.constraint(equalToConstant: 55),
-            emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            emailField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            emailField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             resetPasswordButton.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
             resetPasswordButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             resetPasswordButton.heightAnchor.constraint(equalToConstant: 55),
-            resetPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
+            resetPasswordButton.leadingAnchor.constraint(equalTo: emailField.leadingAnchor),
+            resetPasswordButton.trailingAnchor.constraint(equalTo: emailField.trailingAnchor),
         ])
         
     }
