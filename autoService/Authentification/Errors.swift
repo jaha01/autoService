@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Fetch: Error {
-    case error(String)
+enum NetworkError: Error {
+    case fetching(String)
 }

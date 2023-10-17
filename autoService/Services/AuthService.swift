@@ -9,13 +9,14 @@ import FirebaseAuth
 import FirebaseFirestore
 
 final class AuthService {
+    private let isNotNewUserKey = "isNotNewUser"
     
     func isNewUser() -> Bool {
-        return !UserDefaults.standard.bool(forKey: "isNotNewUser")
+        return !UserDefaults.standard.bool(forKey: isNotNewUserKey)
     }
     
     func setIsNotNewUser() {
-        UserDefaults.standard.set(true, forKey: "isNotNewUser")
+        UserDefaults.standard.set(true, forKey: isNotNewUserKey)
     }
     
     public func registerUser(with userCredentials: RegisterUserCredentials, completion: @escaping(Error?) -> Void) {
@@ -92,7 +93,7 @@ final class AuthService {
                      let user = User(username: username, email: email, userUID: userUID)
                      completion(user, nil)
                 } else {
-                    completion(nil, Fetch.error("Local Error while log in"))
+                    completion(nil, NetworkError.fetching("Local Error while log in"))
                 }
             }
     }
