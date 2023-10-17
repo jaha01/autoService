@@ -124,7 +124,7 @@
 				44C6148B2ACB6C3900162DA9 /* Controllers */,
 				44C614982ACB6D6100162DA9 /* Views */,
 				44C6149D2ACB6DAC00162DA9 /* Credentials */,
-				44DD0B7A2ADF2CEF005019B6 /* Extentions */,
+				44DD0B7A2ADF2CEF005019B6 /* Extensions */,
 				44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */,
 				44C614A22ACB6EB700162DA9 /* User.swift */,
 				44C614A42ACB6EC800162DA9 /* AlertManager.swift */,
@@ -216,12 +216,12 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		44DD0B7A2ADF2CEF005019B6 /* Extentions */ = {
+		44DD0B7A2ADF2CEF005019B6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				44DD0B782ADF2CE5005019B6 /* Extensions.swift */,
 			);
-			path = Extentions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		44DF3C962A9697C200DC27E5 = {

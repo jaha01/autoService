@@ -21,7 +21,7 @@ class AlertManager {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dissmiss", style: .default, handler: nil))
-            topController?.present(alert, animated: true)
+            topController.present(alert, animated: true)
         }
     }
 }
