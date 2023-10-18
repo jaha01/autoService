@@ -9,6 +9,7 @@ import UIKit
 
 final class RegistrationInteractor {
     
+    var router: RegistrationRouter!
     var presenter: RegistrationPresenter!
     
     private let authService: AuthService
@@ -27,7 +28,7 @@ final class RegistrationInteractor {
                 return
             }
             
-            self.presenter.goToMainView()
+            self.router.goToMainView()
         }
     }
 }

@@ -100,9 +100,6 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
             onboardingCollection.isPagingEnabled = true
         } else {
             interactor.onOnboardingCompleted()
-            
-            guard let window = self.view.window else { return }
-            window.rootViewController = MainTabBabViewController()
         }
         
     }

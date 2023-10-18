@@ -9,6 +9,7 @@ import Foundation
 
 final class LoginInteractor {
     
+    var router: LoginRouter!
     var presenter: LoginPresenter!
     
     private let authService: AuthService
@@ -27,7 +28,7 @@ final class LoginInteractor {
                 return
             }
             
-            self.presenter.goToMainView()
+            self.router.goToMain()
             
         }
     }

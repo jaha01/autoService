@@ -12,10 +12,13 @@ final class RegistrationBuilder {
         let controller = RegistrationViewController()
         let interactor = RegistrationInteractor(authService: DI.shared.authService)
         let presenter = RegistrationPresenter()
+        let router =  RegistrationRouter()
         
         controller.interactor = interactor
         interactor.presenter = presenter
         presenter.viewController = controller
+        router.viewController = controller
+        interactor.router = router
         
         return controller
     }

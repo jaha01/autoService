@@ -8,6 +8,7 @@
 import Foundation
 
 final class OnboardingInteractor {
+    var router: OnboardingRouter!
     var presenter: OnboardingPresenter!
     
     private let authService: AuthService
@@ -32,5 +33,6 @@ final class OnboardingInteractor {
     
     func onOnboardingCompleted() {
         authService.setIsNotNewUser()
+        router.redirectToView()
     }
 }
