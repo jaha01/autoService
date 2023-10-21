@@ -12,10 +12,12 @@ final class OnboardingInteractor {
     var presenter: OnboardingPresenter!
     
     private let authService: AuthService
-    let setupService = DI.shared.createSetupService()
+    private let setupService: SetupService
     
-    init(authService: AuthService) {
+    init(authService: AuthService,
+         setupService: SetupService) {
         self.authService = authService
+        self.setupService = setupService
     }
     
     private let onboardingDetails = [

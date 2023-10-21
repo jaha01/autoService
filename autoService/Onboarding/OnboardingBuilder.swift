@@ -10,7 +10,7 @@ import UIKit
 final class OnboardingBuilder {
     func build() -> UIViewController {
         let controller = OnboardingViewController()
-        let interactor = OnboardingInteractor(authService: DI.shared.authService)
+        let interactor = OnboardingInteractor(authService: DI.shared.authService, setupService: DI.shared.createSetupService())
         let presenter = OnboardingPresenter()
         let router = OnboardingRouter()
         

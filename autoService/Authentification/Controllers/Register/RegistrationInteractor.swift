@@ -28,7 +28,7 @@ final class RegistrationInteractor {
                 return
             }
             
-            self.router.goToMainView()
+            self.router.goToMain()
         }
     }
 }
