@@ -12,10 +12,13 @@ final class LoginBuilder {
         let controller = LoginViewController()
         let interactor = LoginInteractor(authService: DI.shared.authService)
         let presenter = LoginPresenter()
+        let router = LoginRouter()
         
         controller.interactor = interactor
         interactor.presenter = presenter
         presenter.viewController = controller
+        router.viewController = controller
+        interactor.router = router
         
         return controller
     }

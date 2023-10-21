@@ -67,11 +67,6 @@ final class RegistrationViewController: UIViewController {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     
-    func present() {
-        guard let window = self.view.window else { return }
-        window.rootViewController = MainTabBabViewController()
-    }
-    
     // MARK: Private methods
     
     @objc private func didTapSignIn() {
