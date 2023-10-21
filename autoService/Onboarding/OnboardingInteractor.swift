@@ -12,6 +12,7 @@ final class OnboardingInteractor {
     var presenter: OnboardingPresenter!
     
     private let authService: AuthService
+    let setupService = DI.shared.createSetupService()
     
     init(authService: AuthService) {
         self.authService = authService
@@ -33,6 +34,14 @@ final class OnboardingInteractor {
     
     func onOnboardingCompleted() {
         authService.setIsNotNewUser()
-        router.redirectToView()
+        
+        switch setupService.getEntryScreen() {
+        case .auth:
+            router.goToLogin()
+        case .mainTabBar:
+            router.goToMain()
+        default: return
+        }
+        
     }
 }

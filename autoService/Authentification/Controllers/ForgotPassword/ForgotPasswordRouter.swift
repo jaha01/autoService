@@ -8,7 +8,7 @@
 import UIKit
 
 final class ForgotPasswordRouter {
-    var viewController: UIViewController!
+    weak var viewController: UIViewController!
     
     func goToLogin() {
         let mainController: UIViewController = LoginBuilder().build()

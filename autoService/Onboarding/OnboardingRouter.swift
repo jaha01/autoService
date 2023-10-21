@@ -8,20 +8,16 @@
 import UIKit
 
 final class OnboardingRouter {
-    var viewController: UIViewController!
+    weak var viewController: UIViewController!
     
-    func redirectToView() {
-        
+    func goToLogin() {
         let window = viewController.view.window
-        let setupService = DI.shared.createSetupService()
-        
-        switch setupService.getEntryScreen() {
-        case .auth:
-            let builder = LoginBuilder()
-            window?.rootViewController = builder.build()
-        case .mainTabBar:
-            window?.rootViewController = MainTabBabViewController()
-        default: return
-        }
+        let builder = LoginBuilder()
+        window?.rootViewController = builder.build()
+    }
+    
+    func goToMain() {
+        let window = viewController.view.window
+        window?.rootViewController = MainTabBabViewController()
     }
 }
