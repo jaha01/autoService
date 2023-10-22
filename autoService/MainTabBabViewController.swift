@@ -23,7 +23,7 @@ class MainTabBabViewController: UITabBarController {
     
     private func setupUpTabs() {
         
-        let controllers = [JournalViewController(), MapViewController(), ProfileBuilder().build()]
+        let controllers = [JournalBuilder().build(), MapViewController(), ProfileBuilder().build()]
         let navControllers: [UINavigationController] = controllers.map {
             let navController = UINavigationController(rootViewController: $0)
             navController.navigationBar.prefersLargeTitles = false

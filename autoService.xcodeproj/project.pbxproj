@@ -14,6 +14,10 @@
 		440607192AE06CF900EE8807 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607182AE06CF900EE8807 /* RegistrationRouter.swift */; };
 		4406071B2AE06FEB00EE8807 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406071A2AE06FEB00EE8807 /* OnboardingRouter.swift */; };
 		4406071D2AE0727800EE8807 /* ForgotPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406071C2AE0727800EE8807 /* ForgotPasswordRouter.swift */; };
+		4406071F2AE53D5E00EE8807 /* JournalInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406071E2AE53D5E00EE8807 /* JournalInteractor.swift */; };
+		440607212AE53D8500EE8807 /* JournalPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607202AE53D8500EE8807 /* JournalPresenter.swift */; };
+		440607252AE53DC100EE8807 /* JournalBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607242AE53DC100EE8807 /* JournalBuilder.swift */; };
+		440607282AE5465100EE8807 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607272AE5465100EE8807 /* DBService.swift */; };
 		44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */; };
 		44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */; };
 		44C614912ACB6CE500162DA9 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */; };
@@ -67,6 +71,10 @@
 		440607182AE06CF900EE8807 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
 		4406071A2AE06FEB00EE8807 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
 		4406071C2AE0727800EE8807 /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
+		4406071E2AE53D5E00EE8807 /* JournalInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalInteractor.swift; sourceTree = "<group>"; };
+		440607202AE53D8500EE8807 /* JournalPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalPresenter.swift; sourceTree = "<group>"; };
+		440607242AE53DC100EE8807 /* JournalBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBuilder.swift; sourceTree = "<group>"; };
+		440607272AE5465100EE8807 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +134,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		440607262AE53E0A00EE8807 /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				44DF3CE02A9D463C00DC27E5 /* JournalViewController.swift */,
+				4406071E2AE53D5E00EE8807 /* JournalInteractor.swift */,
+				440607202AE53D8500EE8807 /* JournalPresenter.swift */,
+				440607242AE53DC100EE8807 /* JournalBuilder.swift */,
+			);
+			path = Journal;
+			sourceTree = "<group>";
+		};
 		44C6148A2ACB6C1C00162DA9 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +195,7 @@
 			children = (
 				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
 				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
+				440607272AE5465100EE8807 /* DBService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -262,7 +282,7 @@
 				44C614AF2ACDED9900162DA9 /* Services */,
 				44C6148A2ACB6C1C00162DA9 /* Authentification */,
 				44DF3CBC2A9A1C9200DC27E5 /* MainTabBabViewController.swift */,
-				44DF3CE02A9D463C00DC27E5 /* JournalViewController.swift */,
+				440607262AE53E0A00EE8807 /* Journal */,
 				44DF3CE22A9D464900DC27E5 /* MapViewController.swift */,
 				44DD0B5B2AD2D2BE005019B6 /* Profile */,
 				44DF3CEE2AB2259700DC27E5 /* Onboarding */,
@@ -440,14 +460,17 @@
 				44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */,
 				44DF3CF02AB22C9400DC27E5 /* AuthService.swift in Sources */,
 				44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */,
+				440607212AE53D8500EE8807 /* JournalPresenter.swift in Sources */,
 				44C6149F2ACB6DDF00162DA9 /* WebViewController.swift in Sources */,
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,
+				4406071F2AE53D5E00EE8807 /* JournalInteractor.swift in Sources */,
 				44DF3CE92AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift in Sources */,
 				44C6149A2ACB6D8700162DA9 /* RegisterUserCredentials.swift in Sources */,
 				44DD0B792ADF2CE5005019B6 /* Extensions.swift in Sources */,
 				44C614B12ACE0D3F00162DA9 /* LoginInteractor.swift in Sources */,
 				440607172AE06A5000EE8807 /* LoginRouter.swift in Sources */,
 				44C614932ACB6D1C00162DA9 /* AuthHeaderView.swift in Sources */,
+				440607282AE5465100EE8807 /* DBService.swift in Sources */,
 				44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */,
 				4406071B2AE06FEB00EE8807 /* OnboardingRouter.swift in Sources */,
 				44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */,
@@ -463,6 +486,7 @@
 				44DD0B772ADDD761005019B6 /* Errors.swift in Sources */,
 				00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */,
 				44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */,
+				440607252AE53DC100EE8807 /* JournalBuilder.swift in Sources */,
 				44DF3CE32A9D464900DC27E5 /* MapViewController.swift in Sources */,
 				440607192AE06CF900EE8807 /* RegistrationRouter.swift in Sources */,
 			);

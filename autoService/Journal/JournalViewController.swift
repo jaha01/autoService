@@ -8,8 +8,10 @@
 import UIKit
 
 class JournalViewController: UIViewController {
-
-    var items = UserDefaults.standard.stringArray(forKey: "items") ?? []
+    
+    // MARK: - Properties
+    var interactor: JounalInteractor!
+    var items = [JournalItem]()
     
     private let journalList: UITableView = {
        let table = UITableView()
@@ -17,6 +19,7 @@ class JournalViewController: UIViewController {
         return table
     }()
     
+    // MARK: - Public methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,11 +29,25 @@ class JournalViewController: UIViewController {
         journalList.dataSource = self
         view.backgroundColor = .gray
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
+    
+        interactor.onViewDidLoad()
+    }
+    
+    func showJournal(_ items: [JournalItem]) {
+        self.items = items
+        DispatchQueue.main.async { [weak self] in
+            self?.journalList.reloadData()
+        }
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        journalList.frame = view.bounds
+    }
+    
+    // MARK: - Private properties
     
     @objc private func didTapAdd() {
-     print("didTapAdd")
         let alert = UIAlertController(title: "Добавить", message: "Добавьте новую запись", preferredStyle: .alert)
         alert.addTextField { field in
             field.placeholder = "Введите запись"
@@ -40,22 +57,16 @@ class JournalViewController: UIViewController {
                 return
             }
             if let field = alert.textFields?.first {
-                if let text = field .text, !text.isEmpty {
+                if let text = field.text, !text.isEmpty {
                     DispatchQueue.main.async {
-                        print("add")
-                        self.items.append(text)
+                        self.interactor.appenItem(text: text)
                         self.journalList.reloadData()
-                        UserDefaults.standard.setValue(self.items, forKey: "items")
                     }
                 }
             }
         }))
         alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
         present(alert, animated: true)
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        journalList.frame = view.bounds
     }
 }
 
@@ -67,7 +78,7 @@ extension JournalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = self.items[indexPath.row].name
         return cell
     }
     
@@ -76,7 +87,6 @@ extension JournalViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             self.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            UserDefaults.standard.setValue(self.items, forKey: "items")
         }
     }
 }
