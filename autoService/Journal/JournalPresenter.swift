@@ -12,5 +12,6 @@ final class JournalPresenter {
     
     func prepareToShowJournalData(_ items: [JournalItem]) {
         viewController.showJournal(items)
+        print("presenter items = \(items)")
     }
 }

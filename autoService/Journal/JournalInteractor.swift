@@ -24,10 +24,16 @@ final class JounalInteractor {
         self.dbService.fetchAllItems { allItems in
             self.items = allItems
             self.presenter.prepareToShowJournalData(self.items)
+            print("interactor items = \(self.items)")
         }
     }
     
-    func appenItem(text: String) {
+    func appendItem(text: String) {
         dbService.uploadJournalItem(text: text)
+    }
+    
+    func deleteItem(id: String) {
+        dbService.removeJournalItem(id: id)
+        self.onViewDidLoad()
     }
 }

@@ -16,8 +16,8 @@ final class JournalBuilder {
         let presenter = JournalPresenter()
         
         controller.interactor = interactor
-        presenter.viewController = controller
         interactor.presenter = presenter
+        presenter.viewController = controller
         
         return controller
     }

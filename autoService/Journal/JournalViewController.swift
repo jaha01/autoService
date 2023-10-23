@@ -14,9 +14,17 @@ class JournalViewController: UIViewController {
     var items = [JournalItem]()
     
     private let journalList: UITableView = {
-       let table = UITableView()
+        let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         return table
+    }()
+    
+    private let emptyListImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "emptyList")
+        image.contentMode = .scaleAspectFit
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
     }()
     
     // MARK: - Public methods
@@ -25,24 +33,38 @@ class JournalViewController: UIViewController {
         super.viewDidLoad()
         title = "Журнал"
         view.addSubview(journalList)
+        view.addSubview(emptyListImage)
         journalList.delegate = self
         journalList.dataSource = self
-        view.backgroundColor = .gray
+        view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAdd))
-    
+        
         interactor.onViewDidLoad()
     }
     
     func showJournal(_ items: [JournalItem]) {
+        self.items = []
         self.items = items
+        print("view items = \(items)")
         DispatchQueue.main.async { [weak self] in
-            self?.journalList.reloadData()
+            
+            guard let self = self else { return }
+            
+            if self.items.isEmpty {
+                self.journalList.isHidden = true
+                self.emptyListImage.isHidden = false
+            } else {
+                self.emptyListImage.isHidden = true
+                self.journalList.isHidden = false
+            }
+            self.journalList.reloadData()
         }
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         journalList.frame = view.bounds
+        emptyListImage.frame = view.bounds
     }
     
     // MARK: - Private properties
@@ -59,7 +81,7 @@ class JournalViewController: UIViewController {
             if let field = alert.textFields?.first {
                 if let text = field.text, !text.isEmpty {
                     DispatchQueue.main.async {
-                        self.interactor.appenItem(text: text)
+                        self.interactor.appendItem(text: text)
                         self.journalList.reloadData()
                     }
                 }
@@ -71,7 +93,7 @@ class JournalViewController: UIViewController {
 }
 
 extension JournalViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
@@ -83,8 +105,8 @@ extension JournalViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("delete")
         if editingStyle == .delete {
+            interactor.deleteItem(id: items[indexPath.row].id)
             self.items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
