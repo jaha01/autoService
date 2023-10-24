@@ -9,8 +9,9 @@ import Foundation
 
 final class JounalInteractor {
     var presenter: JournalPresenter!
-    var items = [JournalItem]()
+    var router: JournalRouter!
     
+    private var items = [JournalItem]()
     private let authService: AuthService!
     private let dbService: DBService!
     
@@ -20,20 +21,29 @@ final class JounalInteractor {
         self.dbService = dbService
     }
     
-    func onViewDidLoad() {
-        self.dbService.fetchAllItems { allItems in
+    private func fetchAllItems () {
+        self.dbService.fetchAndObserveItems { allItems in
             self.items = allItems
             self.presenter.prepareToShowJournalData(self.items)
             print("interactor items = \(self.items)")
         }
     }
     
+    func onViewDidLoad() {
+        fetchAllItems()
+    }
+    
     func appendItem(text: String) {
-        dbService.uploadJournalItem(text: text)
+        DispatchQueue.main.async {
+            self.dbService.uploadJournalItem(text: text)
+        }
+        fetchAllItems()
     }
     
     func deleteItem(id: String) {
-        dbService.removeJournalItem(id: id)
-        self.onViewDidLoad()
+        DispatchQueue.main.async {
+            self.dbService.removeJournalItem(id: id)
+        }
+        fetchAllItems()
     }
 }

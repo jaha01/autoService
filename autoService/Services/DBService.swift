@@ -12,7 +12,7 @@ struct JournalItem {
     var name: String
     var id: String
     
-    init(keyId: String, dictionary: [String: Any]) {
+    init(dictionary: [String: Any]) {
         self.name = dictionary["item"] as? String ?? ""
         self.id = dictionary["id"] as? String ?? ""
     }
@@ -20,40 +20,50 @@ struct JournalItem {
 
 
 final class DBService {
-    let ref = Database.database().reference()
-    var allItems = [JournalItem]()
-
+    
+    private let ref = Database.database().reference()
+    private var allItems = [JournalItem]()
     private let authService: AuthService
+    private let mainBranch = "journalHistoryItems"
     
     
     init(authService: AuthService) {
         self.authService = authService
     }
     
-    func fetchAllItems(completion: @escaping([JournalItem]) -> Void) {
-        ref.child("items").observe(.childAdded) { (snapshot) in
-            self.fetchSingleItem(id: snapshot.key) { item in
-                self.allItems.append(item)
-                completion(self.allItems)
+    func fetchAndObserveItems(completion: @escaping([JournalItem]) -> Void) {
+        ref.child(mainBranch).observe(.childAdded) { (snapshot) in
+            self.fetchAndObserveItem(id: snapshot.key) { item in
+                switch item {
+                case .success(let newItem):
+                    self.allItems.append(newItem)
+                    completion(self.allItems)
+                case .failure(let error):
+                    print(error)
+                }
             }
         }
     }
     
-    func fetchSingleItem(id: String, completion: @escaping(JournalItem) -> Void) {
-        ref.child("items").child(id).observeSingleEvent(of: .value) { snapshot in
-            guard let dictionary = snapshot.value as? [String: Any]   else { return }
-            let journalItem = JournalItem(keyId: id, dictionary: dictionary)
-            completion(journalItem)
+    func fetchAndObserveItem(id: String, completion: @escaping(Result<JournalItem, Error>) -> Void) {
+        ref.child(mainBranch).child(id).observeSingleEvent(of: .value) { snapshot in
+
+            if let dictionary = snapshot.value as? [String: Any] {
+                let journalItem = JournalItem(dictionary: dictionary)
+                completion(.success(journalItem))
+            } else  {
+                completion(.failure(NetworkError.fetching("Error")))
+            }
         }
     }
     
     func uploadJournalItem(text: String) {
-        let id = ref.child("items").childByAutoId()
+        let id = ref.child(mainBranch).childByAutoId()
         let values = ["item": text, "id": id.key!] as [String: Any]
         id.updateChildValues(values)
     }
     
     func removeJournalItem(id: String){
-        ref.child("items").child(id).removeValue()
+        ref.child(mainBranch).child(id).removeValue()
     }
 }

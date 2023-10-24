@@ -8,7 +8,7 @@
 import Foundation
 
 final class JournalPresenter {
-    var  viewController: JournalViewController!
+    var viewController: JournalViewController!
     
     func prepareToShowJournalData(_ items: [JournalItem]) {
         viewController.showJournal(items)
