@@ -8,9 +8,11 @@
 import Foundation
 
 final class JounalInteractor {
+    // MARK: - Public properties
     var presenter: JournalPresenter!
     var router: JournalRouter!
     
+    // MARK: - Private properties
     private var items = [JournalItem]()
     private let authService: AuthService!
     private let dbService: DBService!
@@ -21,14 +23,7 @@ final class JounalInteractor {
         self.dbService = dbService
     }
     
-    private func fetchAllItems () {
-        self.dbService.fetchAndObserveItems { allItems in
-            self.items = allItems
-            self.presenter.prepareToShowJournalData(self.items)
-            print("interactor items = \(self.items)")
-        }
-    }
-    
+    // MARK: - Public methods
     func onViewDidLoad() {
         fetchAllItems()
     }
@@ -45,5 +40,12 @@ final class JounalInteractor {
             self.dbService.removeJournalItem(id: id)
         }
         fetchAllItems()
+    }
+    // MARK: - Private methods
+    private func fetchAllItems () {
+        self.dbService.fetchAndObserveItems { allItems in
+            self.items = allItems
+            self.presenter.prepareToShowJournalData(self.items)
+        }
     }
 }

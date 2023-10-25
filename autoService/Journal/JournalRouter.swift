@@ -8,6 +8,7 @@
 import UIKit
 
 final class JournalRouter {
-    var ViewController: UIViewController!
+    // MARK: - Public properties
+    var viewController: UIViewController!
     
 }

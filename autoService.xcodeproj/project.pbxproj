@@ -19,6 +19,7 @@
 		440607252AE53DC100EE8807 /* JournalBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607242AE53DC100EE8807 /* JournalBuilder.swift */; };
 		440607282AE5465100EE8807 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607272AE5465100EE8807 /* DBService.swift */; };
 		4406072A2AE71EAA00EE8807 /* JournalRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607292AE71EAA00EE8807 /* JournalRouter.swift */; };
+		4406072C2AE8771700EE8807 /* DBStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406072B2AE8771700EE8807 /* DBStruct.swift */; };
 		44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */; };
 		44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */; };
 		44C614912ACB6CE500162DA9 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */; };
@@ -77,6 +78,7 @@
 		440607242AE53DC100EE8807 /* JournalBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalBuilder.swift; sourceTree = "<group>"; };
 		440607272AE5465100EE8807 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		440607292AE71EAA00EE8807 /* JournalRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalRouter.swift; sourceTree = "<group>"; };
+		4406072B2AE8771700EE8807 /* DBStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBStruct.swift; sourceTree = "<group>"; };
 		44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
 				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
 				440607272AE5465100EE8807 /* DBService.swift */,
+				4406072B2AE8771700EE8807 /* DBStruct.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */,
 				44DF3CF02AB22C9400DC27E5 /* AuthService.swift in Sources */,
 				44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */,
+				4406072C2AE8771700EE8807 /* DBStruct.swift in Sources */,
 				440607212AE53D8500EE8807 /* JournalPresenter.swift in Sources */,
 				44C6149F2ACB6DDF00162DA9 /* WebViewController.swift in Sources */,
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,

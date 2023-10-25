@@ -8,10 +8,11 @@
 import Foundation
 
 final class JournalPresenter {
+    // MARK: - Public properties
     var viewController: JournalViewController!
     
+    // MARK: - Public methods
     func prepareToShowJournalData(_ items: [JournalItem]) {
         viewController.showJournal(items)
-        print("presenter items = \(items)")
     }
 }

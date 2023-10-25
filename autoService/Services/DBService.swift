@@ -5,18 +5,8 @@
 //  Created by Jahongir Anvarov on 22.10.2023.
 //
 
-import UIKit
-import FirebaseDatabase
 
-struct JournalItem {
-    var name: String
-    var id: String
-    
-    init(dictionary: [String: Any]) {
-        self.name = dictionary["item"] as? String ?? ""
-        self.id = dictionary["id"] as? String ?? ""
-    }
-}
+import FirebaseDatabase
 
 
 final class DBService {
