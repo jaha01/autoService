@@ -17,10 +17,9 @@ final class LoginBuilder {
         controller.interactor = interactor
         interactor.presenter = presenter
         presenter.viewController = controller
-        
-        router.viewcontroller = controller
+        router.viewController = controller
         interactor.router = router
-        
+                
         return controller
     }
 }

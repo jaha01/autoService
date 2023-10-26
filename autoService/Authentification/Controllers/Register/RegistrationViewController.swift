@@ -66,8 +66,7 @@ final class RegistrationViewController: UIViewController {
     func showErrorAlert(alertRequest: AlertConfig) {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
-    
-    
+
     // MARK: Private methods
     
     @objc private func didTapSignIn() {

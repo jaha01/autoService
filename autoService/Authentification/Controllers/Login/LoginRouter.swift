@@ -2,17 +2,18 @@
 //  LoginRouter.swift
 //  autoService
 //
-//  Created by Jahongir Anvarov on 15.10.2023.
+//  Created by Jahongir Anvarov on 18.10.2023.
 //
 
 import UIKit
 
 final class LoginRouter {
-    var viewcontroller: UIViewController!
+
+    weak var viewController: UIViewController!
     
     func goToMain() {
         let mainController: UIViewController = MainTabBabViewController()
-        let window = viewcontroller.view.window
+        let window = viewController.view.window
         window?.rootViewController = mainController
     }
 }

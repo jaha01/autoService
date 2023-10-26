@@ -2,17 +2,17 @@
 //  ForgotPasswordRouter.swift
 //  autoService
 //
-//  Created by Jahongir Anvarov on 15.10.2023.
+//  Created by Jahongir Anvarov on 18.10.2023.
 //
 
 import UIKit
 
 final class ForgotPasswordRouter {
-    var controller: UIViewController!
+    weak var viewController: UIViewController!
     
     func goToLogin() {
-        let loginVC: UIViewController = LoginViewController()
-        let window = controller.view.window
-        window?.rootViewController = loginVC
+        let mainController: UIViewController = LoginBuilder().build()
+        let window = viewController.view.window
+        window?.rootViewController = mainController
     }
 }

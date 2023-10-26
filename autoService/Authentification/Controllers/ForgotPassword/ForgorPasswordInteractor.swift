@@ -29,8 +29,7 @@ final class ForgotPasswordInteractor {
             }
             
             self.presenter.showSuccess(alertRequest: AlertConfig(title: "", message: "Password reset sent"))
-            
-            // я подумал зачем пользователю ждать и самостоятельно переходить в LoginVC
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 self.router.goToLogin()
             }

@@ -22,12 +22,8 @@ final class ProfileViewController: UIViewController {
 
     
     func present() {
-        let window = UIApplication
-                                .shared
-                                .connectedScenes
-                                .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                                .last  
-        window?.rootViewController = LoginBuilder().build()
+        guard let window = self.view.window else { return }
+        window.rootViewController = LoginBuilder().build()
     }
     
     func showErrorAlert(alertRequest: AlertConfig) {

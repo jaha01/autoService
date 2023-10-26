@@ -34,12 +34,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-// У меня этот extension не сработал
-// !!! это все равно уйдет в роутер там у меня есть решение...
-// extension UIApplication {
-//    var currentKeyWindow: UIWindow {
-//        return self.connectedScenes.compactMap { ($0 as? UIWindowScene)?.keyWindow
-//        }.last
-//    }
-// }
-// No 'last' candidates produce the expected contextual result type 'UIWindow'

@@ -17,7 +17,7 @@ final class ForgotPasswordBuilder {
         controller.interactor = interactor
         interactor.presenter = presenter
         presenter.viewController = controller
-        router.controller = controller
+        router.viewController = controller
         interactor.router = router
         
         return controller

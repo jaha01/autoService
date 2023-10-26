@@ -50,7 +50,6 @@ final class LoginViewController: UIViewController {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
     }
     
-    
     // MARK: Private methods
     
     @objc private func didTapSignIn() {

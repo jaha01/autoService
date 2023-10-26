@@ -8,12 +8,16 @@
 import Foundation
 
 final class OnboardingInteractor {
+    var router: OnboardingRouter!
     var presenter: OnboardingPresenter!
     
     private let authService: AuthService
+    private let setupService: SetupService
     
-    init(authService: AuthService) {
+    init(authService: AuthService,
+         setupService: SetupService) {
         self.authService = authService
+        self.setupService = setupService
     }
     
     private let onboardingDetails = [
@@ -32,5 +36,14 @@ final class OnboardingInteractor {
     
     func onOnboardingCompleted() {
         authService.setIsNotNewUser()
+        
+        switch setupService.getEntryScreen() {
+        case .auth:
+            router.goToLogin()
+        case .mainTabBar:
+            router.goToMain()
+        default: return
+        }
+        
     }
 }

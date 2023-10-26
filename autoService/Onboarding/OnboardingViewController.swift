@@ -100,13 +100,6 @@ extension OnboardingViewController: OnboardingCollcetionViewCellDelegate {
             onboardingCollection.isPagingEnabled = true
         } else {
             interactor.onOnboardingCompleted()
-            
-            let window = UIApplication
-                                    .shared
-                                    .connectedScenes
-                                    .compactMap { ($0 as? UIWindowScene)?.keyWindow }
-                                    .last
-            window?.rootViewController = MainTabBabViewController()
         }
         
     }

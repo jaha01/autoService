@@ -10,6 +10,10 @@
 		00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B592ABB6C9100AB67B3 /* OnboardingInteractor.swift */; };
 		00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */; };
 		00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */; };
+		440607172AE06A5000EE8807 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607162AE06A4F00EE8807 /* LoginRouter.swift */; };
+		440607192AE06CF900EE8807 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440607182AE06CF900EE8807 /* RegistrationRouter.swift */; };
+		4406071B2AE06FEB00EE8807 /* OnboardingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406071A2AE06FEB00EE8807 /* OnboardingRouter.swift */; };
+		4406071D2AE0727800EE8807 /* ForgotPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4406071C2AE0727800EE8807 /* ForgotPasswordRouter.swift */; };
 		44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */; };
 		44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */; };
 		44C614912ACB6CE500162DA9 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */; };
@@ -34,9 +38,8 @@
 		44DD0B582AD2CF7B005019B6 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B572AD2CF7B005019B6 /* ProfileInteractor.swift */; };
 		44DD0B5A2AD2CF97005019B6 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B592AD2CF97005019B6 /* ProfilePresenter.swift */; };
 		44DD0B5D2AD2D2D0005019B6 /* ProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */; };
-		44DD0B6F2ADC0DBD005019B6 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B6E2ADC0DBD005019B6 /* LoginRouter.swift */; };
-		44DD0B712ADC0FD4005019B6 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B702ADC0FD4005019B6 /* RegistrationRouter.swift */; };
-		44DD0B732ADC11B0005019B6 /* ForgotPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B722ADC11B0005019B6 /* ForgotPasswordRouter.swift */; };
+		44DD0B772ADDD761005019B6 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B762ADDD761005019B6 /* Errors.swift */; };
+		44DD0B792ADF2CE5005019B6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B782ADF2CE5005019B6 /* Extensions.swift */; };
 		44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */; };
 		44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */; };
 		44DF3CAC2A9697C800DC27E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */; };
@@ -60,6 +63,10 @@
 		00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPresenter.swift; sourceTree = "<group>"; };
 		00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBuilder.swift; sourceTree = "<group>"; };
 		1CFC5FE41DBDB72DEABDE40A /* Pods-autoService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-autoService.debug.xcconfig"; path = "Target Support Files/Pods-autoService/Pods-autoService.debug.xcconfig"; sourceTree = "<group>"; };
+		440607162AE06A4F00EE8807 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		440607182AE06CF900EE8807 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
+		4406071A2AE06FEB00EE8807 /* OnboardingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRouter.swift; sourceTree = "<group>"; };
+		4406071C2AE0727800EE8807 /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
 		44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -84,9 +91,8 @@
 		44DD0B572AD2CF7B005019B6 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		44DD0B592AD2CF97005019B6 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBuilder.swift; sourceTree = "<group>"; };
-		44DD0B6E2ADC0DBD005019B6 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		44DD0B702ADC0FD4005019B6 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
-		44DD0B722ADC11B0005019B6 /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
+		44DD0B762ADDD761005019B6 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		44DD0B782ADF2CE5005019B6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		44DF3C9F2A9697C200DC27E5 /* autoService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = autoService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44DF3CA22A9697C200DC27E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44DF3CA42A9697C200DC27E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,10 +132,12 @@
 				44C6148B2ACB6C3900162DA9 /* Controllers */,
 				44C614982ACB6D6100162DA9 /* Views */,
 				44C6149D2ACB6DAC00162DA9 /* Credentials */,
+				44DD0B7A2ADF2CEF005019B6 /* Extensions */,
 				44C6149E2ACB6DDF00162DA9 /* WebViewController.swift */,
 				44C614A22ACB6EB700162DA9 /* User.swift */,
 				44C614A42ACB6EC800162DA9 /* AlertManager.swift */,
 				44C614A62ACB6EF000162DA9 /* Validator.swift */,
+				44DD0B762ADDD761005019B6 /* Errors.swift */,
 			);
 			path = Authentification;
 			sourceTree = "<group>";
@@ -178,7 +186,7 @@
 				44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */,
 				44C614B02ACE0D3E00162DA9 /* LoginInteractor.swift */,
 				44C614B22ACE0D4F00162DA9 /* LoginPresenter.swift */,
-				44DD0B6E2ADC0DBD005019B6 /* LoginRouter.swift */,
+				440607162AE06A4F00EE8807 /* LoginRouter.swift */,
 				44C614B52ACE150900162DA9 /* LoginBuilder.swift */,
 			);
 			path = Login;
@@ -190,7 +198,7 @@
 				44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */,
 				44DD0B492AD2012F005019B6 /* RegistrationInteractor.swift */,
 				44DD0B4B2AD20152005019B6 /* RegistrationPresenter.swift */,
-				44DD0B702ADC0FD4005019B6 /* RegistrationRouter.swift */,
+				440607182AE06CF900EE8807 /* RegistrationRouter.swift */,
 				44DD0B4E2AD209B4005019B6 /* RegistrationBuilder.swift */,
 			);
 			path = Register;
@@ -202,7 +210,7 @@
 				44C614902ACB6CE500162DA9 /* ForgotPasswordViewController.swift */,
 				44DD0B502AD20B4F005019B6 /* ForgorPasswordInteractor.swift */,
 				44DD0B522AD20B61005019B6 /* ForgotPasswordPresenter.swift */,
-				44DD0B722ADC11B0005019B6 /* ForgotPasswordRouter.swift */,
+				4406071C2AE0727800EE8807 /* ForgotPasswordRouter.swift */,
 				44DD0B542AD20C32005019B6 /* ForgotPasswordBuilder.swift */,
 			);
 			path = ForgotPassword;
@@ -217,6 +225,14 @@
 				44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		44DD0B7A2ADF2CEF005019B6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				44DD0B782ADF2CE5005019B6 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		44DF3C962A9697C200DC27E5 = {
@@ -266,6 +282,7 @@
 				44DF3CEA2AB0E68800DC27E5 /* OnboardingInfo.swift */,
 				00BD3B592ABB6C9100AB67B3 /* OnboardingInteractor.swift */,
 				00BD3B5B2ABB6C9C00AB67B3 /* OnboardingPresenter.swift */,
+				4406071A2AE06FEB00EE8807 /* OnboardingRouter.swift */,
 				00BD3B5D2ABB756300AB67B3 /* OnboardingBuilder.swift */,
 			);
 			path = Onboarding;
@@ -427,24 +444,27 @@
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,
 				44DF3CE92AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift in Sources */,
 				44C6149A2ACB6D8700162DA9 /* RegisterUserCredentials.swift in Sources */,
+				44DD0B792ADF2CE5005019B6 /* Extensions.swift in Sources */,
 				44C614B12ACE0D3F00162DA9 /* LoginInteractor.swift in Sources */,
+				440607172AE06A5000EE8807 /* LoginRouter.swift in Sources */,
 				44C614932ACB6D1C00162DA9 /* AuthHeaderView.swift in Sources */,
 				44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */,
+				4406071B2AE06FEB00EE8807 /* OnboardingRouter.swift in Sources */,
 				44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */,
 				44C614B32ACE0D5000162DA9 /* LoginPresenter.swift in Sources */,
+				4406071D2AE0727800EE8807 /* ForgotPasswordRouter.swift in Sources */,
 				44DD0B552AD20C32005019B6 /* ForgotPasswordBuilder.swift in Sources */,
 				00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */,
 				44DD0B4F2AD209B4005019B6 /* RegistrationBuilder.swift in Sources */,
 				44DD0B582AD2CF7B005019B6 /* ProfileInteractor.swift in Sources */,
-				44DD0B712ADC0FD4005019B6 /* RegistrationRouter.swift in Sources */,
 				44C614972ACB6D4E00162DA9 /* AuthButton.swift in Sources */,
 				44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */,
 				44DD0B532AD20B61005019B6 /* ForgotPasswordPresenter.swift in Sources */,
+				44DD0B772ADDD761005019B6 /* Errors.swift in Sources */,
 				00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */,
-				44DD0B732ADC11B0005019B6 /* ForgotPasswordRouter.swift in Sources */,
 				44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */,
-				44DD0B6F2ADC0DBD005019B6 /* LoginRouter.swift in Sources */,
 				44DF3CE32A9D464900DC27E5 /* MapViewController.swift in Sources */,
+				440607192AE06CF900EE8807 /* RegistrationRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +612,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -619,6 +640,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
