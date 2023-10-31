@@ -44,7 +44,6 @@ class JournalViewController: UIViewController {
     }
     
     func showJournal(_ items: [JournalItem]) {
-        self.items = []
         self.items = items
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -54,6 +53,10 @@ class JournalViewController: UIViewController {
         }
     }
     
+    
+    func showErrorAlert(errorText: String) {
+        AlertManager.showAlert(title: "Error", message: errorText)
+    }
     // MARK: - Private properties
     
     @objc private func didTapAdd() {

@@ -14,8 +14,8 @@ final class JounalInteractor {
     
     // MARK: - Private properties
     private var items = [JournalItem]()
-    private let authService: AuthService!
-    private let dbService: DBService!
+    private let authService: AuthService
+    private let dbService: DBService
     
     init(authService: AuthService,
          dbService: DBService) {
@@ -25,27 +25,19 @@ final class JounalInteractor {
     
     // MARK: - Public methods
     func onViewDidLoad() {
-        fetchAllItems()
+        dbService.setupListeners(handler: { [weak self] items in
+            guard let self = self else { return }
+            self.items = items
+            print("onViewDidLoad items = \(items)")
+            self.presenter.prepareToShowJournalData(self.items)
+        })
     }
     
     func appendItem(text: String) {
-        DispatchQueue.main.async {
-            self.dbService.uploadJournalItem(text: text)
-        }
-        fetchAllItems()
+        dbService.uploadJournalItem(text: text)
     }
     
     func deleteItem(id: String) {
-        DispatchQueue.main.async {
-            self.dbService.removeJournalItem(id: id)
-        }
-        fetchAllItems()
-    }
-    // MARK: - Private methods
-    private func fetchAllItems () {
-        self.dbService.fetchAndObserveItems { allItems in
-            self.items = allItems
-            self.presenter.prepareToShowJournalData(self.items)
-        }
+        self.dbService.removeJournalItem(id: id)
     }
 }

@@ -15,4 +15,8 @@ final class JournalPresenter {
     func prepareToShowJournalData(_ items: [JournalItem]) {
         viewController.showJournal(items)
     }
+    
+    func showError(errorText: String) {
+        viewController.showErrorAlert(errorText: errorText)
+    }
 }
