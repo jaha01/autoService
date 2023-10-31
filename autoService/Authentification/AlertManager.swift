@@ -24,4 +24,16 @@ class AlertManager {
             topController.present(alert, animated: true)
         }
     }
+    
+    public static func sendPasswordAlert(title: String, message: String?, completion: @escaping() -> ()) {
+        let topController = UIApplication.shared.getTopViewController()
+        
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                completion()
+            }))
+            topController.present(alert, animated: true)
+        }
+    }
 }

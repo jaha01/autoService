@@ -27,12 +27,11 @@ final class ForgotPasswordInteractor {
                 self.presenter.showError(alertRequest: AlertConfig(title: "", message: error.localizedDescription))
                 return
             }
-            
-            self.presenter.showSuccess(alertRequest: AlertConfig(title: "", message: "Password reset sent"))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.router.goToLogin()
-            }
+            self.presenter.passwordReset(alertRequest: AlertConfig(title: "", message: "Password reset sent"))
         }
     }
     
+    func goToLogin() {
+        router.goToLogin()
+    }
 }

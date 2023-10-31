@@ -70,13 +70,11 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func didTapNewUser() {
-        let vc = RegistrationBuilder().build()
-        self.navigationController?.pushViewController(vc, animated: true)
+        interactor.goToRegistration()
     }
     
     @objc private func didTapForgotPass() {
-        let vc = ForgotPasswordBuilder().build()
-        self.navigationController?.pushViewController(vc, animated: true)
+        interactor.goToForgotPassword()
     }
     
     private func setupConstraints() {

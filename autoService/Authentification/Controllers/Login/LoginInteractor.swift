@@ -32,4 +32,12 @@ final class LoginInteractor {
             
         }
     }
+    
+    func goToRegistration() {
+        router.goToRegistration()
+    }
+    
+    func goToForgotPassword() {
+        router.goToForgotPassword()
+    }
 }

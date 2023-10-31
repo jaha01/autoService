@@ -19,12 +19,6 @@ final class ProfileViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
     }
-
-    
-    func present() {
-        guard let window = self.view.window else { return }
-        window.rootViewController = LoginBuilder().build()
-    }
     
     func showErrorAlert(alertRequest: AlertConfig) {
         AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
