@@ -20,10 +20,8 @@ final class ProfileViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
     }
     
-    func showErrorAlert(alertRequest: AlertConfig) {
-        AlertManager.showAlert(config: alertRequest, completion: {
-            
-        })
+    func showErrorAlert(config: AlertConfig) {
+        AlertManager.showAlert(config: config)
     }
     
     // MARK: - Private methods

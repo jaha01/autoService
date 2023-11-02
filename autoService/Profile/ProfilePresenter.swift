@@ -11,7 +11,7 @@ final class ProfilePresenter {
     
     weak var viewController: ProfileViewController!
     
-    func showError(alertRequest: AlertConfig) {
-        viewController.showErrorAlert(alertRequest: alertRequest)
+    func showError(config: AlertConfig) {
+        viewController.showErrorAlert(config: config)
     }
 }

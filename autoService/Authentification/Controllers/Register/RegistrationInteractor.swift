@@ -24,7 +24,7 @@ final class RegistrationInteractor {
             guard let self = self else { return }
             
             if let error = error {
-                self.presenter.showError(alertRequest: AlertConfig( title: "Unknown Registration Error", message: "\(error.localizedDescription)"))
+                self.presenter.showError(config: AlertConfig( title: "Unknown Registration Error", message: "\(error.localizedDescription)"))
                 return
             }
             
