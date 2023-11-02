@@ -11,7 +11,7 @@ class ProfileRouter {
     weak var viewController: UIViewController!
     
     func goToLogin() {
-        let login: UIViewController = ForgotPasswordBuilder().build()
+        let login: UIViewController = LoginBuilder().build()
         let window = viewController.view.window
         window?.rootViewController = login
     }

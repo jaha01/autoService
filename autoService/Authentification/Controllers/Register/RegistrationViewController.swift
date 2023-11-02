@@ -64,7 +64,9 @@ final class RegistrationViewController: UIViewController {
     }
     
     func showErrorAlert(alertRequest: AlertConfig) {
-        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+        AlertManager.showAlert(config: alertRequest, completion: {
+            
+        })
     }
     
     // MARK: Private methods

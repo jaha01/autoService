@@ -34,12 +34,14 @@ final class ForgotPasswordViewController: UIViewController {
     }
     
     func showErrorAlert(alertRequest: AlertConfig) {
-        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+        AlertManager.showAlert(config: alertRequest, completion: {
+            
+        })
     }
     
-    func passwordReset(alertRequest: AlertConfig) {
-        AlertManager.sendPasswordAlert(title: alertRequest.title, message: alertRequest.message, completion: {
-            self.interactor.goToLogin()
+    func showSuccessAlert(alertRequest: AlertConfig) {
+        AlertManager.showAlert(config: alertRequest, completion: {
+            self.interactor.didTapLogin()
         })
     }
     

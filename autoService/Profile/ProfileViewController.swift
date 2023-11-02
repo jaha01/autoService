@@ -21,11 +21,13 @@ final class ProfileViewController: UIViewController {
     }
     
     func showErrorAlert(alertRequest: AlertConfig) {
-        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+        AlertManager.showAlert(config: alertRequest, completion: {
+            
+        })
     }
     
     // MARK: - Private methods
     @objc private func didTapLogout() {
-        interactor.userSignOut()
+        interactor.didTapSignOut()
     }
 }

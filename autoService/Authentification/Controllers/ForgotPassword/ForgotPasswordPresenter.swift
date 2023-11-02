@@ -15,7 +15,7 @@ final class ForgotPasswordPresenter {
         viewController.showErrorAlert(alertRequest: alertRequest)
     }
     
-    func passwordReset(alertRequest: AlertConfig) {
-        viewController.passwordReset(alertRequest: alertRequest)
+    func showPasswordResetInfo(title: String, message: String) {
+        viewController.showSuccessAlert(alertRequest: AlertConfig(title: title, message: message))
     }
 }

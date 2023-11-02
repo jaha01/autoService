@@ -18,7 +18,7 @@ final class ProfileInteractor {
         self.authService = authService
     }
     
-    func userSignOut() {
+    func didTapSignOut() {
         
         authService.signOut { [weak self] error in
             guard let self = self else { return }

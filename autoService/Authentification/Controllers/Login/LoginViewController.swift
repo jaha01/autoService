@@ -47,7 +47,9 @@ final class LoginViewController: UIViewController {
     }
 
     func showErrorAlert(alertRequest: AlertConfig) {
-        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+        AlertManager.showAlert(config: alertRequest, completion: {
+            
+        })
     }
     
     // MARK: Private methods
@@ -70,11 +72,11 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func didTapNewUser() {
-        interactor.goToRegistration()
+        interactor.didTapRegistration()
     }
     
     @objc private func didTapForgotPass() {
-        interactor.goToForgotPassword()
+        interactor.didTapForgotPassword()
     }
     
     private func setupConstraints() {

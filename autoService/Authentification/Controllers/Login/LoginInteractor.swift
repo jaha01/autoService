@@ -33,11 +33,11 @@ final class LoginInteractor {
         }
     }
     
-    func goToRegistration() {
+    func didTapRegistration() {
         router.goToRegistration()
     }
     
-    func goToForgotPassword() {
+    func didTapForgotPassword() {
         router.goToForgotPassword()
     }
 }
