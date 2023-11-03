@@ -10,6 +10,7 @@ import UIKit
 final class ProfileInteractor {
     
     var presenter: ProfilePresenter!
+    var router: ProfileRouter!
     
     let authService: AuthService
     
@@ -17,17 +18,15 @@ final class ProfileInteractor {
         self.authService = authService
     }
     
-    func userSignOut() {
+    func didTapSignOut() {
         
         authService.signOut { [weak self] error in
             guard let self = self else { return }
             if let error = error {
-                self.presenter.showError(alertRequest: AlertConfig(title: "Unknown Signin in Error", message: "\(error.localizedDescription)"))
+                self.presenter.showError(config: AlertConfig(title: "Unknown Signin in Error", message: "\(error.localizedDescription)"))
                 return
             }
-            
-            self.presenter.didTapSignOut()
+            self.router.goToLogin()
         }
-        
     }
 }

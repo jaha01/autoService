@@ -63,8 +63,8 @@ final class RegistrationViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    func showErrorAlert(alertRequest: AlertConfig) {
-        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+    func showErrorAlert(config: AlertConfig) {
+        AlertManager.showAlert(config: config)
     }
     
     // MARK: Private methods

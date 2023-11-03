@@ -15,4 +15,16 @@ final class LoginRouter {
         let window = viewController.view.window
         window?.rootViewController = mainController
     }
+    
+    func goToRegistration() {
+        let registration: UIViewController = RegistrationBuilder().build()
+        let window = viewController.view.window
+        window?.rootViewController = registration
+    }
+    
+    func goToForgotPassword() {
+        let forgotPassword: UIViewController = ForgotPasswordBuilder().build()
+        let window = viewController.view.window
+        window?.rootViewController = forgotPassword
+    }
 }

@@ -12,10 +12,13 @@ final class ProfileBuilder {
         let controller = ProfileViewController()
         let interactor = ProfileInteractor(authService: DI.shared.authService)
         let presenter = ProfilePresenter()
+        let router = ProfileRouter()
         
         controller.interactor = interactor
         interactor.presenter = presenter
         presenter.viewController = controller
+        interactor.router = router
+        router.viewController = controller
         
         return controller
     }

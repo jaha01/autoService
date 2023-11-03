@@ -24,15 +24,14 @@ final class ForgotPasswordInteractor {
             guard let self = self else { return }
             
             if let error = error {
-                self.presenter.showError(alertRequest: AlertConfig(title: "", message: error.localizedDescription))
+                self.presenter.showError(config: AlertConfig(title: "", message: error.localizedDescription))
                 return
             }
-            
-            self.presenter.showSuccess(alertRequest: AlertConfig(title: "", message: "Password reset sent"))
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                self.router.goToLogin()
-            }
+            self.presenter.showPasswordResetInfo(title: "", message: "Password reset sent")
         }
     }
     
+    func didTapLogin() {
+        router.goToLogin()
+    }
 }

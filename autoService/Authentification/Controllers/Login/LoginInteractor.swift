@@ -24,12 +24,20 @@ final class LoginInteractor {
             guard let self = self else { return }
             
             if let error = error {
-                self.presenter.showError(alertRequest: AlertConfig(title: "Sign in Error", message: "\(error.localizedDescription)"))
+                self.presenter.showError(config: AlertConfig(title: "Sign in Error", message: "\(error.localizedDescription)"))
                 return
             }
             
             self.router.goToMain()
             
         }
+    }
+    
+    func didTapRegistration() {
+        router.goToRegistration()
+    }
+    
+    func didTapForgotPassword() {
+        router.goToForgotPassword()
     }
 }

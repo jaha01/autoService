@@ -46,8 +46,8 @@ final class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
 
-    func showErrorAlert(alertRequest: AlertConfig) {
-        AlertManager.showAlert(title: alertRequest.title, message: alertRequest.message)
+    func showErrorAlert(config: AlertConfig) {
+        AlertManager.showAlert(config: config)
     }
     
     // MARK: Private methods
@@ -70,13 +70,11 @@ final class LoginViewController: UIViewController {
     }
 
     @objc private func didTapNewUser() {
-        let vc = RegistrationBuilder().build()
-        self.navigationController?.pushViewController(vc, animated: true)
+        interactor.didTapRegistration()
     }
     
     @objc private func didTapForgotPass() {
-        let vc = ForgotPasswordBuilder().build()
-        self.navigationController?.pushViewController(vc, animated: true)
+        interactor.didTapForgotPassword()
     }
     
     private func setupConstraints() {
