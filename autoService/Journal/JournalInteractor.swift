@@ -28,7 +28,6 @@ final class JounalInteractor {
         dbService.setupListeners(handler: { [weak self] items in
             guard let self = self else { return }
             self.items = items
-            print("onViewDidLoad items = \(items)")
             self.presenter.prepareToShowJournalData(self.items)
         })
     }
