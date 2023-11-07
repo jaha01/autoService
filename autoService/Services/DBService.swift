@@ -16,15 +16,13 @@ final class DBService {
     private var allItems = [JournalItem]()
     private let authService: AuthService
     private let journalHistoryItems = "journalHistoryItems"
-    private let userID = Auth.auth().currentUser?.uid
     
     init(authService: AuthService) {
         self.authService = authService
     }
-
     
     func setupListeners(handler: @escaping ([JournalItem]) -> Void) {
-        ref.child(userID!).child(journalHistoryItems).observe(.value) { [weak self] snapshot in
+        ref.child(authService.getUserID()).child(journalHistoryItems).observe(.value) { [weak self] snapshot in
             guard let self = self else { return }
             if let dictionary = snapshot.value as? [String: Any] {
                 self.allItems = []
@@ -41,13 +39,13 @@ final class DBService {
     
     func uploadJournalItem(text: String) {
         
-        let parent = ref.child(userID!).child(journalHistoryItems)
+        let parent = ref.child(authService.getUserID()).child(journalHistoryItems)
         let id = parent.childByAutoId()
         let values = ["item": text, "id": id.key!] as [String: Any]
         id.updateChildValues(values)
     }
     
     func removeJournalItem(id: String){
-        ref.child(userID!).child(journalHistoryItems).child(id).removeValue()
+        ref.child(authService.getUserID()).child(journalHistoryItems).child(id).removeValue()
     }
 }
