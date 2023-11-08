@@ -101,4 +101,9 @@ final class AuthService {
     public func isCurrentUserExists() -> Bool {
         return FirebaseAuth.Auth.auth().currentUser != nil
     }
+    
+    public func getUserID() -> String {
+        guard let userID = Auth.auth().currentUser?.uid else { return ""}
+        return userID
+    }
 }

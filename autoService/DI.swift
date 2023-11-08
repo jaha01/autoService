@@ -23,4 +23,8 @@ final class DI {
         return SetupService(authService: authService)
     }
     
+    func dbService() -> DBService {
+        return DBService(authService: authService)
+    }
+    
 }
