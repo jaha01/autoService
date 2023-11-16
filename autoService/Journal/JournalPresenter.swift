@@ -17,6 +17,6 @@ final class JournalPresenter {
     }
     
     func showError(errorText: String) {
-        viewController.showErrorAlert(errorText: errorText)
+        viewController.showErrorAlert(config: AlertConfig.init(title: errorText))
     }
 }

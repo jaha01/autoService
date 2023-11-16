@@ -18,6 +18,36 @@ final class ProfileInteractor {
         self.authService = authService
     }
     
+    private let ProfileDetails = [
+        
+            ProfileInfo.init(section: "Owner Info", item: [
+                Object.init(name: "", placeholder: "Почта"),
+                Object.init(name: "", placeholder: "Телефон"),
+                Object.init(name: "", placeholder: "Имя"),
+                Object.init(name: "", placeholder: "Город"),
+                Object.init(name: "", placeholder: "Стаж"),
+                Object.init(name: "", placeholder: "Дата Рождения")
+            ]),
+            ProfileInfo.init(section: "Car Info", item: [
+                Object.init(name: "", placeholder: "Марка"),
+                Object.init(name: "", placeholder: "Модель"),
+                Object.init(name: "", placeholder: "Год выпуска"),
+                Object.init(name: "", placeholder: "Объем"),
+                Object.init(name: "", placeholder: "Пробег")
+            ])
+        ]
+    
+    
+    func onViewDidLoad() {
+        presenter.prepareToShowProfileData(ProfileDetails)
+        
+    }
+    
+    func carsList(navController: UINavigationController?) {
+        let vc = CarsModelViewController()
+        navController?.pushViewController(vc, animated: true)
+    }
+    
     func didTapSignOut() {
         
         authService.signOut { [weak self] error in
