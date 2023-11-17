@@ -90,7 +90,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1 && indexPath.row == 0 {
-            interactor.carsList(navController: navigationController)
+            interactor.goToCarsModel()
         }
             
     }

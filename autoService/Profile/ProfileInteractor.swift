@@ -43,9 +43,8 @@ final class ProfileInteractor {
         
     }
     
-    func carsList(navController: UINavigationController?) {
-        let vc = CarsModelViewController()
-        navController?.pushViewController(vc, animated: true)
+    func goToCarsModel() {
+        router.goToCarsModel()
     }
     
     func didTapSignOut() {

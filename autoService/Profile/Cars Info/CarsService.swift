@@ -7,18 +7,22 @@
 
 import Foundation
 
-class CarsService {
+final class CarsService {
+    
     private var networkClient: NetworkClient
     
     init(networkClient: NetworkClient) {
         self.networkClient = networkClient
     }
     
-    public func loadCars<T: Codable>(completion: @escaping(Result<T, Error>)->Void) {
-        networkClient.request() { (result: Result<T, Error>) in
+    func loadCars(query: String, completion: @escaping(Result<[String], Error>)->Void) {
+        // можно ли так делать??? с path
+        networkClient.request(path: "/suggestions/api/4_1/rs/suggest/car_brand", method: "POST", query: query) { (result: Result<CarsSuggestions, Error>) in
             switch result {
             case .success(let data) :
-                completion(.success(data))
+                print("data = \(data)")
+                //completion(.success(data))
+                // map. -> convert to array
             case .failure(let error):
                 completion(.failure(NetworkError.fetching("Что-то пошло не так...")))
                 if let customError = error as? NetworkError {
@@ -30,3 +34,4 @@ class CarsService {
         }
     }
 }
+

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileTableHeader: UIView {
+final class ProfileTableHeader: UIView {
 
     // MARK: - Private properties
     

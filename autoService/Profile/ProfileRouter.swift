@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileRouter {
+final class ProfileRouter {
     weak var viewController: UIViewController!
     
     func goToLogin() {
@@ -16,4 +16,9 @@ class ProfileRouter {
         window?.rootViewController = login
     }
     
+    func goToCarsModel() {
+        let vc = CarsModelBuilder().build()
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
+
 }

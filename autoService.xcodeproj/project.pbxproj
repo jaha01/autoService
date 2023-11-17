@@ -43,6 +43,11 @@
 		44D7AB4E2B05571C0025CB73 /* NetworkConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB4D2B05571C0025CB73 /* NetworkConfig.swift */; };
 		44D7AB502B055AD70025CB73 /* CarsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB4F2B055AD70025CB73 /* CarsService.swift */; };
 		44D7AB522B055B7E0025CB73 /* NetwokClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB512B055B7E0025CB73 /* NetwokClient.swift */; };
+		44D7AB542B07EAEB0025CB73 /* CarsModelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB532B07EAEB0025CB73 /* CarsModelInteractor.swift */; };
+		44D7AB562B07EB010025CB73 /* CarsModelPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB552B07EB010025CB73 /* CarsModelPresenter.swift */; };
+		44D7AB582B07EB180025CB73 /* CarsModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB572B07EB180025CB73 /* CarsModelBuilder.swift */; };
+		44D7AB5A2B07F0A90025CB73 /* URLComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB592B07F0A90025CB73 /* URLComponent.swift */; };
+		44D7AB5C2B07F3DC0025CB73 /* CarsSuggestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7AB5B2B07F3DC0025CB73 /* CarsSuggestions.swift */; };
 		44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B492AD2012F005019B6 /* RegistrationInteractor.swift */; };
 		44DD0B4C2AD20152005019B6 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B4B2AD20152005019B6 /* RegistrationPresenter.swift */; };
 		44DD0B4F2AD209B4005019B6 /* RegistrationBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD0B4E2AD209B4005019B6 /* RegistrationBuilder.swift */; };
@@ -108,6 +113,11 @@
 		44D7AB4D2B05571C0025CB73 /* NetworkConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfig.swift; sourceTree = "<group>"; };
 		44D7AB4F2B055AD70025CB73 /* CarsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsService.swift; sourceTree = "<group>"; };
 		44D7AB512B055B7E0025CB73 /* NetwokClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetwokClient.swift; sourceTree = "<group>"; };
+		44D7AB532B07EAEB0025CB73 /* CarsModelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsModelInteractor.swift; sourceTree = "<group>"; };
+		44D7AB552B07EB010025CB73 /* CarsModelPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsModelPresenter.swift; sourceTree = "<group>"; };
+		44D7AB572B07EB180025CB73 /* CarsModelBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsModelBuilder.swift; sourceTree = "<group>"; };
+		44D7AB592B07F0A90025CB73 /* URLComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponent.swift; sourceTree = "<group>"; };
+		44D7AB5B2B07F3DC0025CB73 /* CarsSuggestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsSuggestions.swift; sourceTree = "<group>"; };
 		44DD0B492AD2012F005019B6 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		44DD0B4B2AD20152005019B6 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		44DD0B4E2AD209B4005019B6 /* RegistrationBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationBuilder.swift; sourceTree = "<group>"; };
@@ -235,12 +245,25 @@
 		44D7AB4C2B0556E60025CB73 /* Cars Info */ = {
 			isa = PBXGroup;
 			children = (
-				44D7AB4A2B05511D0025CB73 /* CarsModelViewController.swift */,
+				44D7AB5D2B07F7CF0025CB73 /* CarsModel */,
 				44D7AB4F2B055AD70025CB73 /* CarsService.swift */,
 				44D7AB512B055B7E0025CB73 /* NetwokClient.swift */,
+				44D7AB5B2B07F3DC0025CB73 /* CarsSuggestions.swift */,
+				44D7AB592B07F0A90025CB73 /* URLComponent.swift */,
 				44D7AB4D2B05571C0025CB73 /* NetworkConfig.swift */,
 			);
 			path = "Cars Info";
+			sourceTree = "<group>";
+		};
+		44D7AB5D2B07F7CF0025CB73 /* CarsModel */ = {
+			isa = PBXGroup;
+			children = (
+				44D7AB4A2B05511D0025CB73 /* CarsModelViewController.swift */,
+				44D7AB532B07EAEB0025CB73 /* CarsModelInteractor.swift */,
+				44D7AB552B07EB010025CB73 /* CarsModelPresenter.swift */,
+				44D7AB572B07EB180025CB73 /* CarsModelBuilder.swift */,
+			);
+			path = CarsModel;
 			sourceTree = "<group>";
 		};
 		44DD0B4D2AD204E5005019B6 /* Register */ = {
@@ -477,6 +500,7 @@
 			files = (
 				44DF3CBD2A9A1C9200DC27E5 /* MainTabBabViewController.swift in Sources */,
 				44C614B62ACE150900162DA9 /* LoginBuilder.swift in Sources */,
+				44D7AB582B07EB180025CB73 /* CarsModelBuilder.swift in Sources */,
 				44DD0B5D2AD2D2D0005019B6 /* ProfileBuilder.swift in Sources */,
 				00BD3B5A2ABB6C9100AB67B3 /* OnboardingInteractor.swift in Sources */,
 				44C6149C2ACB6D9C00162DA9 /* LoginUserCredentials.swift in Sources */,
@@ -488,10 +512,12 @@
 				44DF3CED2AB0FE6100DC27E5 /* SetupService.swift in Sources */,
 				44DF3CA32A9697C200DC27E5 /* AppDelegate.swift in Sources */,
 				44DF3CA52A9697C200DC27E5 /* SceneDelegate.swift in Sources */,
+				44D7AB5C2B07F3DC0025CB73 /* CarsSuggestions.swift in Sources */,
 				44C614912ACB6CE500162DA9 /* ForgotPasswordViewController.swift in Sources */,
 				44D7AB4E2B05571C0025CB73 /* NetworkConfig.swift in Sources */,
 				44DD0B512AD20B4F005019B6 /* ForgorPasswordInteractor.swift in Sources */,
 				44DF3CF22AB2312700DC27E5 /* DI.swift in Sources */,
+				44D7AB5A2B07F0A90025CB73 /* URLComponent.swift in Sources */,
 				44C614952ACB6D3300162DA9 /* AuthTextField.swift in Sources */,
 				44C614A52ACB6EC800162DA9 /* AlertManager.swift in Sources */,
 				44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */,
@@ -528,10 +554,12 @@
 				44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */,
 				44DD0B532AD20B61005019B6 /* ForgotPasswordPresenter.swift in Sources */,
 				44DD0B772ADDD761005019B6 /* Errors.swift in Sources */,
+				44D7AB562B07EB010025CB73 /* CarsModelPresenter.swift in Sources */,
 				00BD3B5C2ABB6C9C00AB67B3 /* OnboardingPresenter.swift in Sources */,
 				44DF3CE52A9D465200DC27E5 /* ProfileViewController.swift in Sources */,
 				440607252AE53DC100EE8807 /* JournalBuilder.swift in Sources */,
 				44DF3CE32A9D464900DC27E5 /* MapViewController.swift in Sources */,
+				44D7AB542B07EAEB0025CB73 /* CarsModelInteractor.swift in Sources */,
 				440607192AE06CF900EE8807 /* RegistrationRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

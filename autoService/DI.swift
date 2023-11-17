@@ -27,4 +27,12 @@ final class DI {
         return DBService(authService: authService)
     }
     
+    private lazy var networkClient: NetworkClient = {
+        return NetworkClient()
+    }()
+    
+    lazy var carsService: CarsService = {
+        return CarsService(networkClient: networkClient)
+    }()
+    
 }
