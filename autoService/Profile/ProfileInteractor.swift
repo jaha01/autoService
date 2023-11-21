@@ -13,38 +13,31 @@ final class ProfileInteractor {
     var router: ProfileRouter!
     
     let authService: AuthService
+    let dbService: DBService
     
-    init(authService: AuthService) {
+    init(authService: AuthService,
+         dbService: DBService) {
         self.authService = authService
+        self.dbService = dbService
     }
-    
-    private let ProfileDetails = [
-        
-            ProfileInfo.init(section: "Owner Info", item: [
-                Object.init(name: "", placeholder: "Почта"),
-                Object.init(name: "", placeholder: "Телефон"),
-                Object.init(name: "", placeholder: "Имя"),
-                Object.init(name: "", placeholder: "Город"),
-                Object.init(name: "", placeholder: "Стаж"),
-                Object.init(name: "", placeholder: "Дата Рождения")
-            ]),
-            ProfileInfo.init(section: "Car Info", item: [
-                Object.init(name: "", placeholder: "Марка"),
-                Object.init(name: "", placeholder: "Модель"),
-                Object.init(name: "", placeholder: "Год выпуска"),
-                Object.init(name: "", placeholder: "Объем"),
-                Object.init(name: "", placeholder: "Пробег")
-            ])
-        ]
     
     
     func onViewDidLoad() {
-        presenter.prepareToShowProfileData(ProfileDetails)
-        
+        dbService.setupProfileInfoListeners { info in
+            let ProfileDetails =
+            ProfileInfoNew.init(email: info["email"] as! String, phone: info["phone"] as! String, name: info["name"] as! String, city: info["city"] as! String, experience: info["experience"] as! String, bday: info["bday"] as! String, brand: info["brand"] as! String, model: info["model"] as! String, year: info["year"] as! String, volume: info["volume"] as! String, mileage: info["mileage"] as! String)
+
+            self.presenter.prepareToShowProfileData(ProfileDetails)
+        }
+
     }
     
     func goToCarsModel() {
         router.goToCarsModel()
+    }
+    
+    func updatePofileInfo(info: ProfileInfoNew) {
+        dbService.uploadProfileInfo(profileInfo: info)
     }
     
     func didTapSignOut() {

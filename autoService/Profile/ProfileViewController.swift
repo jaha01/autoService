@@ -11,45 +11,206 @@ final class ProfileViewController: UIViewController {
 
     var interactor: ProfileInteractor!
     var profileInfo = [ProfileInfo]()
+    var info: ProfileInfoNew!
     
     // MARK: - Pivate properties
     
-    let profileTable: UITableView = {
-        let table = UITableView(frame: .zero, style: .insetGrouped)
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.layer.cornerRadius = 10
-        return table
+    private let photoView: UIView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 20
+        view.backgroundColor = .white
+        view.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
+    var photo: UIImageView = {
+        let image = UIImageView()
+        image.layer.borderWidth = 1.0
+        image.layer.masksToBounds = true
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
+        image.image = UIImage(named: "welcome_4")
+        image.layer.cornerRadius = 90
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    private let email: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Почта"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+
+    private let phone: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Телефон"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let name: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Имя"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let city: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Город"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+//        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        return textfield
+    }()
+    
+    private let experience: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Стаж"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let bday: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Дата Рождения"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let brand: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Марка"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let model: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Модель"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let year: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Год выпуска"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let volume: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Объем"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let mileage: UITextField = {
+        let textfield = UITextField()
+        textfield.placeholder = "Пробег"
+        textfield.isUserInteractionEnabled = false
+        textfield.translatesAutoresizingMaskIntoConstraints = false
+        return textfield
+    }()
+    
+    private let scrollView: UIScrollView = {
+        let view = UIScrollView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.isScrollEnabled = true
+        view.layer.cornerRadius = 10
+        return view
+        }()
+    
+    private let personLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Owner info"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let carLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Car info"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let bdayDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        let localeID = Locale.preferredLanguages.first
+        datePicker.locale = Locale(identifier: localeID!)
+        return datePicker
+    }()
+    
+    private let experienceDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        let localeID = Locale.preferredLanguages.first
+        datePicker.locale = Locale(identifier: localeID!)
+        return datePicker
+    }()
+    
+    private let modelYaerDatePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.preferredDatePickerStyle = .wheels
+        let localeID = Locale.preferredLanguages.first
+        datePicker.locale = Locale(identifier: localeID!)
+        return datePicker
+    }()
     
     // MARK: - Public method
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
-        view.backgroundColor = .systemBackground
-        view.addSubview(profileTable)
-        profileTable.dataSource = self
-        profileTable.delegate = self
+        view.backgroundColor = .systemGray4
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didTapEdit))
+        settings()
         setupConstraints()
         interactor.onViewDidLoad()
         
-        let profileTableHeader = ProfileTableHeader(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200))
-        profileTable.tableHeaderView = profileTableHeader
     }
     
     func showErrorAlert(config: AlertConfig) {
         AlertManager.showAlert(config: config)
     }
     
-    func pushProfileData(items: [ProfileInfo]) {
-        profileInfo = items
-        DispatchQueue.main.async { [weak self] in
-            self?.profileTable.reloadData()
-        }
+    func setProfileData(item: ProfileInfoNew) {
+        email.text = item.email
+        phone.text = item.phone
+        name.text = item.name
+        city.text = item.city
+        experience.text = item.experience
+        bday.text = item.bday
+        brand.text = item.brand
+        model.text = item.model
+        year.text = item.year
+        volume.text = item.volume
+        mileage.text = item.mileage
     }
     
     // MARK: - Private methods
@@ -57,42 +218,177 @@ final class ProfileViewController: UIViewController {
         interactor.didTapSignOut()
     }
     
+    @objc private func didTapEdit() {
+        email.isUserInteractionEnabled.toggle()
+        phone.isUserInteractionEnabled.toggle()
+        name.isUserInteractionEnabled.toggle()
+        city.isUserInteractionEnabled.toggle()
+        experience.isUserInteractionEnabled.toggle()
+        bday.isUserInteractionEnabled.toggle()
+        brand.isUserInteractionEnabled.toggle()
+        model.isUserInteractionEnabled.toggle()
+        year.isUserInteractionEnabled.toggle()
+        volume.isUserInteractionEnabled.toggle()
+        mileage.isUserInteractionEnabled.toggle()
+        personLabel.isUserInteractionEnabled.toggle()
+        carLabel.isUserInteractionEnabled.toggle()
+        if email.isUserInteractionEnabled {
+            navigationItem.leftBarButtonItem?.title = "Done"
+        } else {
+            navigationItem.leftBarButtonItem?.title = "Edit"
+            saveInfo()
+            interactor.updatePofileInfo(info: info)
+        }
+        
+    }
+    
+    func saveInfo() {
+        info = ProfileInfoNew.init(email: email.text!, phone: phone.text!, name: name.text!, city: city.text!, experience: experience.text!, bday: bday.text!, brand: brand.text!, model: model.text!, year: year.text!, volume: volume.text!, mileage: mileage.text!)
+    }
+    
+    @objc private func bdayHandleDatePicker(sender: UIDatePicker) {
+          let dateFormatter = DateFormatter()
+          dateFormatter.dateFormat = "dd MMM yyyy"
+          bday.text = dateFormatter.string(from: sender.date)
+     }
+    
+    @objc private func experienceHandleDatePicker(sender: UIDatePicker) {
+          let dateFormatter = DateFormatter()
+          dateFormatter.dateFormat = "dd MMM yyyy"
+          experience.text = dateFormatter.string(from: sender.date)
+     }
+    
+    @objc private func yearHandleDatePicker(sender: UIDatePicker) {
+          let dateFormatter = DateFormatter()
+          dateFormatter.dateFormat = "dd MMM yyyy"
+          year.text = dateFormatter.string(from: sender.date)
+     }
+    
+    @objc private func datePickerDone() {
+        bday.resignFirstResponder()
+        experience.resignFirstResponder()
+        year.resignFirstResponder()
+    }
+    
+    private func settings() {
+        view.addSubview(photoView)
+        view.addSubview(scrollView)
+        photoView.addSubview(photo)
+        scrollView.addSubview(email)
+        scrollView.addSubview(phone)
+        scrollView.addSubview(name)
+        scrollView.addSubview(city)
+        scrollView.addSubview(experience)
+        scrollView.addSubview(bday)
+        scrollView.addSubview(brand)
+        scrollView.addSubview(model)
+        scrollView.addSubview(year)
+        scrollView.addSubview(volume)
+        scrollView.addSubview(mileage)
+        scrollView.addSubview(personLabel)
+        scrollView.addSubview(carLabel)
+        
+        bday.inputView = bdayDatePicker
+        experience.inputView = experienceDatePicker
+        year.inputView = modelYaerDatePicker
+        
+        let doneButton = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(self.datePickerDone))
+        let toolBar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 44))
+        toolBar.setItems([UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil), doneButton], animated: true)
+        bdayDatePicker.addTarget(self, action: #selector(bdayHandleDatePicker(sender:)), for: .valueChanged)
+        bday.inputAccessoryView = toolBar
+        experienceDatePicker.addTarget(self, action: #selector(experienceHandleDatePicker(sender:)), for: .valueChanged)
+        experience.inputAccessoryView = toolBar
+        modelYaerDatePicker.addTarget(self, action: #selector(yearHandleDatePicker(sender:)), for: .valueChanged)
+        year.inputAccessoryView = toolBar
+    }
+    
     private func setupConstraints() {
+        
         NSLayoutConstraint.activate([
-         
-            profileTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            profileTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            profileTable.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+            
+            photoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            photoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            photoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            photoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
+            
+            scrollView.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 15),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            
+            photo.centerXAnchor.constraint(equalTo: photoView.centerXAnchor),
+            photo.centerYAnchor.constraint(equalTo: photoView.centerYAnchor),
+            photo.heightAnchor.constraint(equalToConstant: 180),
+            photo.widthAnchor.constraint(equalToConstant: 180),
+            
+            personLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            personLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            personLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            personLabel.bottomAnchor.constraint(equalTo: personLabel.topAnchor, constant: 20),
+            
+            email.topAnchor.constraint(equalTo: personLabel.bottomAnchor, constant: 15),
+            email.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            email.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            email.bottomAnchor.constraint(equalTo: email.topAnchor, constant: 50),
+            
+            phone.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 15),
+            phone.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            phone.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            phone.bottomAnchor.constraint(equalTo: phone.topAnchor, constant: 50),
+            
+            name.topAnchor.constraint(equalTo: phone.bottomAnchor, constant: 15),
+            name.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            name.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            name.leadingAnchor.constraint(equalTo: name.leadingAnchor, constant: 50),
+            
+            city.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 15),
+            city.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            city.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            city.bottomAnchor.constraint(equalTo: city.topAnchor, constant: 50),
+            
+            experience.topAnchor.constraint(equalTo: city.bottomAnchor, constant: 15),
+            experience.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            experience.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            experience.bottomAnchor.constraint(equalTo: experience.topAnchor, constant: 50),
+            
+            bday.topAnchor.constraint(equalTo: experience.bottomAnchor, constant: 15),
+            bday.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            bday.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            bday.bottomAnchor.constraint(equalTo: bday.topAnchor, constant: 50),
+            
+            carLabel.topAnchor.constraint(equalTo: bday.bottomAnchor, constant: 15),
+            carLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            carLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            carLabel.bottomAnchor.constraint(equalTo: carLabel.topAnchor, constant: 20),
+            
+            brand.topAnchor.constraint(equalTo: carLabel.bottomAnchor, constant: 15),
+            brand.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            brand.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            brand.bottomAnchor.constraint(equalTo: brand.topAnchor, constant: 50),
+            
+            model.topAnchor.constraint(equalTo: brand.bottomAnchor, constant: 15),
+            model.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            model.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            model.bottomAnchor.constraint(equalTo: model.topAnchor, constant: 50),
+            
+            year.topAnchor.constraint(equalTo: model.bottomAnchor, constant: 15),
+            year.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            year.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            year.bottomAnchor.constraint(equalTo: year.topAnchor, constant: 50),
+            
+            volume.topAnchor.constraint(equalTo: year.bottomAnchor, constant: 15),
+            volume.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            volume.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            volume.bottomAnchor.constraint(equalTo: volume.topAnchor, constant: 50),
+            
+            mileage.topAnchor.constraint(equalTo: volume.bottomAnchor, constant: 15),
+            mileage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            mileage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            mileage.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
+            
+        ])
     }
 }
 
-extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return profileInfo[section].section
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return profileInfo.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileInfo[section].item.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell  = tableView.dequeueReusableCell(withIdentifier: "cell") else { return UITableViewCell() }
-        cell.textLabel?.text = profileInfo[indexPath.section].item[indexPath.row].placeholder
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.section == 1 && indexPath.row == 0 {
-            interactor.goToCarsModel()
-        }
-            
-    }
-    
-}

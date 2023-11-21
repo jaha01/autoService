@@ -7,7 +7,7 @@
 
 import UIKit
 
-public struct ProfileInfo {
+struct ProfileInfo {
     let section: String
     let item: [Object]
 }
@@ -22,3 +22,18 @@ enum OptionType {
 //    case car(value: String, placeholder: String)
 }
 
+struct ProfileInfoNew {
+   
+    let email: String
+    let phone: String
+    let name: String
+    let city: String
+    let experience: String
+    let bday: String
+    let brand: String
+    let model: String
+    let year: String
+    let volume: String
+    let mileage: String
+
+}

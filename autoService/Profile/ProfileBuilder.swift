@@ -10,7 +10,7 @@ import UIKit
 final class ProfileBuilder {
     func build() -> UIViewController {
         let controller = ProfileViewController()
-        let interactor = ProfileInteractor(authService: DI.shared.authService)
+        let interactor = ProfileInteractor(authService: DI.shared.authService, dbService: DI.shared.dbService())
         let presenter = ProfilePresenter()
         let router = ProfileRouter()
         
