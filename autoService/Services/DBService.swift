@@ -16,7 +16,7 @@ final class DBService {
     private var allItems = [JournalItem]()
     private let authService: AuthService
     private let journalHistoryItems = "journalHistoryItems"
-    private let profileInformation = "ProfileInformation"
+    private let profileInformation = "profileInformation"
     
     init(authService: AuthService) {
         self.authService = authService
@@ -51,19 +51,20 @@ final class DBService {
         ref.child(authService.getUserID()).child(journalHistoryItems).child(id).removeValue()
     }
     
-    func setupProfileInfoListeners(handler: @escaping ([String: Any]) -> Void) {
-        ref.child(authService.getUserID()).child(profileInformation).observe(.value) { [weak self] snapshot in
-            guard let self = self else { return }
+    func setupProfileInfoListeners(handler: @escaping (ProfileInfo) -> Void) {
+        ref.child(authService.getUserID()).child(profileInformation).observe(.value) { snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
-                handler(dictionary)
+                let profileDetails =
+                ProfileInfo.init(email: dictionary["email"] as! String, phone: dictionary["phone"] as! String, name: dictionary["name"] as! String, city: dictionary["city"] as! String, experience: dictionary["experience"] as! String, birthday: dictionary["bday"] as! String, brand: dictionary["brand"] as! String, model: dictionary["model"] as! String, year: dictionary["year"] as! String, volume: dictionary["volume"] as! String, mileage: dictionary["mileage"] as! String)
+                handler(profileDetails)
             }
         }
     }
     
-    func uploadProfileInfo(profileInfo: ProfileInfoNew) {
+    func uploadProfileInfo(profileInfo: ProfileInfo) {
         
         let parent = ref.child(authService.getUserID()).child(profileInformation)
-        let values = ["id": parent.key!, "email": profileInfo.email, "phone": profileInfo.phone, "name": profileInfo.name, "city": profileInfo.city, "experience": profileInfo.experience, "bday": profileInfo.bday,"brand": profileInfo.brand, "model": profileInfo.model, "year": profileInfo.year, "volume": profileInfo.volume, "mileage": profileInfo.mileage] as [String: Any]
+        let values = ["id": parent.key!, "email": profileInfo.email, "phone": profileInfo.phone, "name": profileInfo.name, "city": profileInfo.city, "experience": profileInfo.experience, "bday": profileInfo.birthday,"brand": profileInfo.brand, "model": profileInfo.model, "year": profileInfo.year, "volume": profileInfo.volume, "mileage": profileInfo.mileage] as [String: Any]
         parent.updateChildValues(values)
     }
 }

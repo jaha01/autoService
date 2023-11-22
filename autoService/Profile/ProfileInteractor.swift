@@ -11,9 +11,9 @@ final class ProfileInteractor {
     
     var presenter: ProfilePresenter!
     var router: ProfileRouter!
-    
-    let authService: AuthService
-    let dbService: DBService
+    // MARK: - Private properties
+    private let authService: AuthService
+    private let dbService: DBService
     
     init(authService: AuthService,
          dbService: DBService) {
@@ -21,22 +21,18 @@ final class ProfileInteractor {
         self.dbService = dbService
     }
     
-    
+    // MARK: - Public methods
     func onViewDidLoad() {
-        dbService.setupProfileInfoListeners { info in
-            let ProfileDetails =
-            ProfileInfoNew.init(email: info["email"] as! String, phone: info["phone"] as! String, name: info["name"] as! String, city: info["city"] as! String, experience: info["experience"] as! String, bday: info["bday"] as! String, brand: info["brand"] as! String, model: info["model"] as! String, year: info["year"] as! String, volume: info["volume"] as! String, mileage: info["mileage"] as! String)
-
-            self.presenter.prepareToShowProfileData(ProfileDetails)
+        dbService.setupProfileInfoListeners { profileInfo in
+            self.presenter.prepareToShowProfileData(profileInfo)
         }
-
     }
     
     func goToCarsModel() {
         router.goToCarsModel()
     }
     
-    func updatePofileInfo(info: ProfileInfoNew) {
+    func updateProfileInfo(info: ProfileInfo) {
         dbService.uploadProfileInfo(profileInfo: info)
     }
     

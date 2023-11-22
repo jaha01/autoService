@@ -9,7 +9,7 @@ import UIKit
 
 final class ProfileRouter {
     weak var viewController: UIViewController!
-    
+    // MARK: - Public methods
     func goToLogin() {
         let login: UIViewController = LoginBuilder().build()
         let window = viewController.view.window

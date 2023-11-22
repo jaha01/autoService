@@ -8,10 +8,10 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
-
+    
     var interactor: ProfileInteractor!
     var profileInfo = [ProfileInfo]()
-    var info: ProfileInfoNew!
+    var info: ProfileInfo!
     
     // MARK: - Pivate properties
     
@@ -44,7 +44,7 @@ final class ProfileViewController: UIViewController {
         textfield.translatesAutoresizingMaskIntoConstraints = false
         return textfield
     }()
-
+    
     private let phone: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Телефон"
@@ -66,7 +66,7 @@ final class ProfileViewController: UIViewController {
         textfield.placeholder = "Город"
         textfield.isUserInteractionEnabled = false
         textfield.translatesAutoresizingMaskIntoConstraints = false
-//        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        //        textfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         return textfield
     }()
     
@@ -78,7 +78,7 @@ final class ProfileViewController: UIViewController {
         return textfield
     }()
     
-    private let bday: UITextField = {
+    private let birthday: UITextField = {
         let textfield = UITextField()
         textfield.placeholder = "Дата Рождения"
         textfield.isUserInteractionEnabled = false
@@ -133,7 +133,7 @@ final class ProfileViewController: UIViewController {
         view.isScrollEnabled = true
         view.layer.cornerRadius = 10
         return view
-        }()
+    }()
     
     private let personLabel: UILabel = {
         let label = UILabel()
@@ -181,12 +181,12 @@ final class ProfileViewController: UIViewController {
     }()
     
     // MARK: - Public method
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         view.backgroundColor = .systemGray4
-
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didTapEdit))
         settings()
@@ -199,13 +199,13 @@ final class ProfileViewController: UIViewController {
         AlertManager.showAlert(config: config)
     }
     
-    func setProfileData(item: ProfileInfoNew) {
+    func setProfileData(item: ProfileInfo) {
         email.text = item.email
         phone.text = item.phone
         name.text = item.name
         city.text = item.city
         experience.text = item.experience
-        bday.text = item.bday
+        birthday.text = item.birthday
         brand.text = item.brand
         model.text = item.model
         year.text = item.year
@@ -219,53 +219,54 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc private func didTapEdit() {
-        email.isUserInteractionEnabled.toggle()
-        phone.isUserInteractionEnabled.toggle()
-        name.isUserInteractionEnabled.toggle()
-        city.isUserInteractionEnabled.toggle()
-        experience.isUserInteractionEnabled.toggle()
-        bday.isUserInteractionEnabled.toggle()
-        brand.isUserInteractionEnabled.toggle()
-        model.isUserInteractionEnabled.toggle()
-        year.isUserInteractionEnabled.toggle()
-        volume.isUserInteractionEnabled.toggle()
-        mileage.isUserInteractionEnabled.toggle()
-        personLabel.isUserInteractionEnabled.toggle()
-        carLabel.isUserInteractionEnabled.toggle()
-        if email.isUserInteractionEnabled {
-            navigationItem.leftBarButtonItem?.title = "Done"
-        } else {
-            navigationItem.leftBarButtonItem?.title = "Edit"
-            saveInfo()
-            interactor.updatePofileInfo(info: info)
-        }
-        
+        /*email.isUserInteractionEnabled.toggle()
+         phone.isUserInteractionEnabled.toggle()
+         name.isUserInteractionEnabled.toggle()
+         city.isUserInteractionEnabled.toggle()
+         experience.isUserInteractionEnabled.toggle()
+         bday.isUserInteractionEnabled.toggle()
+         brand.isUserInteractionEnabled.toggle()
+         model.isUserInteractionEnabled.toggle()
+         year.isUserInteractionEnabled.toggle()
+         volume.isUserInteractionEnabled.toggle()
+         mileage.isUserInteractionEnabled.toggle()
+         personLabel.isUserInteractionEnabled.toggle()
+         carLabel.isUserInteractionEnabled.toggle()
+         if email.isUserInteractionEnabled {
+         navigationItem.leftBarButtonItem?.title = "Done"
+         } else {
+         navigationItem.leftBarButtonItem?.title = "Edit"
+         saveInfo()
+         interactor.updatePofileInfo(info: info)
+         }
+         */
+        interactor.goToCarsModel()
     }
     
     func saveInfo() {
-        info = ProfileInfoNew.init(email: email.text!, phone: phone.text!, name: name.text!, city: city.text!, experience: experience.text!, bday: bday.text!, brand: brand.text!, model: model.text!, year: year.text!, volume: volume.text!, mileage: mileage.text!)
+        info = ProfileInfo.init(email: email.text!, phone: phone.text!, name: name.text!, city: city.text!, experience: experience.text!, birthday: birthday.text!, brand: brand.text!, model: model.text!, year: year.text!, volume: volume.text!, mileage: mileage.text!)
     }
     
     @objc private func bdayHandleDatePicker(sender: UIDatePicker) {
-          let dateFormatter = DateFormatter()
-          dateFormatter.dateFormat = "dd MMM yyyy"
-          bday.text = dateFormatter.string(from: sender.date)
-     }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        birthday.text = dateFormatter.string(from: sender.date)
+    }
     
     @objc private func experienceHandleDatePicker(sender: UIDatePicker) {
-          let dateFormatter = DateFormatter()
-          dateFormatter.dateFormat = "dd MMM yyyy"
-          experience.text = dateFormatter.string(from: sender.date)
-     }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        experience.text = dateFormatter.string(from: sender.date)
+    }
     
     @objc private func yearHandleDatePicker(sender: UIDatePicker) {
-          let dateFormatter = DateFormatter()
-          dateFormatter.dateFormat = "dd MMM yyyy"
-          year.text = dateFormatter.string(from: sender.date)
-     }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        year.text = dateFormatter.string(from: sender.date)
+    }
     
     @objc private func datePickerDone() {
-        bday.resignFirstResponder()
+        birthday.resignFirstResponder()
         experience.resignFirstResponder()
         year.resignFirstResponder()
     }
@@ -279,7 +280,7 @@ final class ProfileViewController: UIViewController {
         scrollView.addSubview(name)
         scrollView.addSubview(city)
         scrollView.addSubview(experience)
-        scrollView.addSubview(bday)
+        scrollView.addSubview(birthday)
         scrollView.addSubview(brand)
         scrollView.addSubview(model)
         scrollView.addSubview(year)
@@ -288,7 +289,7 @@ final class ProfileViewController: UIViewController {
         scrollView.addSubview(personLabel)
         scrollView.addSubview(carLabel)
         
-        bday.inputView = bdayDatePicker
+        birthday.inputView = bdayDatePicker
         experience.inputView = experienceDatePicker
         year.inputView = modelYaerDatePicker
         
@@ -296,7 +297,7 @@ final class ProfileViewController: UIViewController {
         let toolBar = UIToolbar.init(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 44))
         toolBar.setItems([UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil), doneButton], animated: true)
         bdayDatePicker.addTarget(self, action: #selector(bdayHandleDatePicker(sender:)), for: .valueChanged)
-        bday.inputAccessoryView = toolBar
+        birthday.inputAccessoryView = toolBar
         experienceDatePicker.addTarget(self, action: #selector(experienceHandleDatePicker(sender:)), for: .valueChanged)
         experience.inputAccessoryView = toolBar
         modelYaerDatePicker.addTarget(self, action: #selector(yearHandleDatePicker(sender:)), for: .valueChanged)
@@ -353,12 +354,12 @@ final class ProfileViewController: UIViewController {
             experience.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             experience.bottomAnchor.constraint(equalTo: experience.topAnchor, constant: 50),
             
-            bday.topAnchor.constraint(equalTo: experience.bottomAnchor, constant: 15),
-            bday.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            bday.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            bday.bottomAnchor.constraint(equalTo: bday.topAnchor, constant: 50),
+            birthday.topAnchor.constraint(equalTo: experience.bottomAnchor, constant: 15),
+            birthday.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            birthday.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            birthday.bottomAnchor.constraint(equalTo: birthday.topAnchor, constant: 50),
             
-            carLabel.topAnchor.constraint(equalTo: bday.bottomAnchor, constant: 15),
+            carLabel.topAnchor.constraint(equalTo: birthday.bottomAnchor, constant: 15),
             carLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             carLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             carLabel.bottomAnchor.constraint(equalTo: carLabel.topAnchor, constant: 20),

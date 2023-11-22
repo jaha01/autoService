@@ -13,12 +13,12 @@ struct CarsSuggestions: Codable {
 
 struct CarsList: Codable {
     let value: String
-    let unrestricted_value: String
+    let unrestrictedValue: String
     let data: CarData
 }
 
 struct CarData: Codable {
     let id: String
     let name: String
-    let name_ru: String
+    let nameRu: String
 }

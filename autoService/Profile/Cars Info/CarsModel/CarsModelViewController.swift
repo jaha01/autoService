@@ -13,10 +13,12 @@ final class CarsModelViewController: UIViewController {
     // MARK: - Private properties
     var interactor: CarsModelInteractor!
     private let searchVC = UISearchController(searchResultsController: nil)
-    private let list = [String]()
+    private var carsList = [String]()
     
-    private let tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let table = UITableView()
+        table.delegate = self
+        table.dataSource = self
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
@@ -26,18 +28,27 @@ final class CarsModelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.addSubview(tableView)
         navigationItem.title = "Cars List"
-        tableView.delegate = self
-        tableView.dataSource = self
         setConstraints()
         createSearchBar()
-        interactor.loadCarsList(query: "ford")
+        interactor.loadCarsList(query: "fo")
         
     }
     
+    func pushCarsList(cars: [String]) {
+        carsList = cars
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
     
+    func showErrorAlert(config: AlertConfig) {
+        AlertManager.showAlert(config: config)
+    }
+    
+    //MARK: Private methods
     private func createSearchBar() {
         navigationItem.searchController = searchVC
         searchVC.searchBar.delegate = self
@@ -59,18 +70,18 @@ final class CarsModelViewController: UIViewController {
 extension CarsModelViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return carsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "BMW"
+        cell.textLabel?.text = carsList[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
     }
     
 }

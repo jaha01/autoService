@@ -7,8 +7,11 @@
 
 import Foundation
 
-class NetworkClient : NSObject {
-    private var networkConfiguration = NetworkConfig() // init
+class NetworkService : NSObject {
+    
+    // MARK: - Private properties
+    private var networkConfiguration = NetworkConfig()
+    private var dataTask: URLSessionDataTask? = nil
     private let jsonDecoder = JSONDecoder()
     
     //Конфигурация
@@ -16,37 +19,29 @@ class NetworkClient : NSObject {
         let configuration =  URLSessionConfiguration.default
         return configuration
     }()
-
-//    init(network: NetworkConfig) {
-//        let url = network
-//    }
-   
+    
     lazy var urlSession: URLSession? = {
         return URLSession.init(configuration: configuration)
     }()
     
-    private var dataTask: URLSessionDataTask? = nil
-    
-    func request<T:Codable>(path: String, method: String? = nil, query: String? = nil, completion: @escaping(Result<T,Error>)->Void) {
-         print("request - \(networkConfiguration.url)\(path)")
-        guard let url = URL(string: "\(networkConfiguration.url)") else {
+    // MARK: - Public methods
+    func request<T:Codable>(path: String, method: String? = nil, body: Codable? = nil, completion: @escaping(Result<T,Error>)->Void) {
+        guard let url = URL(string: "\(networkConfiguration.url)\(path)") else {
             completion(.failure(NetworkError.fetching("Wrong uri")))
-            print("error")
             return
         }
-        var urlRequest = URLRequest(url: url)
-        let headers = networkConfiguration.headers()
-        let json: [String: Any] = ["query": query as Any]
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
+        var urlRequest = URLRequest(url: url)
+        if let body = body, let jsonData = body.toJsonData() {
+            urlRequest.httpBody = jsonData
+        }
+        let headers = networkConfiguration.headers()
         for header in headers {
             urlRequest.setValue(header.value, forHTTPHeaderField: header.key)
         }
         if method != nil {
             urlRequest.httpMethod = method
         }
-        urlRequest.httpBody = jsonData
-        
         
         self.dataTask = urlSession?.dataTask(with: urlRequest, completionHandler: { [weak self] data, response, error in
             guard let self = self else {return}
@@ -55,17 +50,11 @@ class NetworkClient : NSObject {
                 switch response.statusCode {
                 case 200..<400:
                     let json = String.init(data: data, encoding: .utf8)
-                    print("json = \(json)")
                     self.jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
                     do {
                         let content = try self.jsonDecoder.decode(T.self, from: data)
                         completion(.success(content))
                     } catch {
-                        print(error)
-                    }
-                    if let content = try? self.jsonDecoder.decode(T.self, from: data) {
-                        completion(.success(content))
-                    } else {
                         completion(.failure(NetworkError.fetching("Failed parsing")))
                     }
                 default:
@@ -78,3 +67,4 @@ class NetworkClient : NSObject {
         self.dataTask?.resume()
     }
 }
+

@@ -8,28 +8,27 @@
 import Foundation
 
 final class CarsService {
+    //MARK: - Private properties
+    private var networkClient: NetworkService
     
-    private var networkClient: NetworkClient
-    
-    init(networkClient: NetworkClient) {
+    init(networkClient: NetworkService) {
         self.networkClient = networkClient
     }
-    
+    //MARK: - Public methods
     func loadCars(query: String, completion: @escaping(Result<[String], Error>)->Void) {
-        // можно ли так делать??? с path
-        networkClient.request(path: "https://qr2.mydigimenu.com/36f62b7c-e406-48f5-870f-02512e313c7a/menu-page?menuID=323", method: "POST", query: query) { (result: Result<CarsSuggestions, Error>) in
+        networkClient.request(path: Requests.common.path, method: "POST", body: CarsListRequestBody(query: query)) { (result: Result<CarsSuggestions, Error>) in
             switch result {
             case .success(let data) :
-                print("data = \(data)")
-                //completion(.success(data))
-                // map. -> convert to array
+                let brands = data.suggestions.map({ $0.data.nameRu
+                })
+                completion(.success(brands))
             case .failure(let error):
-                completion(.failure(NetworkError.fetching("Что-то пошло не так...")))
                 if let customError = error as? NetworkError {
                     print(customError.localizedDescription)
                 } else {
                     print(error)
                 }
+                completion(.failure(NetworkError.fetching("Что-то пошло не так...")))
             }
         }
     }
