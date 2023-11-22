@@ -53,7 +53,6 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public methods
     func setup(_ data: OnboardingInfo) {
-        print("img = \(data)")
         welcomeImages.image = UIImage(named: data.imageName)
         nextButton.setTitle("\(data.buttonName)", for: .normal)
     }
@@ -61,7 +60,6 @@ final class OnboardingCollectionViewCell: UICollectionViewCell {
     // MARK: - Private methods
     
     @objc private func nextBtnClicked() {
-        print("Button tapped")
         delegate?.onButtonClick()
     }
     
