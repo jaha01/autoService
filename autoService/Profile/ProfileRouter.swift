@@ -16,9 +16,19 @@ final class ProfileRouter {
         window?.rootViewController = login
     }
     
-    func goToCarsModel() {
-        let vc = CarsModelBuilder().build()
-        viewController.navigationController?.pushViewController(vc, animated: true)
+    func listCarsBrand() {
+
+        let tableVC = CarsModelBuilder().build()
+        let nav = UINavigationController(rootViewController: tableVC)
+        nav.navigationBar.backgroundColor = .white
+        if let sheet = nav.sheetPresentationController{
+            sheet.detents = [.medium(), .large()]
+            sheet.preferredCornerRadius = 25
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+        }
+        
+        viewController.present(nav, animated: true, completion: nil)
     }
 
 }

@@ -7,11 +7,12 @@
 
 import UIKit
 
-final class ProfileViewController: UIViewController {
-    
+final class ProfileViewController: UIViewController, CarsBrand {
+        
     var interactor: ProfileInteractor!
     var profileInfo = [ProfileInfo]()
     var info: ProfileInfo!
+//    let carsModel =
     
     // MARK: - Pivate properties
     
@@ -91,6 +92,7 @@ final class ProfileViewController: UIViewController {
         textfield.placeholder = "Марка"
         textfield.isUserInteractionEnabled = false
         textfield.translatesAutoresizingMaskIntoConstraints = false
+        textfield.addTarget(self, action: #selector(chouseCarBrand), for: .editingDidBegin)
         return textfield
     }()
     
@@ -192,7 +194,11 @@ final class ProfileViewController: UIViewController {
         settings()
         setupConstraints()
         interactor.onViewDidLoad()
-        
+        CarsModelViewController().delegate = self
+    }
+    
+    func choused(brand: String) {
+        self.brand.text = brand // это часть не присваивается, хотся brand не nil
     }
     
     func showErrorAlert(config: AlertConfig) {
@@ -219,32 +225,36 @@ final class ProfileViewController: UIViewController {
     }
     
     @objc private func didTapEdit() {
-        /*email.isUserInteractionEnabled.toggle()
-         phone.isUserInteractionEnabled.toggle()
-         name.isUserInteractionEnabled.toggle()
-         city.isUserInteractionEnabled.toggle()
-         experience.isUserInteractionEnabled.toggle()
-         bday.isUserInteractionEnabled.toggle()
-         brand.isUserInteractionEnabled.toggle()
-         model.isUserInteractionEnabled.toggle()
-         year.isUserInteractionEnabled.toggle()
-         volume.isUserInteractionEnabled.toggle()
-         mileage.isUserInteractionEnabled.toggle()
-         personLabel.isUserInteractionEnabled.toggle()
-         carLabel.isUserInteractionEnabled.toggle()
-         if email.isUserInteractionEnabled {
-         navigationItem.leftBarButtonItem?.title = "Done"
-         } else {
-         navigationItem.leftBarButtonItem?.title = "Edit"
-         saveInfo()
-         interactor.updatePofileInfo(info: info)
-         }
-         */
-        interactor.goToCarsModel()
+        email.isUserInteractionEnabled.toggle()
+        phone.isUserInteractionEnabled.toggle()
+        name.isUserInteractionEnabled.toggle()
+        city.isUserInteractionEnabled.toggle()
+        experience.isUserInteractionEnabled.toggle()
+        birthday.isUserInteractionEnabled.toggle()
+        brand.isUserInteractionEnabled.toggle()
+        model.isUserInteractionEnabled.toggle()
+        year.isUserInteractionEnabled.toggle()
+        volume.isUserInteractionEnabled.toggle()
+        mileage.isUserInteractionEnabled.toggle()
+        personLabel.isUserInteractionEnabled.toggle()
+        carLabel.isUserInteractionEnabled.toggle()
+        if email.isUserInteractionEnabled {
+            navigationItem.leftBarButtonItem?.title = "Done"
+        } else {
+            navigationItem.leftBarButtonItem?.title = "Edit"
+            saveInfo()
+            interactor.updateProfileInfo(info: info)
+        }
+        print("didTapEdit  self.brand.text = \(self.brand.text!)")
     }
     
-    func saveInfo() {
-        info = ProfileInfo.init(email: email.text!, phone: phone.text!, name: name.text!, city: city.text!, experience: experience.text!, birthday: birthday.text!, brand: brand.text!, model: model.text!, year: year.text!, volume: volume.text!, mileage: mileage.text!)
+    @objc private func chouseCarBrand(_ textField: UITextField) {
+        interactor.showCarsBrand()
+    }
+    
+    private func saveInfo() {
+        print("saveInfo  self.brand.text = \(self.brand.text!)")
+        info = ProfileInfo.init(json: ["email": email.text!, "phone": phone.text!, "name": name.text!, "city": city.text!, "experience": experience.text!, "birthday": birthday.text!, "brand": brand.text!, "model": model.text!, "year": year.text!, "volume": volume.text!, "mileage": mileage.text!])
     }
     
     @objc private func bdayHandleDatePicker(sender: UIDatePicker) {

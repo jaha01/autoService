@@ -8,10 +8,19 @@
 import Foundation
 import UIKit
 
+protocol CarsBrand {
+    func choused(brand: String)
+}
+
 final class CarsModelViewController: UIViewController {
     
-    // MARK: - Private properties
+    // MARK: - Public properties
+    
     var interactor: CarsModelInteractor!
+    var delegate: CarsBrand!
+    
+    // MARK: - Private properties
+    
     private let searchVC = UISearchController(searchResultsController: nil)
     private var carsList = [String]()
     
@@ -33,13 +42,14 @@ final class CarsModelViewController: UIViewController {
         navigationItem.title = "Cars List"
         setConstraints()
         createSearchBar()
-        interactor.loadCarsList(query: "fo")
+        interactor.loadCarsList(query: "")
         
     }
     
-    func pushCarsList(cars: [String]) {
+    func showCarsList(cars: [String]) {
         carsList = cars
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
             self.tableView.reloadData()
         }
     }
@@ -48,14 +58,14 @@ final class CarsModelViewController: UIViewController {
         AlertManager.showAlert(config: config)
     }
     
-    //MARK: Private methods
+    //MARK: - Private methods
+    
     private func createSearchBar() {
         navigationItem.searchController = searchVC
         searchVC.searchBar.delegate = self
     }
     
     private func setConstraints() {
-        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
@@ -63,7 +73,6 @@ final class CarsModelViewController: UIViewController {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
 }
 
 
@@ -76,12 +85,20 @@ extension CarsModelViewController: UITableViewDataSource, UITableViewDelegate, U
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = carsList[indexPath.row]
+        cell.selectionStyle = .gray
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
+        delegate = ProfileViewController()
+        delegate?.choused(brand: carsList[indexPath.row])
+//        navigationController?.popViewController(animated: true)
+//        dismiss(animated: true, completion: nil)
+//        dismiss(animated: true) // хочу чтоб после выбора bottom sheet скрылся - не скрывается
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            interactor.loadCarsList(query: searchText)
     }
     
 }

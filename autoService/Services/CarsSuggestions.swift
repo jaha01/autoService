@@ -8,16 +8,16 @@
 import Foundation
 
 struct CarsSuggestions: Codable {
-    let suggestions: [CarsList]
+    let suggestions: [CarInfo]
 }
 
-struct CarsList: Codable {
+struct CarInfo: Codable {
     let value: String
     let unrestrictedValue: String
-    let data: CarData
+    let data: CarNameInfo
 }
 
-struct CarData: Codable {
+struct CarNameInfo: Codable {
     let id: String
     let name: String
     let nameRu: String

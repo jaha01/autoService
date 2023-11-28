@@ -55,7 +55,7 @@ final class DBService {
         ref.child(authService.getUserID()).child(profileInformation).observe(.value) { snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
                 let profileDetails =
-                ProfileInfo.init(email: dictionary["email"] as! String, phone: dictionary["phone"] as! String, name: dictionary["name"] as! String, city: dictionary["city"] as! String, experience: dictionary["experience"] as! String, birthday: dictionary["bday"] as! String, brand: dictionary["brand"] as! String, model: dictionary["model"] as! String, year: dictionary["year"] as! String, volume: dictionary["volume"] as! String, mileage: dictionary["mileage"] as! String)
+                ProfileInfo.init(json: dictionary)
                 handler(profileDetails)
             }
         }
@@ -64,7 +64,7 @@ final class DBService {
     func uploadProfileInfo(profileInfo: ProfileInfo) {
         
         let parent = ref.child(authService.getUserID()).child(profileInformation)
-        let values = ["id": parent.key!, "email": profileInfo.email, "phone": profileInfo.phone, "name": profileInfo.name, "city": profileInfo.city, "experience": profileInfo.experience, "bday": profileInfo.birthday,"brand": profileInfo.brand, "model": profileInfo.model, "year": profileInfo.year, "volume": profileInfo.volume, "mileage": profileInfo.mileage] as [String: Any]
+        let values = profileInfo.toJson()
         parent.updateChildValues(values)
     }
 }

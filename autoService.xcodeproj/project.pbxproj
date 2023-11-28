@@ -24,6 +24,8 @@
 		443400E72AF1A31B00A2E9F3 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443400E62AF1A31B00A2E9F3 /* ProfileRouter.swift */; };
 		44610E9B2B0E8DCE00FD4D4C /* Encodable+Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610E9A2B0E8DCE00FD4D4C /* Encodable+Json.swift */; };
 		44610E9D2B0E8E0E00FD4D4C /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610E9C2B0E8E0E00FD4D4C /* Requests.swift */; };
+		44610E9F2B140D0200FD4D4C /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610E9E2B140D0200FD4D4C /* HttpMethod.swift */; };
+		44610EA12B140D7E00FD4D4C /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EA02B140D7E00FD4D4C /* RequestBody.swift */; };
 		44979C2B2B015B1A0024A225 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44979C2A2B015B1A0024A225 /* ProfileInfo.swift */; };
 		44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */; };
 		44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */; };
@@ -94,6 +96,8 @@
 		443400E62AF1A31B00A2E9F3 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		44610E9A2B0E8DCE00FD4D4C /* Encodable+Json.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Json.swift"; sourceTree = "<group>"; };
 		44610E9C2B0E8E0E00FD4D4C /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		44610E9E2B140D0200FD4D4C /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		44610EA02B140D7E00FD4D4C /* RequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
 		44979C2A2B015B1A0024A225 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
 		44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 				44D7AB512B055B7E0025CB73 /* NetworkService.swift */,
 				44D7AB5B2B07F3DC0025CB73 /* CarsSuggestions.swift */,
 				44610E9C2B0E8E0E00FD4D4C /* Requests.swift */,
+				44610EA02B140D7E00FD4D4C /* RequestBody.swift */,
+				44610E9E2B140D0200FD4D4C /* HttpMethod.swift */,
 				44D7AB4D2B05571C0025CB73 /* NetworkConfig.swift */,
 			);
 			path = Services;
@@ -542,9 +548,11 @@
 				44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */,
 				44C614B32ACE0D5000162DA9 /* LoginPresenter.swift in Sources */,
 				4406071D2AE0727800EE8807 /* ForgotPasswordRouter.swift in Sources */,
+				44610E9F2B140D0200FD4D4C /* HttpMethod.swift in Sources */,
 				44D7AB502B055AD70025CB73 /* CarsService.swift in Sources */,
 				44DD0B552AD20C32005019B6 /* ForgotPasswordBuilder.swift in Sources */,
 				44D7AB522B055B7E0025CB73 /* NetworkService.swift in Sources */,
+				44610EA12B140D7E00FD4D4C /* RequestBody.swift in Sources */,
 				44979C2B2B015B1A0024A225 /* ProfileInfo.swift in Sources */,
 				44610E9B2B0E8DCE00FD4D4C /* Encodable+Json.swift in Sources */,
 				00BD3B5E2ABB756300AB67B3 /* OnboardingBuilder.swift in Sources */,

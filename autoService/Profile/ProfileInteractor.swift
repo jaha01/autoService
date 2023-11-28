@@ -23,13 +23,14 @@ final class ProfileInteractor {
     
     // MARK: - Public methods
     func onViewDidLoad() {
-        dbService.setupProfileInfoListeners { profileInfo in
+        dbService.setupProfileInfoListeners { [weak self] profileInfo in
+            guard let self = self else { return }
             self.presenter.prepareToShowProfileData(profileInfo)
         }
     }
     
-    func goToCarsModel() {
-        router.goToCarsModel()
+    func showCarsBrand() {
+        router.listCarsBrand()
     }
     
     func updateProfileInfo(info: ProfileInfo) {

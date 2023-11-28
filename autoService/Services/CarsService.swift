@@ -15,13 +15,11 @@ final class CarsService {
         self.networkClient = networkClient
     }
     //MARK: - Public methods
-    func loadCars(query: String, completion: @escaping(Result<[String], Error>)->Void) {
-        networkClient.request(path: Requests.common.path, method: "POST", body: CarsListRequestBody(query: query)) { (result: Result<CarsSuggestions, Error>) in
+    func loadCars(query: String, completion: @escaping(Result<CarsSuggestions, Error>)->Void) {
+        networkClient.request(path: Requests.carsList.path, method: HttpMethod.post.rawValue, body: CarsListRequestBody(query: query)) { (result: Result<CarsSuggestions, Error>) in
             switch result {
             case .success(let data) :
-                let brands = data.suggestions.map({ $0.data.nameRu
-                })
-                completion(.success(brands))
+                completion(.success(data))
             case .failure(let error):
                 if let customError = error as? NetworkError {
                     print(customError.localizedDescription)

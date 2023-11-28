@@ -8,17 +8,12 @@
 import Foundation
 
 enum Requests {
-    case common
+    case carsList
     
     var path: String {
         switch self {
-        case .common:
+        case .carsList:
             return "/suggestions/api/4_1/rs/suggest/car_brand"
         }
     }
-}
-
-
-struct CarsListRequestBody: Codable {
-    let query: String
 }

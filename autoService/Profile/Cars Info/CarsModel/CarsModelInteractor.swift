@@ -9,22 +9,27 @@ import Foundation
 
 final class CarsModelInteractor {
     
-    // MARK: - Private properties
+    // MARK: - Public properties
     var presenter: CarsModelPresenter!
+    
+    // MARK: - Private properties
+
     private let carsService: CarsService
+    
+    // MARK: - Public methods
     
     init(carsService: CarsService) {
         self.carsService = carsService
     }
-    // MARK: - Public properties
+    
     func loadCarsList(query: String) {
-        carsService.loadCars(query: query) { [weak self] (result: Result<[String], Error>)  in
+        carsService.loadCars(query: query) { [weak self] (result: Result<CarsSuggestions, Error>)  in
             guard let self = self else { return }
             switch result {
             case .success(let data):
-                self.presenter.prepareCarsList(cars: data)
+                self.presenter.prepareCarsList(cars: data.suggestions)
             case .failure(let error):
-                self.presenter.showErrorGetCarsList(error: error.localizedDescription)
+                self.presenter.showError(error: error.localizedDescription)
             }
         }
     }

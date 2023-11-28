@@ -10,11 +10,14 @@ import Foundation
 final class CarsModelPresenter {
     weak var controller: CarsModelViewController!
     
-    func prepareCarsList(cars: [String]) {
-        controller.pushCarsList(cars: cars)
+    func prepareCarsList(cars: [CarInfo]) {
+        
+        let brands = cars.map { $0.data.nameRu
+        }
+        controller.showCarsList(cars: brands)
     }
     
-    func showErrorGetCarsList(error: String) {
+    func showError(error: String) {
         controller.showErrorAlert(config: AlertConfig(title: "Error", message: error))
     }
 }
