@@ -62,7 +62,6 @@ final class DBService {
     }
     
     func uploadProfileInfo(profileInfo: ProfileInfo) {
-        
         let parent = ref.child(authService.getUserID()).child(profileInformation)
         let values = profileInfo.toJson()
         parent.updateChildValues(values)

@@ -9,11 +9,17 @@ import UIKit
 
 final class ProfileInteractor {
     
+    // MARK: - Public properties
+    
     var presenter: ProfilePresenter!
     var router: ProfileRouter!
+    
     // MARK: - Private properties
+    
     private let authService: AuthService
     private let dbService: DBService
+    
+    // MARK: - Initializer
     
     init(authService: AuthService,
          dbService: DBService) {

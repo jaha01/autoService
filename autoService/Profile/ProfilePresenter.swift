@@ -9,8 +9,12 @@ import UIKit
 
 final class ProfilePresenter {
     
+    // MARK: - Public properties
+    
     weak var viewController: ProfileViewController!
+    
     // MARK: - Public methods
+    
     func showError(config: AlertConfig) {
         viewController.showErrorAlert(config: config)
     }

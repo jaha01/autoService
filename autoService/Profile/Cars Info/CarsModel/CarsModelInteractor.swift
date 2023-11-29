@@ -10,17 +10,20 @@ import Foundation
 final class CarsModelInteractor {
     
     // MARK: - Public properties
+    
     var presenter: CarsModelPresenter!
     
     // MARK: - Private properties
 
     private let carsService: CarsService
     
-    // MARK: - Public methods
+    // MARK: - Initializer
     
     init(carsService: CarsService) {
         self.carsService = carsService
     }
+
+    // MARK: - Public methods
     
     func loadCarsList(query: String) {
         carsService.loadCars(query: query) { [weak self] (result: Result<CarsSuggestions, Error>)  in

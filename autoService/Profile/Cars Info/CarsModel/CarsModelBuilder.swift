@@ -14,10 +14,13 @@ final class CarsModelBuilder {
         let controller = CarsModelViewController()
         let interactor = CarsModelInteractor(carsService: DI.shared.carsService)
         let presenter = CarsModelPresenter()
+        let profileViewController = ProfileViewController()
         
         controller.interactor = interactor
         interactor.presenter = presenter
         presenter.controller = controller
+        controller.profileViewController = profileViewController
+//        profileViewController.carsModel = controller
         
         return controller
     }

@@ -36,7 +36,17 @@ struct ProfileInfo {
     }
     
     func toJson() -> [String: Any] {
-        return ["email": self.email, "phone": self.phone, "name": self.name, "city": self.city, "experience": self.experience, "birthday": self.birthday,"brand": self.brand, "model": self.model, "year": self.year, "volume": self.volume, "mileage": self.mileage] as [String: Any]
+        return ["email": self.email,
+                "phone": self.phone,
+                "name": self.name,
+                "city": self.city,
+                "experience": self.experience,
+                "birthday": self.birthday,
+                "brand": self.brand,
+                "model": self.model,
+                "year": self.year,
+                "volume": self.volume,
+                "mileage": self.mileage] as [String: Any]
     }
 
 }

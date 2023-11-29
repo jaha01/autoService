@@ -8,8 +8,13 @@
 import UIKit
 
 final class ProfileRouter {
+    
+    // MARK: - Public properties
+    
     weak var viewController: UIViewController!
+   
     // MARK: - Public methods
+    
     func goToLogin() {
         let login: UIViewController = LoginBuilder().build()
         let window = viewController.view.window
@@ -17,7 +22,6 @@ final class ProfileRouter {
     }
     
     func listCarsBrand() {
-
         let tableVC = CarsModelBuilder().build()
         let nav = UINavigationController(rootViewController: tableVC)
         nav.navigationBar.backgroundColor = .white
@@ -26,8 +30,7 @@ final class ProfileRouter {
             sheet.preferredCornerRadius = 25
             sheet.prefersScrollingExpandsWhenScrolledToEdge = false
             sheet.prefersGrabberVisible = true
-        }
-        
+        }        
         viewController.present(nav, animated: true, completion: nil)
     }
 
