@@ -16,6 +16,7 @@ final class DBService {
     private var allItems = [JournalItem]()
     private let authService: AuthService
     private let journalHistoryItems = "journalHistoryItems"
+    private let profileInformation = "profileInformation"
     
     init(authService: AuthService) {
         self.authService = authService
@@ -45,7 +46,24 @@ final class DBService {
         id.updateChildValues(values)
     }
     
+    
     func removeJournalItem(id: String){
         ref.child(authService.getUserID()).child(journalHistoryItems).child(id).removeValue()
+    }
+    
+    func setupProfileInfoListeners(handler: @escaping (ProfileInfo) -> Void) {
+        ref.child(authService.getUserID()).child(profileInformation).observe(.value) { snapshot in
+            if let dictionary = snapshot.value as? [String: Any] {
+                let profileDetails =
+                ProfileInfo(json: dictionary)
+                handler(profileDetails)
+            }
+        }
+    }
+    
+    func uploadProfileInfo(profileInfo: ProfileInfo) {
+        let parent = ref.child(authService.getUserID()).child(profileInformation)
+        let values = profileInfo.toJson()
+        parent.updateChildValues(values)
     }
 }

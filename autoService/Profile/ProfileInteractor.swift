@@ -9,13 +9,38 @@ import UIKit
 
 final class ProfileInteractor {
     
+    // MARK: - Public properties
+    
     var presenter: ProfilePresenter!
     var router: ProfileRouter!
     
-    let authService: AuthService
+    // MARK: - Private properties
     
-    init(authService: AuthService) {
+    private let authService: AuthService
+    private let dbService: DBService
+    
+    // MARK: - Initializer
+    
+    init(authService: AuthService,
+         dbService: DBService) {
         self.authService = authService
+        self.dbService = dbService
+    }
+    
+    // MARK: - Public methods
+    func onViewDidLoad() {
+        dbService.setupProfileInfoListeners { [weak self] profileInfo in
+            guard let self = self else { return }
+            self.presenter.prepareToShowProfileData(profileInfo)
+        }
+    }
+    
+    func showCarsBrand() {
+        router.showListCarsBrand()
+    }
+    
+    func updateProfileInfo(info: ProfileInfo) {
+        dbService.uploadProfileInfo(profileInfo: info)
     }
     
     func didTapSignOut() {

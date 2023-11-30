@@ -106,4 +106,9 @@ final class AuthService {
         guard let userID = Auth.auth().currentUser?.uid else { return ""}
         return userID
     }
+
+    public func getUserEmail() -> String {
+        guard let email = Auth.auth().currentUser?.email else { return ""}
+        return email
+    }
 }
