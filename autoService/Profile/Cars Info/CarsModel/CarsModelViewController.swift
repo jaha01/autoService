@@ -75,7 +75,7 @@ final class CarsModelViewController: UIViewController {
     }
 }
 
-
+// MARK: - UITableViewDataSource, UITableViewDelegate implementation
 extension CarsModelViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -95,6 +95,7 @@ extension CarsModelViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+// MARK - UISearchBarDelegate implementation
 extension CarsModelViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
