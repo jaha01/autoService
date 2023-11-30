@@ -8,15 +8,19 @@
 import Foundation
 
 final class CarsService {
+    
     //MARK: - Private properties
+    
     private var networkClient: NetworkService
     
     init(networkClient: NetworkService) {
         self.networkClient = networkClient
     }
+    
     //MARK: - Public methods
+    
     func loadCars(query: String, completion: @escaping(Result<CarsSuggestions, Error>)->Void) {
-        networkClient.request(path: Requests.carsList.path, method: HttpMethod.post.rawValue, body: CarsListRequestBody(query: query)) { (result: Result<CarsSuggestions, Error>) in
+        networkClient.request(path: Requests.carsList.path, method: .post, body: CarsListRequestBody(query: query)) { (result: Result<CarsSuggestions, Error>) in
             switch result {
             case .success(let data) :
                 completion(.success(data))

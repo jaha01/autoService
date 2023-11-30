@@ -10,6 +10,7 @@ import Foundation
 class NetworkService : NSObject {
     
     // MARK: - Private properties
+    
     private var networkConfiguration = NetworkConfig()
     private var dataTask: URLSessionDataTask? = nil
     private let jsonDecoder = JSONDecoder()
@@ -25,7 +26,8 @@ class NetworkService : NSObject {
     }()
     
     // MARK: - Public methods
-    func request<T:Codable>(path: String, method: String? = nil, body: Codable? = nil, completion: @escaping(Result<T,Error>)->Void) {
+    
+    func request<T:Codable>(path: String, method: HttpMethod = .get, body: Codable? = nil, completion: @escaping(Result<T,Error>)->Void) {
         guard let url = URL(string: "\(networkConfiguration.url)\(path)") else {
             completion(.failure(NetworkError.fetching("Wrong uri")))
             return
@@ -39,9 +41,7 @@ class NetworkService : NSObject {
         for header in headers {
             urlRequest.setValue(header.value, forHTTPHeaderField: header.key)
         }
-        if method != nil {
-            urlRequest.httpMethod = method
-        }
+        urlRequest.httpMethod = method.rawValue
         
         self.dataTask = urlSession?.dataTask(with: urlRequest, completionHandler: { [weak self] data, response, error in
             guard let self = self else {return}
