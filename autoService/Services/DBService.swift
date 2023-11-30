@@ -55,7 +55,7 @@ final class DBService {
         ref.child(authService.getUserID()).child(profileInformation).observe(.value) { snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
                 let profileDetails =
-                ProfileInfo.init(json: dictionary)
+                ProfileInfo(json: dictionary)
                 handler(profileDetails)
             }
         }

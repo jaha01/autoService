@@ -7,16 +7,13 @@
 
 import UIKit
 
-final class ProfileViewController: UIViewController, CarsModelViewControllerDelegate {
+final class ProfileViewController: UIViewController {
     
     // MARK: - Public properties
     
     var interactor: ProfileInteractor!
-    var profileInfo = [ProfileInfo]()
-    var info: ProfileInfo!
-    //    let carsModel =
     
-    // MARK: - Pivate properties
+    // MARK: - Private properties
     
     private let photoView: UIView = {
         let view = UIView()
@@ -184,8 +181,6 @@ final class ProfileViewController: UIViewController, CarsModelViewControllerDele
         return datePicker
     }()
     
-    private var properties = [UIView]()
-    
     // MARK: - Public method
     
     override func viewDidLoad() {
@@ -196,28 +191,10 @@ final class ProfileViewController: UIViewController, CarsModelViewControllerDele
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(didTapEdit))
         
-        properties = [email,
-                      phone,
-                      name,
-                      city,
-                      experience,
-                      birthday,
-                      brand,
-                      model,
-                      year,
-                      volume,
-                      mileage,
-                      personLabel,
-                      carLabel
-        ]
         setupViews()
         setupConstraints()
         interactor.onViewDidLoad()
         CarsModelViewController().delegate = self
-    }
-    
-    func chosen(brand: String) {
-        self.brand.text = brand // это часть не присваивается, хотся brand не nil
     }
     
     func showErrorAlert(config: AlertConfig) {
@@ -244,15 +221,26 @@ final class ProfileViewController: UIViewController, CarsModelViewControllerDele
     }
     
     @objc private func didTapEdit() {
-        for property in properties {
-            property.isUserInteractionEnabled.toggle()
+        let profileInputs = [email,
+                             phone,
+                             name,
+                             city,
+                             experience,
+                             birthday,
+                             brand,
+                             model,
+                             year,
+                             volume,
+                             mileage
+                            ]
+        for input in profileInputs {
+            input.isUserInteractionEnabled.toggle()
         }
         if email.isUserInteractionEnabled {
             navigationItem.leftBarButtonItem?.title = "Done"
         } else {
             navigationItem.leftBarButtonItem?.title = "Edit"
             saveInfo()
-            interactor.updateProfileInfo(info: info)
         }
     }
     
@@ -262,17 +250,19 @@ final class ProfileViewController: UIViewController, CarsModelViewControllerDele
     
     private func saveInfo() {
         print("saveInfo  self.brand.text = \(self.brand.text!)")
-        info = ProfileInfo.init(json: ["email": email.text!,
-                                       "phone": phone.text!,
-                                       "name": name.text!,
-                                       "city": city.text!,
-                                       "experience": experience.text!,
-                                       "birthday": birthday.text!,
-                                       "brand": brand.text!,
-                                       "model": model.text!,
-                                       "year": year.text!,
-                                       "volume": volume.text!,
-                                       "mileage": mileage.text!])
+        let info = ProfileInfo(email: email.text!,
+                           phone: phone.text!,
+                           name: name.text!,
+                           city: city.text!,
+                           experience: experience.text!,
+                           birthday: birthday.text!,
+                           brand: brand.text!,
+                           model: model.text!,
+                           year: year.text!,
+                           volume: volume.text!,
+                           mileage: mileage.text!)
+        
+        interactor.updateProfileInfo(info: info)
     }
     
     @objc private func birthdayHandleDatePicker(sender: UIDatePicker) {
@@ -338,78 +328,78 @@ final class ProfileViewController: UIViewController, CarsModelViewControllerDele
             photoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             photoView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             photoView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
-
+            
             scrollView.topAnchor.constraint(equalTo: photoView.bottomAnchor, constant: 16),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-
-
+            
+            
             photo.centerXAnchor.constraint(equalTo: photoView.centerXAnchor),
             photo.centerYAnchor.constraint(equalTo: photoView.centerYAnchor),
             photo.heightAnchor.constraint(equalToConstant: 180),
             photo.widthAnchor.constraint(equalToConstant: 180),
-
+            
             personLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 12),
             personLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             personLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             personLabel.bottomAnchor.constraint(equalTo: personLabel.topAnchor, constant: 20),
-
+            
             email.topAnchor.constraint(equalTo: personLabel.bottomAnchor, constant: 16),
             email.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             email.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             email.bottomAnchor.constraint(equalTo: email.topAnchor, constant: 48),
-
+            
             phone.topAnchor.constraint(equalTo: email.bottomAnchor, constant: 16),
             phone.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             phone.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             phone.bottomAnchor.constraint(equalTo: phone.topAnchor, constant: 48),
-
+            
             name.topAnchor.constraint(equalTo: phone.bottomAnchor, constant: 16),
             name.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             name.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             name.leadingAnchor.constraint(equalTo: name.leadingAnchor, constant: 48),
-
+            
             city.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 16),
             city.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             city.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             city.bottomAnchor.constraint(equalTo: city.topAnchor, constant: 48),
-
+            
             experience.topAnchor.constraint(equalTo: city.bottomAnchor, constant: 16),
             experience.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             experience.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             experience.bottomAnchor.constraint(equalTo: experience.topAnchor, constant: 48),
-
+            
             birthday.topAnchor.constraint(equalTo: experience.bottomAnchor, constant: 16),
             birthday.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             birthday.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             birthday.bottomAnchor.constraint(equalTo: birthday.topAnchor, constant: 48),
-
+            
             carLabel.topAnchor.constraint(equalTo: birthday.bottomAnchor, constant: 16),
             carLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             carLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             carLabel.bottomAnchor.constraint(equalTo: carLabel.topAnchor, constant: 20),
-
+            
             brand.topAnchor.constraint(equalTo: carLabel.bottomAnchor, constant: 16),
             brand.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             brand.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             brand.bottomAnchor.constraint(equalTo: brand.topAnchor, constant: 48),
-
+            
             model.topAnchor.constraint(equalTo: brand.bottomAnchor, constant: 16),
             model.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             model.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             model.bottomAnchor.constraint(equalTo: model.topAnchor, constant: 48),
-
+            
             year.topAnchor.constraint(equalTo: model.bottomAnchor, constant: 16),
             year.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             year.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             year.bottomAnchor.constraint(equalTo: year.topAnchor, constant: 48),
-
+            
             volume.topAnchor.constraint(equalTo: year.bottomAnchor, constant: 16),
             volume.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             volume.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
             volume.bottomAnchor.constraint(equalTo: volume.topAnchor, constant: 48),
-
+            
             mileage.topAnchor.constraint(equalTo: volume.bottomAnchor, constant: 16),
             mileage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12),
             mileage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -12),
@@ -418,3 +408,10 @@ final class ProfileViewController: UIViewController, CarsModelViewControllerDele
     }
 }
 
+
+// MARK: - CarsModelViewControllerDelegate implementation
+extension ProfileViewController: CarsModelViewControllerDelegate {
+    func chosen(brand: String) {
+        self.brand.text = brand // это часть не присваивается, хотся brand не nil
+    }
+}

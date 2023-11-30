@@ -21,8 +21,9 @@ final class ProfileRouter {
         window?.rootViewController = login
     }
     
-    func listCarsBrand() {
-        let tableVC = CarsModelBuilder().build()
+    func showListCarsBrand() {
+        guard let profileController = viewController as? ProfileViewController else { return }
+        let tableVC = CarsModelBuilder().build(delegate: profileController)
         let nav = UINavigationController(rootViewController: tableVC)
         nav.navigationBar.backgroundColor = .white
         if let sheet = nav.sheetPresentationController{

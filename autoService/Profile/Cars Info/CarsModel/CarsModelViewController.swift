@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CarsModelViewControllerDelegate {
+protocol CarsModelViewControllerDelegate: AnyObject {
     func chosen(brand: String)
 }
 
@@ -17,8 +17,7 @@ final class CarsModelViewController: UIViewController {
     // MARK: - Public properties
     
     var interactor: CarsModelInteractor!
-    var delegate: CarsModelViewControllerDelegate!
-    var profileViewController: ProfileViewController!
+    weak var delegate: CarsModelViewControllerDelegate?
     
     // MARK: - Private properties
     
@@ -77,7 +76,7 @@ final class CarsModelViewController: UIViewController {
 }
 
 
-extension CarsModelViewController: UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+extension CarsModelViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return carsList.count
@@ -91,15 +90,14 @@ extension CarsModelViewController: UITableViewDataSource, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate = profileViewController
         delegate?.chosen(brand: carsList[indexPath.row])
-//        navigationController?.popViewController(animated: true)
-//        dismiss(animated: true, completion: nil)
-//        dismiss(animated: true) // хочу чтоб после выбора bottom sheet скрылся - не скрывается
+        dismiss(animated: true, completion: nil)
     }
+}
+
+extension CarsModelViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            interactor.loadCarsList(query: searchText)
+        interactor.loadCarsList(query: searchText)
     }
-    
 }

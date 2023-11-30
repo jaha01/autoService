@@ -36,7 +36,7 @@ final class ProfileInteractor {
     }
     
     func showCarsBrand() {
-        router.listCarsBrand()
+        router.showListCarsBrand()
     }
     
     func updateProfileInfo(info: ProfileInfo) {
