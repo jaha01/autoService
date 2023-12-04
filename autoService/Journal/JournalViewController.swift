@@ -54,8 +54,8 @@ class JournalViewController: UIViewController {
     }
     
     
-    func showErrorAlert(errorText: String) {
-        AlertManager.showAlert(title: "Error", message: errorText)
+    func showErrorAlert(config: AlertConfig) {
+        AlertManager.showAlert(config: config)
     }
     // MARK: - Private properties
     

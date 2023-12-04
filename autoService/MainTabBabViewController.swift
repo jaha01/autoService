@@ -14,7 +14,7 @@ class MainTabBabViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .systemBackground
         setupUpTabs()
 
     }
