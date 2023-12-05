@@ -26,4 +26,17 @@ class AlertManager {
             topController.present(alert, animated: true)
         }
     }
+    
+    public static func showTapInfo(title: String, message: String, completion:  (() -> ())? = nil) {
+        let topController = UIApplication.shared.getTopViewController()
+        
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
+                completion?()
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+            topController.present(alert, animated: true)
+        }
+    }
 }

@@ -23,7 +23,7 @@ class MainTabBabViewController: UITabBarController {
     
     private func setupUpTabs() {
         
-        let controllers = [JournalBuilder().build(), MapViewController(), ProfileBuilder().build()]
+        let controllers = [JournalBuilder().build(), MapBuilder().build(), ProfileBuilder().build()]
         let navControllers: [UINavigationController] = controllers.map {
             let navController = UINavigationController(rootViewController: $0)
             navController.navigationBar.prefersLargeTitles = false
@@ -39,11 +39,6 @@ class MainTabBabViewController: UITabBarController {
         nav2.tabBarItem = UITabBarItem(title: "Карты", image: UIImage(systemName: "map"), tag: 2)
         nav3.tabBarItem = UITabBarItem(title: "Профиль", image: UIImage(systemName: "person"), tag: 3)
         
-       /*
-        for nav in [nav1, nav2, nav3] {
-            nav.navigationBar.prefersLargeTitles = false
-        }
-        */
         setViewControllers([nav1, nav2, nav3], animated: true)
         
     }

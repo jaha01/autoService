@@ -12,5 +12,6 @@ pod 'FirebaseFirestore'
 pod 'FirebaseStorage'
 pod 'Firebase'
 pod 'FirebaseDatabase'
+pod 'YandexMapsMobile', '4.4.0-lite'
 
 end

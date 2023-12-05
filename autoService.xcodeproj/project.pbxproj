@@ -26,6 +26,10 @@
 		44610E9D2B0E8E0E00FD4D4C /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610E9C2B0E8E0E00FD4D4C /* Requests.swift */; };
 		44610E9F2B140D0200FD4D4C /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610E9E2B140D0200FD4D4C /* HttpMethod.swift */; };
 		44610EA12B140D7E00FD4D4C /* RequestBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EA02B140D7E00FD4D4C /* RequestBody.swift */; };
+		44610EB32B1FBA7500FD4D4C /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EB22B1FBA7500FD4D4C /* MapInteractor.swift */; };
+		44610EB52B1FBA8400FD4D4C /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EB42B1FBA8400FD4D4C /* MapPresenter.swift */; };
+		44610EB72B1FBA9E00FD4D4C /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EB62B1FBA9E00FD4D4C /* MapRouter.swift */; };
+		44610EB92B1FBAAB00FD4D4C /* MapBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EB82B1FBAAB00FD4D4C /* MapBuilder.swift */; };
 		44979C2B2B015B1A0024A225 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44979C2A2B015B1A0024A225 /* ProfileInfo.swift */; };
 		44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */; };
 		44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */; };
@@ -98,6 +102,10 @@
 		44610E9C2B0E8E0E00FD4D4C /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		44610E9E2B140D0200FD4D4C /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		44610EA02B140D7E00FD4D4C /* RequestBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestBody.swift; sourceTree = "<group>"; };
+		44610EB22B1FBA7500FD4D4C /* MapInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		44610EB42B1FBA8400FD4D4C /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		44610EB62B1FBA9E00FD4D4C /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		44610EB82B1FBAAB00FD4D4C /* MapBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBuilder.swift; sourceTree = "<group>"; };
 		44979C2A2B015B1A0024A225 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
 		44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +184,18 @@
 				440607242AE53DC100EE8807 /* JournalBuilder.swift */,
 			);
 			path = Journal;
+			sourceTree = "<group>";
+		};
+		44610EBA2B1FBEB300FD4D4C /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				44DF3CE22A9D464900DC27E5 /* MapViewController.swift */,
+				44610EB22B1FBA7500FD4D4C /* MapInteractor.swift */,
+				44610EB42B1FBA8400FD4D4C /* MapPresenter.swift */,
+				44610EB62B1FBA9E00FD4D4C /* MapRouter.swift */,
+				44610EB82B1FBAAB00FD4D4C /* MapBuilder.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		44C6148A2ACB6C1C00162DA9 /* Authentification */ = {
@@ -347,7 +367,7 @@
 				44C6148A2ACB6C1C00162DA9 /* Authentification */,
 				44DF3CBC2A9A1C9200DC27E5 /* MainTabBabViewController.swift */,
 				440607262AE53E0A00EE8807 /* Journal */,
-				44DF3CE22A9D464900DC27E5 /* MapViewController.swift */,
+				44610EBA2B1FBEB300FD4D4C /* Map */,
 				44DD0B5B2AD2D2BE005019B6 /* Profile */,
 				44DF3CEE2AB2259700DC27E5 /* Onboarding */,
 				44DF3CAB2A9697C800DC27E5 /* Assets.xcassets */,
@@ -401,6 +421,7 @@
 				44DF3C9C2A9697C200DC27E5 /* Frameworks */,
 				44DF3C9D2A9697C200DC27E5 /* Resources */,
 				50F62606B82959949EC02724 /* [CP] Embed Pods Frameworks */,
+				FB31BF1917A5A4D2DDB2ECF0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -497,6 +518,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FB31BF1917A5A4D2DDB2ECF0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-autoService/Pods-autoService-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-autoService/Pods-autoService-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-autoService/Pods-autoService-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -525,7 +563,9 @@
 				44DF3CF22AB2312700DC27E5 /* DI.swift in Sources */,
 				44C614952ACB6D3300162DA9 /* AuthTextField.swift in Sources */,
 				44C614A52ACB6EC800162DA9 /* AlertManager.swift in Sources */,
+				44610EB72B1FBA9E00FD4D4C /* MapRouter.swift in Sources */,
 				44C614A72ACB6EF000162DA9 /* Validator.swift in Sources */,
+				44610EB52B1FBA8400FD4D4C /* MapPresenter.swift in Sources */,
 				44DF3CF02AB22C9400DC27E5 /* AuthService.swift in Sources */,
 				44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */,
 				4406072C2AE8771700EE8807 /* JournalItem.swift in Sources */,
@@ -535,6 +575,7 @@
 				44DF3CE12A9D463C00DC27E5 /* JournalViewController.swift in Sources */,
 				4406071F2AE53D5E00EE8807 /* JournalInteractor.swift in Sources */,
 				44DF3CE92AB0DBA500DC27E5 /* OnboardingCollectionViewCell.swift in Sources */,
+				44610EB92B1FBAAB00FD4D4C /* MapBuilder.swift in Sources */,
 				44C6149A2ACB6D8700162DA9 /* RegisterUserCredentials.swift in Sources */,
 				44D7AB4B2B05511D0025CB73 /* CarsModelViewController.swift in Sources */,
 				4406072A2AE71EAA00EE8807 /* JournalRouter.swift in Sources */,
@@ -543,6 +584,7 @@
 				440607172AE06A5000EE8807 /* LoginRouter.swift in Sources */,
 				44C614932ACB6D1C00162DA9 /* AuthHeaderView.swift in Sources */,
 				440607282AE5465100EE8807 /* DBService.swift in Sources */,
+				44610EB32B1FBA7500FD4D4C /* MapInteractor.swift in Sources */,
 				44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */,
 				4406071B2AE06FEB00EE8807 /* OnboardingRouter.swift in Sources */,
 				44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */,

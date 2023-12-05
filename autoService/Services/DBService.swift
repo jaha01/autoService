@@ -17,6 +17,7 @@ final class DBService {
     private let authService: AuthService
     private let journalHistoryItems = "journalHistoryItems"
     private let profileInformation = "profileInformation"
+    private let mapPoints = "mapPoints"
     
     init(authService: AuthService) {
         self.authService = authService
@@ -64,6 +65,12 @@ final class DBService {
     func uploadProfileInfo(profileInfo: ProfileInfo) {
         let parent = ref.child(authService.getUserID()).child(profileInformation)
         let values = profileInfo.toJson()
+        parent.updateChildValues(values)
+    }
+
+    func uploadMapPoint(latitude: String, longitude: String) {
+        let parent = ref.child(authService.getUserID()).child(mapPoints)
+        let values = ["latitude":latitude, "longitude":longitude]
         parent.updateChildValues(values)
     }
 }
