@@ -22,6 +22,8 @@ final class MapViewController: UIViewController {
         return view
     }()
     
+    
+    
     // MARK: - Public methods
     
     override func viewDidLoad() {
@@ -29,8 +31,32 @@ final class MapViewController: UIViewController {
         view.addSubview(mapView)
         setConstraints()
         title = "Карты"
-        let tap = UITapGestureRecognizer(target: self, action: #selector(toucheScreen))
-        view.addGestureRecognizer(tap)
+
+        setupMap()
+    }
+    
+    // MARK: - Private methods
+    
+    private func userCurrentLocation() { // not working
+        mapView.mapWindow.map.isRotateGesturesEnabled = false
+        mapView.mapWindow.map.move(with:
+            YMKCameraPosition(target: YMKPoint(latitude: 0, longitude: 0), zoom: 14, azimuth: 0, tilt: 0))
+        
+        let scale = UIScreen.main.scale
+        let mapKit = YMKMapKit.sharedInstance()
+        let userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
+
+        userLocationLayer.setVisibleWithOn(true)
+        userLocationLayer.isHeadingEnabled = true
+        userLocationLayer.setAnchorWithAnchorNormal(
+            CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.5 * mapView.frame.size.height * scale),
+            anchorCourse: CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.83 * mapView.frame.size.height * scale))
+        userLocationLayer.setObjectListenerWith(self)
+    }
+    
+    private func setupMap() {
+        let tapHandler = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap))
+        view.addGestureRecognizer(tapHandler)
         mapView.mapWindow.map.move(
             with: YMKCameraPosition(
                 target: YMKPoint(latitude: 55.669757585559445, longitude: 37.76495471766904),
@@ -42,17 +68,29 @@ final class MapViewController: UIViewController {
             cameraCallback: nil)
     }
     
-    // MARK: - Private methods
-    
-    @objc func toucheScreen(touch: UITapGestureRecognizer) {
+    @objc func handleScreenTap(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: self.view)
         let tappedPoint = YMKScreenPoint(x: Float(touchPoint.x), y: Float(touchPoint.y))
         let worldPoint = mapView.mapWindow.screenToWorld(with: tappedPoint) ?? YMKPoint()
 
-        AlertManager.showTapInfo(title: "Attention", message: "You have tapped point \(worldPoint.latitude):\(worldPoint.longitude)") { [weak self] in
+        AlertManager.showTapInfo(config: AlertConfig(title: "Attention", message: "You have tapped point \(worldPoint.latitude):\(worldPoint.longitude)")) { [weak self] in
             guard let self = self else { return }
-            self.interactor.saveMapPoint(latitude: String(worldPoint.latitude), longitude: String(worldPoint.longitude))
+            //self.interactor.saveMapPoint(latitude: worldPoint.latitude, longitude: worldPoint.longitude)
         }
+        
+//        let alert = UIAlertController(title: "example", message: "", preferredStyle: .alert)
+//        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        alert.addTextField { textField in
+//            textField.placeholder = "please enter name"
+//        }
+//        let ok = UIAlertAction(title: "OK", style: .default) { action in
+//            if let name = alert.textFields?.first?.text {
+//                print(name)
+//            }
+//        }
+//        alert.addAction(ok)
+//        alert.addAction(cancel)
+//        self.present(alert, animated: true, completion: nil)
     }
     
     private func move(_ map: YMKMap, to point: YMKPoint = YMKPoint(latitude: 79.935493, longitude: 40.327392)) {
@@ -76,4 +114,42 @@ final class MapViewController: UIViewController {
         ])
     }
     
+}
+
+extension MapViewController: YMKUserLocationObjectListener {
+    
+    func onObjectAdded(with view: YMKUserLocationView) {
+        view.arrow.setIconWith(UIImage(systemName: "arrow.backward")!)
+    
+        let pinPlacemark = view.pin.useCompositeIcon()
+        
+        pinPlacemark.setIconWithName("i.circle",
+            image: UIImage(systemName:"i.circle")!,
+            style:YMKIconStyle(
+                anchor: CGPoint(x: 0, y: 0) as NSValue,
+                rotationType:YMKRotationType.rotate.rawValue as NSNumber,
+                zIndex: 0,
+                flat: true,
+                visible: true,
+                scale: 1.5,
+                tappableArea: nil))
+        
+        pinPlacemark.setIconWithName(
+            "pin",
+            image: UIImage(systemName:"magnifyingglass")!,
+            style:YMKIconStyle(
+                anchor: CGPoint(x: 0.5, y: 0.5) as NSValue,
+                rotationType:YMKRotationType.rotate.rawValue as NSNumber,
+                zIndex: 1,
+                flat: true,
+                visible: true,
+                scale: 1,
+                tappableArea: nil))
+
+        view.accuracyCircle.fillColor = UIColor.blue
+    }
+
+    func onObjectRemoved(with view: YMKUserLocationView) {}
+
+    func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {}
 }

@@ -26,7 +26,7 @@ final class MapInteractor {
     
     // MARK: Public methods
     
-    func saveMapPoint(latitude: String, longitude: String) {
+    func saveMapPoint(latitude: Double, longitude: Double) {
         dbService.uploadMapPoint(latitude: latitude, longitude: longitude)
     }
 }

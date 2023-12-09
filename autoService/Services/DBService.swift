@@ -68,7 +68,7 @@ final class DBService {
         parent.updateChildValues(values)
     }
 
-    func uploadMapPoint(latitude: String, longitude: String) {
+    func uploadMapPoint(latitude: Double, longitude: Double) {
         let parent = ref.child(authService.getUserID()).child(mapPoints)
         let values = ["latitude":latitude, "longitude":longitude]
         parent.updateChildValues(values)
