@@ -26,7 +26,11 @@ final class MapInteractor {
     
     // MARK: Public methods
     
-    func saveMapPoint(latitude: Double, longitude: Double) {
-        dbService.uploadMapPoint(latitude: latitude, longitude: longitude)
+    func saveMapPoint(pointInfo: MapPoints) {
+        dbService.uploadMapPoint(pointInfo: pointInfo)
+    }
+    
+    func showPointsList() {
+        router.showPointsList()
     }
 }

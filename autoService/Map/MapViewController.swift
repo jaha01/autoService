@@ -7,8 +7,10 @@
 
 import UIKit
 import YandexMapsMobile
+import MapKit
+import CoreLocation
 
-final class MapViewController: UIViewController {
+final class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Public properties
     
@@ -22,7 +24,17 @@ final class MapViewController: UIViewController {
         return view
     }()
     
+    private let savedPoints: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "bookmark"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
+    let locationManager = CLLocationManager()
     
     // MARK: - Public methods
     
@@ -32,10 +44,27 @@ final class MapViewController: UIViewController {
         setConstraints()
         title = "Карты"
 
-        setupMap()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest //kCLLocationAccuracyNearestTenMeters
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+        }
+        PointsListViewController().delegate = self
     }
     
     // MARK: - Private methods
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            locationManager.stopUpdatingLocation()
+            setupMap(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        }
+    }
+    
+    @objc private func buttonAction() {
+        interactor.showPointsList()
+    }
     
     private func userCurrentLocation() { // not working
         mapView.mapWindow.map.isRotateGesturesEnabled = false
@@ -54,12 +83,12 @@ final class MapViewController: UIViewController {
         userLocationLayer.setObjectListenerWith(self)
     }
     
-    private func setupMap() {
+    private func setupMap(latitude: Double, longitude: Double) {
         let tapHandler = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap))
         view.addGestureRecognizer(tapHandler)
         mapView.mapWindow.map.move(
             with: YMKCameraPosition(
-                target: YMKPoint(latitude: 55.669757585559445, longitude: 37.76495471766904),
+                target: YMKPoint(latitude: latitude, longitude: longitude),
                 zoom: 15,
                 azimuth: 0,
                 tilt: 0
@@ -73,24 +102,13 @@ final class MapViewController: UIViewController {
         let tappedPoint = YMKScreenPoint(x: Float(touchPoint.x), y: Float(touchPoint.y))
         let worldPoint = mapView.mapWindow.screenToWorld(with: tappedPoint) ?? YMKPoint()
 
-        AlertManager.showTapInfo(config: AlertConfig(title: "Attention", message: "You have tapped point \(worldPoint.latitude):\(worldPoint.longitude)")) { [weak self] in
-            guard let self = self else { return }
-            //self.interactor.saveMapPoint(latitude: worldPoint.latitude, longitude: worldPoint.longitude)
+        AlertManager.showTapInfo(config: AlertMapPoints(title: "Вы нажали на точку", latitude: worldPoint.latitude, longitude: worldPoint.longitude)) { action in
+            self.interactor.saveMapPoint(pointInfo: MapPoints(dictionary: ["name": action[0],
+                                                                          "description": action[1],
+                                                                          "latitude": worldPoint.latitude,
+                                                                          "longitude": worldPoint.longitude]
+                                                             ))
         }
-        
-//        let alert = UIAlertController(title: "example", message: "", preferredStyle: .alert)
-//        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        alert.addTextField { textField in
-//            textField.placeholder = "please enter name"
-//        }
-//        let ok = UIAlertAction(title: "OK", style: .default) { action in
-//            if let name = alert.textFields?.first?.text {
-//                print(name)
-//            }
-//        }
-//        alert.addAction(ok)
-//        alert.addAction(cancel)
-//        self.present(alert, animated: true, completion: nil)
     }
     
     private func move(_ map: YMKMap, to point: YMKPoint = YMKPoint(latitude: 79.935493, longitude: 40.327392)) {
@@ -106,16 +124,22 @@ final class MapViewController: UIViewController {
 //    }
     
     private func setConstraints() {
+        mapView.addSubview(savedPoints)
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            savedPoints.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            savedPoints.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            savedPoints.leadingAnchor.constraint(equalTo: savedPoints.trailingAnchor, constant: -30),
+            savedPoints.topAnchor.constraint(equalTo: savedPoints.bottomAnchor, constant: -30)
         ])
     }
-    
 }
 
+// MARK: - YMKUserLocationObjectListener implementation
 extension MapViewController: YMKUserLocationObjectListener {
     
     func onObjectAdded(with view: YMKUserLocationView) {
@@ -152,4 +176,11 @@ extension MapViewController: YMKUserLocationObjectListener {
     func onObjectRemoved(with view: YMKUserLocationView) {}
 
     func onObjectUpdated(with view: YMKUserLocationView, event: YMKObjectEvent) {}
+}
+
+// MARK: - PointsListViewControllerDelegate implementation
+extension MapViewController: PointsListViewControllerDelegate {
+    func show(latitude: Double, longitude: Double) {
+        setupMap(latitude: latitude, longitude: longitude)
+    }
 }

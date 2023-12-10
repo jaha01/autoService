@@ -11,7 +11,18 @@ import Foundation
 class NetworkConfig {
     
     let url = "https://suggestions.dadata.ru"
-    let apiKey = "14f74f1003dc89e19695bc03c84741f75e11cc50"
+    var apiKey: String {
+      get {
+        guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
+          fatalError("Couldn't find file 'Info.plist'.")
+        }
+        let plist = NSDictionary(contentsOfFile: filePath)
+        guard let value = plist?.object(forKey: "NETWORKCONFIG_API_KEY") as? String else {
+          fatalError("Couldn't find key 'NETWORKCONFIG_API_KEY' in 'Info.plist'.")
+        }
+        return value
+      }
+    }
     
     func headers()->[String:String] {
         return ["Authorization": "Token \(apiKey)",

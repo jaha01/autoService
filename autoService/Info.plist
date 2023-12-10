@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationUsageDescription</key>
-	<string>This is Demo Map</string>
+	<key>YMKMAPKIT_API_KEY</key>
+	<string>fa0c3bdb-f7d3-417f-ac6f-dcbafb3f4f4d</string>
+	<key>NETWORKCONFIG_API_KEY</key>
+	<string>14f74f1003dc89e19695bc03c84741f75e11cc50</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Доступ для получения местоположения</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

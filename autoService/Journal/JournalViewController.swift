@@ -60,20 +60,6 @@ class JournalViewController: UIViewController {
     // MARK: - Private properties
     
     @objc private func didTapAdd() {
-//        let alert = UIAlertController(title: "Добавить", message: "Добавьте новую запись", preferredStyle: .alert)
-//        alert.addTextField { field in
-//            field.placeholder = "Введите запись"
-//        }
-//        alert.addAction(UIAlertAction(title: "Готово", style: .default, handler: { [weak self] _ in
-//            guard let self = self else {
-//                return
-//            }
-//            if let field = alert.textFields?.first, let text = field.text, !text.isEmpty {
-//                    self.interactor.appendItem(text: text)
-//            }
-//        }))
-//        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
-//        present(alert, animated: true)
         AlertManager.addJournalItemAlert { [weak self] text in
             guard let self = self else { return }
             self.interactor.appendItem(text: text)

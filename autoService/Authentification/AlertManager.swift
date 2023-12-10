@@ -42,15 +42,36 @@ class AlertManager {
         topController.present(alert, animated: true)
     }
     
-    public static func showTapInfo(config: AlertConfig, completion:  (() -> ())? = nil) {
+    public static func showTapInfo(config: AlertMapPoints, completion:  @escaping([String]) -> Void) {
         let topController = UIApplication.shared.getTopViewController()
+        var name: UITextField?
+        var description: UITextField?
         
         DispatchQueue.main.async {
-            let alert = UIAlertController(title: config.title, message: config.message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { action in
-                completion?()
+            let alert = UIAlertController(title: config.title, message: "", preferredStyle: .alert)
+            
+            alert.addTextField { textField in
+                textField.placeholder = "Введите название"
+                name = textField
+            }
+            alert.addTextField { textField in
+                textField.placeholder = "Введите описание"
+                description = textField
+            }
+            alert.addTextField { latitude in
+                latitude.text = String(config.latitude)
+                latitude.isEnabled = false
+            }
+            alert.addTextField { longitude in
+                longitude.text = String(config.longitude)
+                longitude.isEnabled = false
+            }
+            
+            alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { action in
+                completion([String((name?.text)!), String((description?.text)!)])
             }))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "Отмена", style: .destructive, handler: nil))
+            
             topController.present(alert, animated: true)
         }
     }
