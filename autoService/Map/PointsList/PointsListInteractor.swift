@@ -12,7 +12,11 @@ final class PointsListInteractor {
     // MARK: Public properties
     
     var presenter: PointsListPresenter!
-    var dbService: DBService!
+    var router: PointsListRouter!
+    
+    // MARK: - Private properties
+    
+    private let dbService: DBService
     
     // MARK: - Initializer
     
@@ -22,10 +26,7 @@ final class PointsListInteractor {
     
     // MARK: - Public methods
     
-    func loadListPoints() {
-        dbService.setupMapPointsListeners { [weak self] points in
-            guard let self = self else { return }
-            self.presenter.prepareToShowPoints(list: points)
-        }
+    func didTapPoint() {
+        router.close()
     }
 }

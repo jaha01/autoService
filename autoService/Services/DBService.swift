@@ -18,7 +18,6 @@ final class DBService {
     private let journalHistoryItems = "journalHistoryItems"
     private let profileInformation = "profileInformation"
     private let mapPoints = "mapPoints"
-    private var points = [MapPoints]()
     
     init(authService: AuthService) {
         self.authService = authService
@@ -68,31 +67,24 @@ final class DBService {
         let values = profileInfo.toJson()
         parent.updateChildValues(values)
     }
-
-    func setupMapPointsListeners(handler: @escaping ([MapPoints]) -> Void) {
-        ref.child(authService.getUserID()).child(mapPoints).observe(.value) { [weak self] snapshot in
-            guard let self = self else { return }
+    
+    func setupMapPointsListeners(handler: @escaping ([MapPoint]) -> Void) {
+        ref.child(authService.getUserID()).child(mapPoints).observe(.value) { snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
-                self.points = []
-                for (_, value) in dictionary {
-                    if let pointData = value as? [String: Any] {
-                        let pointInfo = MapPoints(dictionary: pointData)
-                        self.points.append(pointInfo)
-                    }
-                }
-                handler(self.points)
+                handler(dictionary.map { MapPoint(dictionary: $0.value as! [String : Any])
+                })
             }
         }
     }
     
-    func uploadMapPoint(pointInfo: MapPoints) {
+    func uploadMapPoint(pointInfo: MapPoint) {
         let parent = ref.child(authService.getUserID()).child(mapPoints)
         let id = parent.childByAutoId()
         let values = ["id": id.key! ,
-                      "name": pointInfo.name,
-                      "description": pointInfo.description,
-                      "latitude": pointInfo.latitude,
-                      "longitude": pointInfo.longitude] as [String : Any]
+                      "name": pointInfo.title.name,
+                      "description": pointInfo.title.description,
+                      "latitude": pointInfo.point.latitude,
+                      "longitude": pointInfo.point.longitude] as [String : Any]
         id.updateChildValues(values)
     }
 }

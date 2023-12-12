@@ -13,9 +13,4 @@ final class PointsListPresenter {
     
     weak var controller: PointsListViewController!
     
-    // MARK: - Public methods
-    
-    func prepareToShowPoints(list: [MapPoints]) {
-        controller.showPoints(list: list)
-    }
 }

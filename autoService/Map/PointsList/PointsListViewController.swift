@@ -30,18 +30,17 @@ final class PointsListViewController: UIViewController {
         return table
     }()
     
-    var points = [MapPoints]()
+    private var points = [MapPoint]()
     
     // MARK: - Public methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Ponits List"
+        title = "Places List"
         setConstraints()
-        interactor.loadListPoints() 
     }
     
-    func showPoints(list: [MapPoints]) {
+    func showPoints(list: [MapPoint]) {
         points = list
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -71,15 +70,15 @@ extension PointsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle , reuseIdentifier: "cell")
-        cell.textLabel?.text = points[indexPath.row].name
-        cell.detailTextLabel?.text = points[indexPath.row].description
+        cell.textLabel?.text = points[indexPath.row].title.name
+        cell.detailTextLabel?.text = points[indexPath.row].title.description
         cell.selectionStyle = .gray
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.show(latitude: points[indexPath.row].latitude,
-                       longitude: points[indexPath.row].longitude)
-        dismiss(animated: true, completion: nil)
+        delegate?.show(latitude: points[indexPath.row].point.latitude,
+                       longitude: points[indexPath.row].point.longitude)
+        interactor.didTapPoint()
     }
 }

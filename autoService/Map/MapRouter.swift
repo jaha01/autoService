@@ -16,9 +16,9 @@ final class MapRouter {
     
     // MARK: - Public methods
     
-    func showPointsList() {
+    func showPointsList(points: [MapPoint]) {
         guard let mapController = viewController as? MapViewController else { return }
-        let tableVC = PointsListBuilder().build(delegate: mapController)
+        let tableVC = PointsListBuilder().build(points: points, delegate: mapController)
         let nav = UINavigationController(rootViewController: tableVC)
         nav.navigationBar.backgroundColor = .white
         if let sheet = nav.sheetPresentationController {

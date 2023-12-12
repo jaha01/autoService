@@ -12,4 +12,8 @@ final class PointsListRouter {
     // MARK: - Public properties
     
     weak var controller: PointsListViewController!
+    
+    func close() {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

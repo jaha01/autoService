@@ -16,19 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
-        var apiKey: String {
-          get {
-            guard let filePath = Bundle.main.path(forResource: "Info", ofType: "plist") else {
-              fatalError("Couldn't find file 'Info.plist'.")
-            }
-            let plist = NSDictionary(contentsOfFile: filePath)
-            guard let value = plist?.object(forKey: "YMKMAPKIT_API_KEY") as? String else {
-              fatalError("Couldn't find key 'YMKMAPKIT_API_KEY' in 'Info.plist'.")
-            }
-            return value
-          }
-        }
-        YMKMapKit.setApiKey(apiKey)
+        YMKMapKit.setApiKey(ApiKeys.yandexMaps)
         YMKMapKit.sharedInstance().onStart()
         return true
     }

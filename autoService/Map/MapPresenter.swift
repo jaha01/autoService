@@ -12,5 +12,10 @@ final class MapPresenter {
     // MARK: - Public properties
     
     weak var viewController: MapViewController!
+ 
+    // MARK: - Public methods
     
+    func prepareUserLocation(latitude: Double, longitude: Double) {
+        viewController.setupMap(latitude: latitude, longitude: longitude)
+    }
 }

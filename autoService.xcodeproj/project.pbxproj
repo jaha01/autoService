@@ -30,12 +30,16 @@
 		44610EB52B1FBA8400FD4D4C /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EB42B1FBA8400FD4D4C /* MapPresenter.swift */; };
 		44610EB72B1FBA9E00FD4D4C /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EB62B1FBA9E00FD4D4C /* MapRouter.swift */; };
 		44610EB92B1FBAAB00FD4D4C /* MapBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44610EB82B1FBAAB00FD4D4C /* MapBuilder.swift */; };
-		448548352B24F84A0056FA6D /* MapStructs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448548342B24F84A0056FA6D /* MapStructs.swift */; };
+		448548352B24F84A0056FA6D /* AlertMapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448548342B24F84A0056FA6D /* AlertMapPoint.swift */; };
 		448548372B2510250056FA6D /* PointsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448548362B2510250056FA6D /* PointsListViewController.swift */; };
 		448548392B2510370056FA6D /* PointsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448548382B2510370056FA6D /* PointsListInteractor.swift */; };
 		4485483B2B2510470056FA6D /* PointsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4485483A2B2510470056FA6D /* PointsListPresenter.swift */; };
 		4485483D2B25107A0056FA6D /* PointsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4485483C2B25107A0056FA6D /* PointsListRouter.swift */; };
 		4485483F2B2510870056FA6D /* PointsListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4485483E2B2510870056FA6D /* PointsListBuilder.swift */; };
+		448548442B27AB3D0056FA6D /* MapPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448548432B27AB3D0056FA6D /* MapPoint.swift */; };
+		448548462B27AB5E0056FA6D /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448548452B27AB5E0056FA6D /* Point.swift */; };
+		448548482B27AB710056FA6D /* PointTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448548472B27AB710056FA6D /* PointTitle.swift */; };
+		4485484B2B28E7A30056FA6D /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4485484A2B28E7A20056FA6D /* ApiKeys.swift */; };
 		44979C2B2B015B1A0024A225 /* ProfileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44979C2A2B015B1A0024A225 /* ProfileInfo.swift */; };
 		44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */; };
 		44C6148F2ACB6CC900162DA9 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */; };
@@ -112,12 +116,16 @@
 		44610EB42B1FBA8400FD4D4C /* MapPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
 		44610EB62B1FBA9E00FD4D4C /* MapRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
 		44610EB82B1FBAAB00FD4D4C /* MapBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBuilder.swift; sourceTree = "<group>"; };
-		448548342B24F84A0056FA6D /* MapStructs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStructs.swift; sourceTree = "<group>"; };
+		448548342B24F84A0056FA6D /* AlertMapPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMapPoint.swift; sourceTree = "<group>"; };
 		448548362B2510250056FA6D /* PointsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsListViewController.swift; sourceTree = "<group>"; };
 		448548382B2510370056FA6D /* PointsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsListInteractor.swift; sourceTree = "<group>"; };
 		4485483A2B2510470056FA6D /* PointsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsListPresenter.swift; sourceTree = "<group>"; };
 		4485483C2B25107A0056FA6D /* PointsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsListRouter.swift; sourceTree = "<group>"; };
 		4485483E2B2510870056FA6D /* PointsListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsListBuilder.swift; sourceTree = "<group>"; };
+		448548432B27AB3D0056FA6D /* MapPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPoint.swift; sourceTree = "<group>"; };
+		448548452B27AB5E0056FA6D /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		448548472B27AB710056FA6D /* PointTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointTitle.swift; sourceTree = "<group>"; };
+		4485484A2B28E7A20056FA6D /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		44979C2A2B015B1A0024A225 /* ProfileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfo.swift; sourceTree = "<group>"; };
 		44C6148C2ACB6C5400162DA9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		44C6148E2ACB6CC900162DA9 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +214,7 @@
 				44610EB42B1FBA8400FD4D4C /* MapPresenter.swift */,
 				44610EB62B1FBA9E00FD4D4C /* MapRouter.swift */,
 				44610EB82B1FBAAB00FD4D4C /* MapBuilder.swift */,
-				448548342B24F84A0056FA6D /* MapStructs.swift */,
+				448548492B27AB790056FA6D /* Structs */,
 				448548402B25108F0056FA6D /* PointsList */,
 			);
 			path = Map;
@@ -222,6 +230,17 @@
 				4485483E2B2510870056FA6D /* PointsListBuilder.swift */,
 			);
 			path = PointsList;
+			sourceTree = "<group>";
+		};
+		448548492B27AB790056FA6D /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				448548342B24F84A0056FA6D /* AlertMapPoint.swift */,
+				448548432B27AB3D0056FA6D /* MapPoint.swift */,
+				448548452B27AB5E0056FA6D /* Point.swift */,
+				448548472B27AB710056FA6D /* PointTitle.swift */,
+			);
+			path = Structs;
 			sourceTree = "<group>";
 		};
 		44C6148A2ACB6C1C00162DA9 /* Authentification */ = {
@@ -282,6 +301,7 @@
 				44610EA02B140D7E00FD4D4C /* RequestBody.swift */,
 				44610E9E2B140D0200FD4D4C /* HttpMethod.swift */,
 				44D7AB4D2B05571C0025CB73 /* NetworkConfig.swift */,
+				4485484A2B28E7A20056FA6D /* ApiKeys.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -586,6 +606,7 @@
 				44C614912ACB6CE500162DA9 /* ForgotPasswordViewController.swift in Sources */,
 				44D7AB4E2B05571C0025CB73 /* NetworkConfig.swift in Sources */,
 				44DD0B512AD20B4F005019B6 /* ForgorPasswordInteractor.swift in Sources */,
+				448548462B27AB5E0056FA6D /* Point.swift in Sources */,
 				44DF3CF22AB2312700DC27E5 /* DI.swift in Sources */,
 				44C614952ACB6D3300162DA9 /* AuthTextField.swift in Sources */,
 				44C614A52ACB6EC800162DA9 /* AlertManager.swift in Sources */,
@@ -616,13 +637,15 @@
 				44DF3CEB2AB0E68800DC27E5 /* OnboardingInfo.swift in Sources */,
 				4406071B2AE06FEB00EE8807 /* OnboardingRouter.swift in Sources */,
 				44DD0B4A2AD20130005019B6 /* RegistrationInteractor.swift in Sources */,
+				448548482B27AB710056FA6D /* PointTitle.swift in Sources */,
 				44C614B32ACE0D5000162DA9 /* LoginPresenter.swift in Sources */,
+				448548442B27AB3D0056FA6D /* MapPoint.swift in Sources */,
 				4406071D2AE0727800EE8807 /* ForgotPasswordRouter.swift in Sources */,
 				44610E9F2B140D0200FD4D4C /* HttpMethod.swift in Sources */,
 				44D7AB502B055AD70025CB73 /* CarsService.swift in Sources */,
 				44DD0B552AD20C32005019B6 /* ForgotPasswordBuilder.swift in Sources */,
 				44D7AB522B055B7E0025CB73 /* NetworkService.swift in Sources */,
-				448548352B24F84A0056FA6D /* MapStructs.swift in Sources */,
+				448548352B24F84A0056FA6D /* AlertMapPoint.swift in Sources */,
 				44610EA12B140D7E00FD4D4C /* RequestBody.swift in Sources */,
 				44979C2B2B015B1A0024A225 /* ProfileInfo.swift in Sources */,
 				44610E9B2B0E8DCE00FD4D4C /* Encodable+Json.swift in Sources */,
@@ -633,6 +656,7 @@
 				4485483B2B2510470056FA6D /* PointsListPresenter.swift in Sources */,
 				44C6148D2ACB6C5400162DA9 /* LoginViewController.swift in Sources */,
 				4485483D2B25107A0056FA6D /* PointsListRouter.swift in Sources */,
+				4485484B2B28E7A30056FA6D /* ApiKeys.swift in Sources */,
 				44DD0B532AD20B61005019B6 /* ForgotPasswordPresenter.swift in Sources */,
 				448548372B2510250056FA6D /* PointsListViewController.swift in Sources */,
 				44DD0B772ADDD761005019B6 /* Errors.swift in Sources */,

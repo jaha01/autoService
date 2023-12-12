@@ -7,10 +7,9 @@
 
 import UIKit
 import YandexMapsMobile
-import MapKit
-import CoreLocation
 
-final class MapViewController: UIViewController, CLLocationManagerDelegate {
+
+final class MapViewController: UIViewController {
     
     // MARK: - Public properties
     
@@ -24,7 +23,7 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate {
         return view
     }()
     
-    private let savedPoints: UIButton = {
+    private let savedPlacesList: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "bookmark"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
@@ -34,8 +33,6 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate {
         return button
     }()
     
-    let locationManager = CLLocationManager()
-    
     // MARK: - Public methods
     
     override func viewDidLoad() {
@@ -44,46 +41,10 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate {
         setConstraints()
         title = "Карты"
 
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest //kCLLocationAccuracyNearestTenMeters
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
-        PointsListViewController().delegate = self
+        interactor.getUserLocation()
     }
     
-    // MARK: - Private methods
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            locationManager.stopUpdatingLocation()
-            setupMap(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        }
-    }
-    
-    @objc private func buttonAction() {
-        interactor.showPointsList()
-    }
-    
-    private func userCurrentLocation() { // not working
-        mapView.mapWindow.map.isRotateGesturesEnabled = false
-        mapView.mapWindow.map.move(with:
-            YMKCameraPosition(target: YMKPoint(latitude: 0, longitude: 0), zoom: 14, azimuth: 0, tilt: 0))
-        
-        let scale = UIScreen.main.scale
-        let mapKit = YMKMapKit.sharedInstance()
-        let userLocationLayer = mapKit.createUserLocationLayer(with: mapView.mapWindow)
-
-        userLocationLayer.setVisibleWithOn(true)
-        userLocationLayer.isHeadingEnabled = true
-        userLocationLayer.setAnchorWithAnchorNormal(
-            CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.5 * mapView.frame.size.height * scale),
-            anchorCourse: CGPoint(x: 0.5 * mapView.frame.size.width * scale, y: 0.83 * mapView.frame.size.height * scale))
-        userLocationLayer.setObjectListenerWith(self)
-    }
-    
-    private func setupMap(latitude: Double, longitude: Double) {
+    func setupMap(latitude: Double, longitude: Double) {
         let tapHandler = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap))
         view.addGestureRecognizer(tapHandler)
         mapView.mapWindow.map.move(
@@ -97,17 +58,19 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate {
             cameraCallback: nil)
     }
     
+    // MARK: - Private methods
+    
+    @objc private func buttonAction() {
+        interactor.showPointsList()
+    }
+    
     @objc func handleScreenTap(touch: UITapGestureRecognizer) {
         let touchPoint = touch.location(in: self.view)
         let tappedPoint = YMKScreenPoint(x: Float(touchPoint.x), y: Float(touchPoint.y))
         let worldPoint = mapView.mapWindow.screenToWorld(with: tappedPoint) ?? YMKPoint()
 
-        AlertManager.showTapInfo(config: AlertMapPoints(title: "Вы нажали на точку", latitude: worldPoint.latitude, longitude: worldPoint.longitude)) { action in
-            self.interactor.saveMapPoint(pointInfo: MapPoints(dictionary: ["name": action[0],
-                                                                          "description": action[1],
-                                                                          "latitude": worldPoint.latitude,
-                                                                          "longitude": worldPoint.longitude]
-                                                             ))
+        AlertManager.showMapTapInfo(config: AlertMapPoint(title: "Вы нажали на точку", point: Point(latitude: worldPoint.latitude, longitude: worldPoint.longitude))) { action in
+            self.interactor.saveMapPoint(pointInfo: MapPoint(title: PointTitle(name: action.name, description: action.description), point: Point(latitude: worldPoint.latitude, longitude: worldPoint.longitude)))
         }
     }
     
@@ -116,25 +79,19 @@ final class MapViewController: UIViewController, CLLocationManagerDelegate {
         map.move(with: cameraPosition, animation: YMKAnimation(type: .smooth, duration: 1.0))
     }
     
-//    private func addPlacemark(_ map: YMKMap) {
-//        let image = UIImage(named: "placemark_icon") ?? UIImage()
-//        let placemark = map.mapObjects.addPlacemark()
-//        placemark.geometry = YMKPoint(latitude: 59.935493, longitude: 30.327392)
-//        placemark.setIconWith(image)
-//    }
     
     private func setConstraints() {
-        mapView.addSubview(savedPoints)
+        mapView.addSubview(savedPlacesList)
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            savedPoints.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            savedPoints.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            savedPoints.leadingAnchor.constraint(equalTo: savedPoints.trailingAnchor, constant: -30),
-            savedPoints.topAnchor.constraint(equalTo: savedPoints.bottomAnchor, constant: -30)
+            savedPlacesList.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            savedPlacesList.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            savedPlacesList.leadingAnchor.constraint(equalTo: savedPlacesList.trailingAnchor, constant: -30),
+            savedPlacesList.topAnchor.constraint(equalTo: savedPlacesList.bottomAnchor, constant: -30)
         ])
     }
 }
