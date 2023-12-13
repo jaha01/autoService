@@ -8,15 +8,15 @@
 import Foundation
 
 struct MapPoint {
-    var title: PointTitle
+    var title: PointInfo
     var point: Point
     
     init(dictionary: [String: Any]) {
-        self.title = PointTitle(name: dictionary["name"] as! String, description: dictionary["description"] as! String)
+        self.title = PointInfo(name: dictionary["name"] as! String, description: dictionary["description"] as! String)
         self.point = Point(latitude: dictionary["latitude"] as! Double, longitude: dictionary["longitude"] as! Double)
     }
     
-    init(title: PointTitle, point: Point) {
+    init(title: PointInfo, point: Point) {
         self.title = title
         self.point = point
     }

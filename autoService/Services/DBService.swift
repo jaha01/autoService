@@ -71,8 +71,7 @@ final class DBService {
     func setupMapPointsListeners(handler: @escaping ([MapPoint]) -> Void) {
         ref.child(authService.getUserID()).child(mapPoints).observe(.value) { snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
-                handler(dictionary.map { MapPoint(dictionary: $0.value as! [String : Any])
-                })
+                handler(dictionary.map { MapPoint(dictionary: $0.value as! [String : Any])})
             }
         }
     }

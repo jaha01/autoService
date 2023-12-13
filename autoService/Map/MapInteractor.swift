@@ -9,7 +9,7 @@ import Foundation
 import MapKit
 import CoreLocation
 
-final class MapInteractor: NSObject, CLLocationManagerDelegate{
+final class MapInteractor: NSObject {
     
     // MARK: Public properties
     
@@ -20,6 +20,7 @@ final class MapInteractor: NSObject, CLLocationManagerDelegate{
     
     private let dbService: DBService
     private let locationManager = CLLocationManager()
+    private var mapPoints = [MapPoint]()
     
     // MARK: Initializer
     
@@ -34,13 +35,14 @@ final class MapInteractor: NSObject, CLLocationManagerDelegate{
     }
     
     func showPointsList() {
-        dbService.setupMapPointsListeners { [weak self] points in
-            guard let self = self else { return }
-            self.router.showPointsList(points: points)
-        }
+        router.showPointsList(points: mapPoints)
     }
     
-    func getUserLocation() {
+    func onViewDidLoad() {
+        dbService.setupMapPointsListeners { [weak self] points in
+            guard let self = self else { return }
+            self.mapPoints = points.map {$0}
+        }
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -48,7 +50,10 @@ final class MapInteractor: NSObject, CLLocationManagerDelegate{
             locationManager.startUpdatingLocation()
         }
     }
-        
+}
+
+// MARK: - CLLocationManagerDelegate Implementation
+extension MapInteractor: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             locationManager.stopUpdatingLocation()

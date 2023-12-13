@@ -18,8 +18,8 @@ final class MapRouter {
     
     func showPointsList(points: [MapPoint]) {
         guard let mapController = viewController as? MapViewController else { return }
-        let tableVC = PointsListBuilder().build(points: points, delegate: mapController)
-        let nav = UINavigationController(rootViewController: tableVC)
+        let pointsListVC = PointsListBuilder().build(points: points, delegate: mapController)
+        let nav = UINavigationController(rootViewController: pointsListVC)
         nav.navigationBar.backgroundColor = .white
         if let sheet = nav.sheetPresentationController {
             sheet.detents = [.medium(), .large()]

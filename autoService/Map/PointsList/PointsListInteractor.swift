@@ -29,4 +29,8 @@ final class PointsListInteractor {
     func didTapPoint() {
         router.close()
     }
+    
+    func pointAfterLoad(points: [MapPoint]) {
+        presenter.preparePointsToShow(points: points)
+    }
 }

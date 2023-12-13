@@ -13,4 +13,7 @@ final class PointsListPresenter {
     
     weak var controller: PointsListViewController!
     
+    func preparePointsToShow(points: [MapPoint]) {
+        controller.showPoints(list: points)
+    }
 }

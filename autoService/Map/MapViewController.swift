@@ -23,7 +23,7 @@ final class MapViewController: UIViewController {
         return view
     }()
     
-    private let savedPlacesList: UIButton = {
+    private let showSavedPlacesButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "bookmark"), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
@@ -41,21 +41,14 @@ final class MapViewController: UIViewController {
         setConstraints()
         title = "Карты"
 
-        interactor.getUserLocation()
+        interactor.onViewDidLoad()
     }
     
     func setupMap(latitude: Double, longitude: Double) {
         let tapHandler = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap))
         view.addGestureRecognizer(tapHandler)
-        mapView.mapWindow.map.move(
-            with: YMKCameraPosition(
-                target: YMKPoint(latitude: latitude, longitude: longitude),
-                zoom: 15,
-                azimuth: 0,
-                tilt: 0
-            ),
-            animation: YMKAnimation(type: YMKAnimationType.smooth, duration: 5),
-            cameraCallback: nil)
+        moveMap(to: Point(latitude: latitude, longitude: longitude))
+
     }
     
     // MARK: - Private methods
@@ -70,28 +63,32 @@ final class MapViewController: UIViewController {
         let worldPoint = mapView.mapWindow.screenToWorld(with: tappedPoint) ?? YMKPoint()
 
         AlertManager.showMapTapInfo(config: AlertMapPoint(title: "Вы нажали на точку", point: Point(latitude: worldPoint.latitude, longitude: worldPoint.longitude))) { action in
-            self.interactor.saveMapPoint(pointInfo: MapPoint(title: PointTitle(name: action.name, description: action.description), point: Point(latitude: worldPoint.latitude, longitude: worldPoint.longitude)))
+            self.interactor.saveMapPoint(pointInfo: MapPoint(title: PointInfo(name: action.name, description: action.description), point: Point(latitude: worldPoint.latitude, longitude: worldPoint.longitude)))
         }
     }
     
-    private func move(_ map: YMKMap, to point: YMKPoint = YMKPoint(latitude: 79.935493, longitude: 40.327392)) {
-        let cameraPosition = YMKCameraPosition(target: point, zoom: 17.0, azimuth: 150.0, tilt: 30.0)
-        map.move(with: cameraPosition, animation: YMKAnimation(type: .smooth, duration: 1.0))
+    
+    private func moveMap(to point: Point) {
+        let cameraPosition = YMKCameraPosition(target: YMKPoint(latitude: point.latitude,
+                                                                longitude: point.longitude),
+                                               zoom: 17.0,
+                                               azimuth: 150.0,
+                                               tilt: 30.0)
+        mapView.mapWindow.map.move(with: cameraPosition, animation: YMKAnimation(type: .smooth, duration: 1.0))
     }
     
-    
     private func setConstraints() {
-        mapView.addSubview(savedPlacesList)
+        mapView.addSubview(showSavedPlacesButton)
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            savedPlacesList.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            savedPlacesList.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            savedPlacesList.leadingAnchor.constraint(equalTo: savedPlacesList.trailingAnchor, constant: -30),
-            savedPlacesList.topAnchor.constraint(equalTo: savedPlacesList.bottomAnchor, constant: -30)
+            showSavedPlacesButton.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            showSavedPlacesButton.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            showSavedPlacesButton.leadingAnchor.constraint(equalTo: showSavedPlacesButton.trailingAnchor, constant: -30),
+            showSavedPlacesButton.topAnchor.constraint(equalTo: showSavedPlacesButton.bottomAnchor, constant: -30)
         ])
     }
 }
@@ -138,6 +135,6 @@ extension MapViewController: YMKUserLocationObjectListener {
 // MARK: - PointsListViewControllerDelegate implementation
 extension MapViewController: PointsListViewControllerDelegate {
     func show(latitude: Double, longitude: Double) {
-        setupMap(latitude: latitude, longitude: longitude)
+        moveMap(to: Point(latitude: latitude, longitude: longitude))
     }
 }

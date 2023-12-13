@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PointTitle {
+struct PointInfo {
     var name: String
     var description: String
 }

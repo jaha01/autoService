@@ -42,7 +42,7 @@ class AlertManager {
         topController.present(alert, animated: true)
     }
     
-    public static func showMapTapInfo(config: AlertMapPoint, completion:  @escaping(PointTitle) -> Void) {
+    public static func showMapTapInfo(config: AlertMapPoint, completion:  @escaping(PointInfo) -> Void) {
         let topController = UIApplication.shared.getTopViewController()
         var name: UITextField?
         var description: UITextField?
@@ -68,7 +68,7 @@ class AlertManager {
             }
             
             alert.addAction(UIAlertAction(title: "Сохранить", style: .default, handler: { action in
-                completion(PointTitle(name: (name?.text)!, description: (description?.text)!))
+                completion(PointInfo(name: (name?.text)!, description: (description?.text)!))
             }))
             alert.addAction(UIAlertAction(title: "Отмена", style: .destructive, handler: nil))
             

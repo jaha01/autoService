@@ -15,14 +15,13 @@ final class PointsListBuilder {
         let presenter = PointsListPresenter()
         let router = PointsListRouter()
         
-        
         controller.interactor = interactor
         interactor.presenter = presenter
         presenter.controller = controller
         interactor.router = router
         router.controller = controller
         controller.delegate = delegate
-        controller.showPoints(list: points)
+        interactor.pointAfterLoad(points: points)
         
         return controller
     }
