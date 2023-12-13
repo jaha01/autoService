@@ -40,15 +40,17 @@ final class MapViewController: UIViewController {
         view.addSubview(mapView)
         setConstraints()
         title = "Карты"
-
+        setupMap()
         interactor.onViewDidLoad()
     }
     
-    func setupMap(latitude: Double, longitude: Double) {
-        let tapHandler = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap))
-        view.addGestureRecognizer(tapHandler)
-        moveMap(to: Point(latitude: latitude, longitude: longitude))
-
+    func moveMap(to point: Point) {
+        let cameraPosition = YMKCameraPosition(target: YMKPoint(latitude: point.latitude,
+                                                                longitude: point.longitude),
+                                               zoom: 17.0,
+                                               azimuth: 150.0,
+                                               tilt: 30.0)
+        mapView.mapWindow.map.move(with: cameraPosition, animation: YMKAnimation(type: .smooth, duration: 1.0))
     }
     
     // MARK: - Private methods
@@ -67,15 +69,11 @@ final class MapViewController: UIViewController {
         }
     }
     
-    
-    private func moveMap(to point: Point) {
-        let cameraPosition = YMKCameraPosition(target: YMKPoint(latitude: point.latitude,
-                                                                longitude: point.longitude),
-                                               zoom: 17.0,
-                                               azimuth: 150.0,
-                                               tilt: 30.0)
-        mapView.mapWindow.map.move(with: cameraPosition, animation: YMKAnimation(type: .smooth, duration: 1.0))
+    func setupMap() {
+        let tapHandler = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap))
+        view.addGestureRecognizer(tapHandler)
     }
+    
     
     private func setConstraints() {
         mapView.addSubview(showSavedPlacesButton)

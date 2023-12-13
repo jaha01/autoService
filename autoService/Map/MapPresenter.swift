@@ -16,6 +16,6 @@ final class MapPresenter {
     // MARK: - Public methods
     
     func prepareUserLocation(latitude: Double, longitude: Double) {
-        viewController.setupMap(latitude: latitude, longitude: longitude)
+        viewController.moveMap(to: Point(latitude: latitude, longitude: longitude))
     }
 }
