@@ -41,7 +41,7 @@ final class MapInteractor: NSObject {
     func onViewDidLoad() {
         dbService.setupMapPointsListeners { [weak self] points in
             guard let self = self else { return }
-            self.mapPoints = points.map {$0}
+            self.mapPoints = points
         }
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self

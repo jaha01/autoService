@@ -20,13 +20,13 @@ final class PointsListViewController: UIViewController {
     weak var delegate: PointsListViewControllerDelegate?
     
     // MARK: - Private properties
-    private let cell = "cell"
+    private let cellIdentifier = "cell"
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.delegate = self
         table.dataSource = self
-        table.register(UITableViewCell.self, forCellReuseIdentifier: cell)
+        table.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -39,6 +39,7 @@ final class PointsListViewController: UIViewController {
         super.viewDidLoad()
         title = "Places List"
         setConstraints()
+        interactor.onViewDidLoad()
     }
     
     func showPoints(list: [MapPoint]) {
@@ -70,7 +71,7 @@ extension PointsListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle , reuseIdentifier: cell)
+        let cell = UITableViewCell(style: .subtitle , reuseIdentifier: cellIdentifier)
         cell.textLabel?.text = points[indexPath.row].title.name
         cell.detailTextLabel?.text = points[indexPath.row].title.description
         cell.selectionStyle = .gray

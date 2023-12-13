@@ -11,7 +11,7 @@ import UIKit
 final class PointsListBuilder {
     func build(points: [MapPoint], delegate: PointsListViewControllerDelegate) -> UIViewController {
         let controller = PointsListViewController()
-        let interactor = PointsListInteractor(dbService: DI.shared.dbService())
+        let interactor = PointsListInteractor(points: points, dbService: DI.shared.dbService())
         let presenter = PointsListPresenter()
         let router = PointsListRouter()
         
@@ -21,7 +21,6 @@ final class PointsListBuilder {
         interactor.router = router
         router.controller = controller
         controller.delegate = delegate
-        interactor.pointAfterLoad(points: points)
         
         return controller
     }

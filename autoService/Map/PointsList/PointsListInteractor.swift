@@ -17,20 +17,22 @@ final class PointsListInteractor {
     // MARK: - Private properties
     
     private let dbService: DBService
+    private let points: [MapPoint]
     
     // MARK: - Initializer
     
-    init(dbService: DBService) {
+    init(points: [MapPoint], dbService: DBService) {
         self.dbService = dbService
+        self.points = points
     }
     
     // MARK: - Public methods
     
-    func didTapPoint() {
-        router.close()
+    func onViewDidLoad() {
+        presenter.preparePointsToShow(points: points)
     }
     
-    func pointAfterLoad(points: [MapPoint]) {
-        presenter.preparePointsToShow(points: points)
+    func didTapPoint() {
+        router.close()
     }
 }
