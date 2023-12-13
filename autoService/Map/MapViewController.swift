@@ -69,7 +69,7 @@ final class MapViewController: UIViewController {
         }
     }
     
-    func setupMap() {
+    private func setupMap() {
         let tapHandler = UITapGestureRecognizer(target: self, action: #selector(handleScreenTap))
         view.addGestureRecognizer(tapHandler)
     }
