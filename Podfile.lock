@@ -776,6 +776,7 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.0.0)
+  - YandexMapsMobile (4.4.0-lite)
 
 DEPENDENCIES:
   - Firebase
@@ -784,6 +785,7 @@ DEPENDENCIES:
   - FirebaseDatabase
   - FirebaseFirestore
   - FirebaseStorage
+  - YandexMapsMobile (= 4.4.0-lite)
 
 SPEC REPOS:
   trunk:
@@ -808,6 +810,7 @@ SPEC REPOS:
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
+    - YandexMapsMobile
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -831,7 +834,8 @@ SPEC CHECKSUMS:
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
+  YandexMapsMobile: 74934971bbd3716e6daecfebed696c07b83b6b22
 
-PODFILE CHECKSUM: 3d46a4cd48c263f487cfcbfa1ab787f4741554fe
+PODFILE CHECKSUM: 22a0ab5e6c0e8c905e7e201457444938e22c33b6
 
 COCOAPODS: 1.11.2

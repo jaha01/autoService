@@ -17,6 +17,7 @@ final class DBService {
     private let authService: AuthService
     private let journalHistoryItems = "journalHistoryItems"
     private let profileInformation = "profileInformation"
+    private let mapPoints = "mapPoints"
     
     init(authService: AuthService) {
         self.authService = authService
@@ -65,5 +66,24 @@ final class DBService {
         let parent = ref.child(authService.getUserID()).child(profileInformation)
         let values = profileInfo.toJson()
         parent.updateChildValues(values)
+    }
+    
+    func setupMapPointsListeners(handler: @escaping ([MapPoint]) -> Void) {
+        ref.child(authService.getUserID()).child(mapPoints).observe(.value) { snapshot in
+            if let dictionary = snapshot.value as? [String: Any] {
+                handler(dictionary.map { MapPoint(dictionary: $0.value as! [String : Any])})
+            }
+        }
+    }
+    
+    func uploadMapPoint(pointInfo: MapPoint) {
+        let parent = ref.child(authService.getUserID()).child(mapPoints)
+        let id = parent.childByAutoId()
+        let values = ["id": id.key! ,
+                      "name": pointInfo.title.name,
+                      "description": pointInfo.title.description,
+                      "latitude": pointInfo.point.latitude,
+                      "longitude": pointInfo.point.longitude] as [String : Any]
+        id.updateChildValues(values)
     }
 }

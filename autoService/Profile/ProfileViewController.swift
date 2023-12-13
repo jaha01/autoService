@@ -249,7 +249,6 @@ final class ProfileViewController: UIViewController {
     }
     
     private func saveInfo() {
-        print("saveInfo  self.brand.text = \(self.brand.text!)")
         let info = ProfileInfo(email: email.text!,
                            phone: phone.text!,
                            name: name.text!,
@@ -412,6 +411,6 @@ final class ProfileViewController: UIViewController {
 // MARK: - CarsModelViewControllerDelegate implementation
 extension ProfileViewController: CarsModelViewControllerDelegate {
     func chosen(brand: String) {
-        self.brand.text = brand // это часть не присваивается, хотся brand не nil
+        self.brand.text = brand
     }
 }
