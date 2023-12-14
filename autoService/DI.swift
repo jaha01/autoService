@@ -34,5 +34,9 @@ final class DI {
     lazy var carsService: CarsService = {
         return CarsService(networkClient: networkClient)
     }()
+ 
     
+    func createLoginBuilder() -> LoginBuilderProtocol {
+        return LoginBuilder()
+    }
 }

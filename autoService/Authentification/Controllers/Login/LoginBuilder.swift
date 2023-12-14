@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class LoginBuilder {
+protocol LoginBuilderProtocol {
+    func build() -> UIViewController
+}
+
+final class LoginBuilder: LoginBuilderProtocol {
     func build() -> UIViewController {
         let controller = LoginViewController()
         let interactor = LoginInteractor(authService: DI.shared.authService)
@@ -23,3 +27,9 @@ final class LoginBuilder {
         return controller
     }
 }
+
+//final class NewLoginBuilder: LoginBuilderProtocol {
+//    func build() -> UIViewController {
+//        return // ...
+//    }
+//}

@@ -12,7 +12,7 @@ final class ForgotPasswordBuilder {
         let controller = ForgotPasswordViewController()
         let interactor = ForgotPasswordInteractor(authService: DI.shared.authService)
         let presenter = ForgotPasswordPresenter()
-        let router = ForgotPasswordRouter()
+        let router = ForgotPasswordRouter(loginBuilder: DI.shared.createLoginBuilder())
 
         controller.interactor = interactor
         interactor.presenter = presenter
