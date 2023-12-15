@@ -6,10 +6,13 @@
 //
 
 import Foundation
-
 import UIKit
 
-final class LoginViewController: UIViewController {
+protocol LoginViewControllerProtocol {
+    func showErrorAlert(config: AlertConfig)
+}
+
+final class LoginViewController: UIViewController, LoginViewControllerProtocol {
 
     var interactor: LoginInteractor!
     

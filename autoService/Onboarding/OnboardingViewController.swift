@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class OnboardingViewController: UIViewController {
+protocol OnboardingViewControllerProtocol {
+    func showOnboarding(_ items: [OnboardingInfo])
+}
+
+final class OnboardingViewController: UIViewController, OnboardingViewControllerProtocol {
     
     var interactor: OnboardingInteractor!
     

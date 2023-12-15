@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class OnboardingPresenter {
+protocol OnboardingPresenterProtocol {
+    func prepareToShowOnboardingData(_ items: [OnboardingInfo])
+}
+
+final class OnboardingPresenter: OnboardingPresenterProtocol {
     weak var viewController: OnboardingViewController!
     
     func prepareToShowOnboardingData(_ items: [OnboardingInfo]) {

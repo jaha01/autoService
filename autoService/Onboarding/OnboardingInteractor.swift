@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class OnboardingInteractor {
+protocol OnboardingInteractorProtocol {
+    func onViewDidLoad()
+    func onOnboardingCompleted()
+}
+
+final class OnboardingInteractor: OnboardingInteractorProtocol {
     var router: OnboardingRouter!
     var presenter: OnboardingPresenter!
     

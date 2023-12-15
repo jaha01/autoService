@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class ForgotPasswordRouter {
+protocol ForgotPasswordRouterProtocol {
+    func goToLogin()
+}
+
+final class ForgotPasswordRouter: ForgotPasswordRouterProtocol {
     weak var viewController: UIViewController!
     
     func goToLogin() {

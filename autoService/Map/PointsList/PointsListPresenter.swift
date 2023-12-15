@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class PointsListPresenter {
+protocol PointsListPresenterProtocol {
+    func preparePointsToShow(points: [MapPoint])
+}
+
+final class PointsListPresenter: PointsListPresenterProtocol {
     
     // MARK: - Public properties
     

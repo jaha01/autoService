@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class ProfilePresenter {
+protocol ProfilePresenterProtocol {
+    func showError(config: AlertConfig)
+    func prepareToShowProfileData(_ items: ProfileInfo)
+}
+
+final class ProfilePresenter: ProfilePresenterProtocol {
     
     // MARK: - Public properties
     

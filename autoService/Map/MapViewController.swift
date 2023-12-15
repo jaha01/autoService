@@ -8,8 +8,11 @@
 import UIKit
 import YandexMapsMobile
 
+protocol MapViewControllerProtocol {
+    func moveMap(to point: Point) 
+}
 
-final class MapViewController: UIViewController {
+final class MapViewController: UIViewController, MapViewControllerProtocol {
     
     // MARK: - Public properties
     

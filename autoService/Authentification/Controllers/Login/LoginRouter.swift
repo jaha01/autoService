@@ -7,7 +7,13 @@
 
 import UIKit
 
-final class LoginRouter {
+protocol LoginRouterProtocol {
+    func goToMain()
+    func goToRegistration()
+    func goToForgotPassword()
+}
+
+final class LoginRouter: LoginRouterProtocol {
     weak var viewController: UIViewController!
     
     func goToMain(){

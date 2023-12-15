@@ -11,8 +11,11 @@ protocol OnboardingCollcetionViewCellDelegate: AnyObject {
     func onButtonClick()
 }
 
+protocol OnboardingCollectionViewCellProtocol {
+    func setup(_ data: OnboardingInfo)
+}
 
-final class OnboardingCollectionViewCell: UICollectionViewCell {
+final class OnboardingCollectionViewCell: UICollectionViewCell, OnboardingCollectionViewCellProtocol {
     
     static let identifier = "OnboardingCollectionViewCell"
     

@@ -15,7 +15,7 @@ enum EntryScreen {
     case auth
     case mainTabBar
 }
-
+//protocol ?
 final class SetupService {
     
     private let authService: AuthService

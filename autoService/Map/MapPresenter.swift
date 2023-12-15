@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class MapPresenter {
+protocol MapPresenterProtocol {
+    func prepareUserLocation(latitude: Double, longitude: Double)
+}
+
+final class MapPresenter: MapPresenterProtocol {
     
     // MARK: - Public properties
     

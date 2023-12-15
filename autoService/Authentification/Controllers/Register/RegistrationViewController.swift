@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class RegistrationViewController: UIViewController {
+protocol RegistrationViewControllerProtocol {
+    func showErrorAlert(config: AlertConfig)
+}
+
+final class RegistrationViewController: UIViewController, RegistrationViewControllerProtocol {
     
     var interactor: RegistrationInteractor!
     

@@ -12,7 +12,7 @@ struct AlertConfig {
     var title: String
     var message: String?
 }
-
+// PROTOCOL - should we use here?
 class AlertManager {
     
     public static func showAlert(config: AlertConfig, completion:  (() -> ())? = nil) {

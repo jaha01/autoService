@@ -7,7 +7,14 @@
 
 import UIKit
 
-final class ProfileInteractor {
+protocol ProfileInteractorProtocol {
+    func onViewDidLoad()
+    func showCarsBrand()
+    func updateProfileInfo(info: ProfileInfo)
+    func didTapSignOut()
+}
+
+final class ProfileInteractor: ProfileInteractorProtocol {
     
     // MARK: - Public properties
     

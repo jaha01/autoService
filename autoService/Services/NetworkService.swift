@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//protocol ?
 class NetworkService : NSObject {
     
     // MARK: - Private properties

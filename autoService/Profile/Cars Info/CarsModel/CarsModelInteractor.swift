@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class CarsModelInteractor {
+protocol CarsModelInteractorProtocol {
+    func loadCarsList(query: String)
+}
+
+final class CarsModelInteractor: CarsModelInteractorProtocol {
     
     // MARK: - Public properties
     

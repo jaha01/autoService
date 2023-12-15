@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class LoginInteractor {
+protocol LoginInteractorProtocol {
+    func signIn(loginRequest: LoginUserCredentials)
+    func didTapRegistration()
+    func didTapForgotPassword()
+}
+
+final class LoginInteractor: LoginInteractorProtocol {
     
     var router: LoginRouter!
     var presenter: LoginPresenter!

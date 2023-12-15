@@ -9,7 +9,13 @@ import Foundation
 import MapKit
 import CoreLocation
 
-final class MapInteractor: NSObject {
+protocol MapInteractorProtocol {
+    func saveMapPoint(pointInfo: MapPoint)
+    func showPointsList()
+    func onViewDidLoad()
+}
+
+final class MapInteractor: NSObject, MapInteractorProtocol {
     
     // MARK: Public properties
     

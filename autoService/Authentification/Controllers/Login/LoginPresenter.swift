@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-final class LoginPresenter{
+protocol LoginPresenterProtocol {
+    func showError(config: AlertConfig)
+}
+
+final class LoginPresenter: LoginPresenterProtocol {
     weak var viewController: LoginViewController!
     
     func showError(config: AlertConfig) {

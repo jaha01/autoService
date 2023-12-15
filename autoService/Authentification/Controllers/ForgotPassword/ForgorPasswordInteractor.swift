@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class ForgotPasswordInteractor {
+protocol ForgotPasswordInteractorProtocol {
+    func resetPassword(email: String)
+    func didTapLogin()
+}
+
+final class ForgotPasswordInteractor: ForgotPasswordInteractorProtocol {
     
     var router: ForgotPasswordRouter!
     var presenter: ForgotPasswordPresenter!

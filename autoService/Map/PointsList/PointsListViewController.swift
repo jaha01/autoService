@@ -11,8 +11,12 @@ import UIKit
 protocol PointsListViewControllerDelegate: AnyObject {
     func show(latitude: Double, longitude: Double)
 }
+// should i union it?
+protocol PointsListViewControllerProtocol {
+    func showPoints(list: [MapPoint])
+}
 
-final class PointsListViewController: UIViewController {
+final class PointsListViewController: UIViewController, PointsListViewControllerProtocol {
     
     // MARK: Public properties
     

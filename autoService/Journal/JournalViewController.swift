@@ -7,7 +7,11 @@
 
 import UIKit
 
-class JournalViewController: UIViewController {
+protocol JournalViewControllerProtocol {
+    func showJournal(_ items: [JournalItem])
+}
+
+class JournalViewController: UIViewController, JournalViewControllerProtocol {
     
     // MARK: - Properties
     var interactor: JounalInteractor!

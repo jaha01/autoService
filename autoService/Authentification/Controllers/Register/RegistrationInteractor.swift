@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class RegistrationInteractor {
+protocol RegistrationInteractorProtocol {
+    func registerUser(registerUserCredentials: RegisterUserCredentials)
+}
+
+final class RegistrationInteractor: RegistrationInteractorProtocol {
     
     var router: RegistrationRouter!
     var presenter: RegistrationPresenter!

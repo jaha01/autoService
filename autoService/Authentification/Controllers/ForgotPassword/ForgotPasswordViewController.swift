@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class ForgotPasswordViewController: UIViewController {
+protocol ForgotPasswordViewControllerProtocol {
+    func showErrorAlert(config: AlertConfig)
+    func showSuccessAlert(config: AlertConfig)
+}
+
+final class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControllerProtocol {
     
     var interactor: ForgotPasswordInteractor!
     

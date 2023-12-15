@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class PointsListInteractor {
+protocol PointsListInteractorProtocol {
+    func onViewDidLoad()
+    func didTapPoint()
+}
+
+final class PointsListInteractor: PointsListInteractorProtocol {
    
     // MARK: Public properties
     

@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class CarsModelPresenter {
+protocol CarsModelPresenterProtocol {
+    func prepareCarsList(cars: [CarInfo])
+    func showError(error: String)
+}
+
+final class CarsModelPresenter: CarsModelPresenterProtocol {
     
     // MARK: - Public properties
     

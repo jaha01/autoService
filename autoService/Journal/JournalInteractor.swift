@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class JounalInteractor {
+protocol JounalInteractorProtocol {
+    func onViewDidLoad()
+    func appendItem(text: String)
+    func deleteItem(id: String) 
+}
+
+final class JounalInteractor: JounalInteractorProtocol {
     // MARK: - Public properties
     var presenter: JournalPresenter!
     var router: JournalRouter!

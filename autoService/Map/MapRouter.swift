@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-final class MapRouter {
+protocol MapRouterProtocol {
+    func showPointsList(points: [MapPoint])
+}
+
+final class MapRouter: MapRouterProtocol {
     
     // MARK: - Public properties
     

@@ -7,7 +7,12 @@
 
 import Foundation
 
-final class JournalPresenter {
+protocol JournalPresenterProtocol {
+    func prepareToShowJournalData(_ items: [JournalItem])
+    func showError(errorText: String)
+}
+
+final class JournalPresenter: JournalPresenterProtocol {
     // MARK: - Public properties
     var viewController: JournalViewController!
     
