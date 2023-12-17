@@ -7,15 +7,20 @@
 
 import Foundation
 
-final class OnboardingInteractor {
-    var router: OnboardingRouter!
-    var presenter: OnboardingPresenter!
+protocol OnboardingInteractorProtocol {
+    func onViewDidLoad()
+    func onOnboardingCompleted()
+}
+
+final class OnboardingInteractor: OnboardingInteractorProtocol {
+    var router: OnboardingRouterProtocol!
+    var presenter: OnboardingPresenterProtocol!
     
-    private let authService: AuthService
-    private let setupService: SetupService
+    private let authService: AuthServiceProtocol
+    private let setupService: SetupServiceProtocol
     
-    init(authService: AuthService,
-         setupService: SetupService) {
+    init(authService: AuthServiceProtocol,
+         setupService: SetupServiceProtocol) {
         self.authService = authService
         self.setupService = setupService
     }

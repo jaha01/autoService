@@ -7,9 +7,13 @@
 
 import UIKit
 
-final class OnboardingViewController: UIViewController {
+protocol OnboardingViewControllerProtocol: AnyObject {
+    func showOnboarding(_ items: [OnboardingInfo])
+}
+
+final class OnboardingViewController: UIViewController, OnboardingViewControllerProtocol {
     
-    var interactor: OnboardingInteractor!
+    var interactor: OnboardingInteractorProtocol!
     
     // MARK: - Private properties
     //private currentIndexPath: Int()

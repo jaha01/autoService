@@ -16,12 +16,16 @@ enum EntryScreen {
     case mainTabBar
 }
 
-final class SetupService {
+protocol SetupServiceProtocol {
+    func getEntryScreen() ->  EntryScreen
+}
+
+final class SetupService: SetupServiceProtocol {
     
-    private let authService: AuthService
+    private let authService: AuthServiceProtocol
     
     
-    init(authService: AuthService) {
+    init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
     

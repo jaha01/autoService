@@ -7,14 +7,19 @@
 
 import UIKit
 
-final class ForgotPasswordInteractor {
+protocol ForgotPasswordInteractorProtocol {
+    func resetPassword(email: String)
+    func didTapLogin()
+}
+
+final class ForgotPasswordInteractor: ForgotPasswordInteractorProtocol {
     
-    var router: ForgotPasswordRouter!
-    var presenter: ForgotPasswordPresenter!
+    var router: ForgotPasswordRouterProtocol!
+    var presenter: ForgotPasswordPresenterProtocol!
     
-    let authService: AuthService
+    let authService: AuthServiceProtocol
     
-    init(authService: AuthService) {
+    init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
     

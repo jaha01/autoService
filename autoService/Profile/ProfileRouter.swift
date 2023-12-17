@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class ProfileRouter {
+protocol ProfileRouterProtocol {
+    func goToLogin()
+    func showListCarsBrand()
+}
+
+final class ProfileRouter: ProfileRouterProtocol {
     
     // MARK: - Public properties
     

@@ -7,7 +7,11 @@
 
 import Foundation
 
-class NetworkService : NSObject {
+protocol NetworkServiceProtocol {
+    func request<T:Codable>(path: String, method: HttpMethod, body: Codable?, completion: @escaping(Result<T,Error>)->Void)
+}
+
+class NetworkService : NSObject, NetworkServiceProtocol {
     
     // MARK: - Private properties
     

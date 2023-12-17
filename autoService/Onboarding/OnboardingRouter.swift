@@ -7,7 +7,12 @@
 
 import UIKit
 
-final class OnboardingRouter {
+protocol OnboardingRouterProtocol {
+    func goToLogin()
+    func goToMain()
+}
+
+final class OnboardingRouter: OnboardingRouterProtocol {
     weak var viewController: UIViewController!
     
     func goToLogin() {

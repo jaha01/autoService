@@ -7,9 +7,13 @@
 
 import UIKit
 
-final class RegistrationPresenter {
+protocol RegistrationPresenterProtocol {
+    func showError(config: AlertConfig)
+}
+
+final class RegistrationPresenter: RegistrationPresenterProtocol {
     
-    weak var viewController: RegistrationViewController!
+    weak var viewController: RegistrationViewControllerProtocol!
     
     func showError(config: AlertConfig) {
         viewController.showErrorAlert(config: config)

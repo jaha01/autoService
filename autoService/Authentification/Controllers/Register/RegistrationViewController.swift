@@ -7,9 +7,13 @@
 
 import UIKit
 
-final class RegistrationViewController: UIViewController {
+protocol RegistrationViewControllerProtocol: AnyObject {
+    func showErrorAlert(config: AlertConfig)
+}
+
+final class RegistrationViewController: UIViewController, RegistrationViewControllerProtocol {
     
-    var interactor: RegistrationInteractor!
+    var interactor: RegistrationInteractorProtocol!
     
     // MARK: - Private properties
     private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create your account")

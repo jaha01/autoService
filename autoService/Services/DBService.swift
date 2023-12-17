@@ -9,17 +9,26 @@
 import FirebaseDatabase
 import FirebaseAuth
 
+protocol DBServiceProtocol {
+    func setupListeners(handler: @escaping ([JournalItem]) -> Void)
+    func uploadJournalItem(text: String)
+    func removeJournalItem(id: String)
+    func setupProfileInfoListeners(handler: @escaping (ProfileInfo) -> Void)
+    func uploadProfileInfo(profileInfo: ProfileInfo)
+    func setupMapPointsListeners(handler: @escaping ([MapPoint]) -> Void)
+    func uploadMapPoint(pointInfo: MapPoint)
+}
 
-final class DBService {
+final class DBService: DBServiceProtocol {
     
     private let ref = Database.database().reference()
     private var allItems = [JournalItem]()
-    private let authService: AuthService
+    private let authService: AuthServiceProtocol
     private let journalHistoryItems = "journalHistoryItems"
     private let profileInformation = "profileInformation"
     private let mapPoints = "mapPoints"
     
-    init(authService: AuthService) {
+    init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
     
@@ -48,7 +57,7 @@ final class DBService {
     }
     
     
-    func removeJournalItem(id: String){
+    func removeJournalItem(id: String) {
         ref.child(authService.getUserID()).child(journalHistoryItems).child(id).removeValue()
     }
     

@@ -7,14 +7,20 @@
 
 import Foundation
 
-final class LoginInteractor {
+protocol LoginInteractorProtocol {
+    func signIn(loginRequest: LoginUserCredentials)
+    func didTapRegistration()
+    func didTapForgotPassword()
+}
+
+final class LoginInteractor: LoginInteractorProtocol {
     
-    var router: LoginRouter!
-    var presenter: LoginPresenter!
+    var router: LoginRouterProtocol!
+    var presenter: LoginPresenterProtocol!
     
-    private let authService: AuthService
+    private let authService: AuthServiceProtocol
     
-    init(authService: AuthService) {
+    init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
     

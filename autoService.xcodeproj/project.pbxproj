@@ -293,9 +293,9 @@
 				44DF3CEF2AB22C9400DC27E5 /* AuthService.swift */,
 				44DF3CEC2AB0FE6000DC27E5 /* SetupService.swift */,
 				440607272AE5465100EE8807 /* DBService.swift */,
-				4406072B2AE8771700EE8807 /* JournalItem.swift */,
 				44D7AB4F2B055AD70025CB73 /* CarsService.swift */,
 				44D7AB512B055B7E0025CB73 /* NetworkService.swift */,
+				4406072B2AE8771700EE8807 /* JournalItem.swift */,
 				44D7AB5B2B07F3DC0025CB73 /* CarsSuggestions.swift */,
 				44610E9C2B0E8E0E00FD4D4C /* Requests.swift */,
 				44610EA02B140D7E00FD4D4C /* RequestBody.swift */,
@@ -316,14 +316,6 @@
 				44C614B52ACE150900162DA9 /* LoginBuilder.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		44D7AB4C2B0556E60025CB73 /* Cars Info */ = {
-			isa = PBXGroup;
-			children = (
-				44D7AB5D2B07F7CF0025CB73 /* CarsModel */,
-			);
-			path = "Cars Info";
 			sourceTree = "<group>";
 		};
 		44D7AB5D2B07F7CF0025CB73 /* CarsModel */ = {
@@ -370,7 +362,7 @@
 				443400E62AF1A31B00A2E9F3 /* ProfileRouter.swift */,
 				44DD0B5C2AD2D2CF005019B6 /* ProfileBuilder.swift */,
 				44979C2A2B015B1A0024A225 /* ProfileInfo.swift */,
-				44D7AB4C2B0556E60025CB73 /* Cars Info */,
+				44D7AB5D2B07F7CF0025CB73 /* CarsModel */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

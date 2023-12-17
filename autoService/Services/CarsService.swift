@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class CarsService {
+protocol CarsServiceProtocol {
+    func loadCars(query: String, completion: @escaping(Result<CarsSuggestions, Error>)->Void)
+}
+
+final class CarsService: CarsServiceProtocol {
     
     //MARK: - Private properties
     

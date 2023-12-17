@@ -8,7 +8,20 @@
 import FirebaseAuth
 import FirebaseFirestore
 
-final class AuthService {
+protocol AuthServiceProtocol {
+    func isNewUser() -> Bool
+    func setIsNotNewUser()
+    func registerUser(with userCredentials: RegisterUserCredentials, completion: @escaping(Error?) -> Void)
+    func signIn(with userCredentials: LoginUserCredentials, completion: @escaping(Error?)->Void)
+    func signOut(completion: @escaping (Error?)->Void)
+    func resetPassword(with email: String, completion: @escaping (Error?) -> Void)
+    func fetchUser(completion: @escaping (User?, Error?) -> Void)
+    func isCurrentUserExists() -> Bool
+    func getUserID() -> String
+    func getUserEmail() -> String
+}
+
+final class AuthService: AuthServiceProtocol {
     private let isNotNewUserKey = "isNotNewUser"
     
     func isNewUser() -> Bool {

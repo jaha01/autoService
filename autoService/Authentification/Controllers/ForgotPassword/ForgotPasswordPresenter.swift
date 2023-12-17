@@ -7,9 +7,14 @@
 
 import UIKit
 
-final class ForgotPasswordPresenter {
+protocol ForgotPasswordPresenterProtocol {
+    func showError(config: AlertConfig)
+    func showPasswordResetInfo(title: String, message: String)
+}
+
+final class ForgotPasswordPresenter: ForgotPasswordPresenterProtocol {
     
-    weak var viewController: ForgotPasswordViewController!
+    weak var viewController: ForgotPasswordViewControllerProtocol!
     
     func showError(config: AlertConfig) {
         viewController.showErrorAlert(config: config)

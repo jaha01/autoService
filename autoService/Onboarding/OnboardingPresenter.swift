@@ -7,8 +7,12 @@
 
 import Foundation
 
-final class OnboardingPresenter {
-    weak var viewController: OnboardingViewController!
+protocol OnboardingPresenterProtocol {
+    func prepareToShowOnboardingData(_ items: [OnboardingInfo])
+}
+
+final class OnboardingPresenter: OnboardingPresenterProtocol {
+    weak var viewController: OnboardingViewControllerProtocol!
     
     func prepareToShowOnboardingData(_ items: [OnboardingInfo]) {
         // mapping, etc...

@@ -7,11 +7,15 @@
 
 import Foundation
 
-final class MapPresenter {
+protocol MapPresenterProtocol {
+    func prepareUserLocation(latitude: Double, longitude: Double)
+}
+
+final class MapPresenter: MapPresenterProtocol {
     
     // MARK: - Public properties
     
-    weak var viewController: MapViewController!
+    weak var viewController: MapViewControllerProtocol!
  
     // MARK: - Public methods
     

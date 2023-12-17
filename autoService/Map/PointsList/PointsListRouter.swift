@@ -7,7 +7,11 @@
 
 import Foundation
 
-final class PointsListRouter {
+protocol PointsListRouterProtocol {
+    func close()
+}
+
+final class PointsListRouter: PointsListRouterProtocol {
     
     // MARK: - Public properties
     

@@ -7,11 +7,15 @@
 
 import Foundation
 
-final class PointsListPresenter {
+protocol PointsListPresenterProtocol {
+    func preparePointsToShow(points: [MapPoint])
+}
+
+final class PointsListPresenter: PointsListPresenterProtocol {
     
     // MARK: - Public properties
     
-    weak var controller: PointsListViewController!
+    weak var controller: PointsListViewControllerProtocol!
     
     func preparePointsToShow(points: [MapPoint]) {
         controller.showPoints(list: points)

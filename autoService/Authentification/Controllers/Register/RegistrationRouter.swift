@@ -7,7 +7,11 @@
 
 import UIKit
 
-final class RegistrationRouter {
+protocol RegistrationRouterProtocol {
+    func goToMain() 
+}
+
+final class RegistrationRouter: RegistrationRouterProtocol {
     weak var viewController: UIViewController!
     
     func goToMain() {

@@ -7,11 +7,16 @@
 
 import UIKit
 
-final class ProfileViewController: UIViewController {
+protocol ProfileViewControllerProtocol: AnyObject {
+    func showErrorAlert(config: AlertConfig)
+    func setProfileData(item: ProfileInfo)
+}
+
+final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
     
     // MARK: - Public properties
     
-    var interactor: ProfileInteractor!
+    var interactor: ProfileInteractorProtocol!
     
     // MARK: - Private properties
     

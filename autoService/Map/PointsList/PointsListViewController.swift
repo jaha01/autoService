@@ -12,7 +12,11 @@ protocol PointsListViewControllerDelegate: AnyObject {
     func show(latitude: Double, longitude: Double)
 }
 
-final class PointsListViewController: UIViewController {
+protocol PointsListViewControllerProtocol: AnyObject {
+    func showPoints(list: [MapPoint])
+}
+
+final class PointsListViewController: UIViewController, PointsListViewControllerProtocol {
     
     // MARK: Public properties
     

@@ -12,11 +12,16 @@ protocol CarsModelViewControllerDelegate: AnyObject {
     func chosen(brand: String)
 }
 
-final class CarsModelViewController: UIViewController {
+protocol CarsModelViewControllerProtocol: AnyObject {
+    func showCarsList(cars: [String])
+    func showErrorAlert(config: AlertConfig)
+}
+
+final class CarsModelViewController: UIViewController, CarsModelViewControllerProtocol {
     
     // MARK: - Public properties
     
-    var interactor: CarsModelInteractor!
+    var interactor: CarsModelInteractorProtocol!
     weak var delegate: CarsModelViewControllerDelegate?
     
     // MARK: - Private properties
