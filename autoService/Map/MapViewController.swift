@@ -8,7 +8,7 @@
 import UIKit
 import YandexMapsMobile
 
-protocol MapViewControllerProtocol {
+protocol MapViewControllerProtocol: AnyObject {
     func moveMap(to point: Point) 
 }
 
@@ -16,7 +16,7 @@ final class MapViewController: UIViewController, MapViewControllerProtocol {
     
     // MARK: - Public properties
     
-    var interactor: MapInteractor!
+    var interactor: MapInteractorProtocol!
     
     // MARK: Private properties
     

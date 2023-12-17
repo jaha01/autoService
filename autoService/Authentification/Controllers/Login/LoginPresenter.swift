@@ -13,7 +13,7 @@ protocol LoginPresenterProtocol {
 }
 
 final class LoginPresenter: LoginPresenterProtocol {
-    weak var viewController: LoginViewController!
+    weak var viewController: LoginViewControllerProtocol!
     
     func showError(config: AlertConfig) {
         viewController.showErrorAlert(config: config)

@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol ForgotPasswordViewControllerProtocol {
+protocol ForgotPasswordViewControllerProtocol: AnyObject {
     func showErrorAlert(config: AlertConfig)
     func showSuccessAlert(config: AlertConfig)
 }
 
 final class ForgotPasswordViewController: UIViewController, ForgotPasswordViewControllerProtocol {
     
-    var interactor: ForgotPasswordInteractor!
+    var interactor: ForgotPasswordInteractorProtocol!
     
     //MARK: - Properties
     private let headerView = AuthHeaderView(title: "Forgot Password", subTitle: "Reset your password")

@@ -15,7 +15,7 @@ final class PointsListPresenter: PointsListPresenterProtocol {
     
     // MARK: - Public properties
     
-    weak var controller: PointsListViewController!
+    weak var controller: PointsListViewControllerProtocol!
     
     func preparePointsToShow(points: [MapPoint]) {
         controller.showPoints(list: points)

@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol LoginViewControllerProtocol {
+protocol LoginViewControllerProtocol: AnyObject {
     func showErrorAlert(config: AlertConfig)
 }
 
 final class LoginViewController: UIViewController, LoginViewControllerProtocol {
 
-    var interactor: LoginInteractor!
+    var interactor: LoginInteractorProtocol!
     
     // MARK: - Private properties
     private let headerView = AuthHeaderView(title: "Sign in", subTitle: "Sign in to your account")

@@ -15,16 +15,16 @@ protocol JounalInteractorProtocol {
 
 final class JounalInteractor: JounalInteractorProtocol {
     // MARK: - Public properties
-    var presenter: JournalPresenter!
+    var presenter: JournalPresenterProtocol!
     var router: JournalRouter!
     
     // MARK: - Private properties
     private var items = [JournalItem]()
-    private let authService: AuthService
-    private let dbService: DBService
+    private let authService: AuthServiceProtocol
+    private let dbService: DBServiceProtocol
     
-    init(authService: AuthService,
-         dbService: DBService) {
+    init(authService: AuthServiceProtocol,
+         dbService: DBServiceProtocol) {
         self.authService = authService
         self.dbService = dbService
     }

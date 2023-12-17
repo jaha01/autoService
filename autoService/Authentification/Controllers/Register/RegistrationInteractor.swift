@@ -13,10 +13,10 @@ protocol RegistrationInteractorProtocol {
 
 final class RegistrationInteractor: RegistrationInteractorProtocol {
     
-    var router: RegistrationRouter!
-    var presenter: RegistrationPresenter!
+    var router: RegistrationRouterProtocol!
+    var presenter: RegistrationPresenterProtocol!
     
-    private let authService: AuthService
+    private let authService: AuthServiceProtocol
     
     init(authService: AuthService) {
         self.authService = authService

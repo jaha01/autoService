@@ -12,7 +12,7 @@ protocol OnboardingPresenterProtocol {
 }
 
 final class OnboardingPresenter: OnboardingPresenterProtocol {
-    weak var viewController: OnboardingViewController!
+    weak var viewController: OnboardingViewControllerProtocol!
     
     func prepareToShowOnboardingData(_ items: [OnboardingInfo]) {
         // mapping, etc...

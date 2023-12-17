@@ -16,7 +16,7 @@ final class CarsModelPresenter: CarsModelPresenterProtocol {
     
     // MARK: - Public properties
     
-    weak var controller: CarsModelViewController!
+    weak var controller: CarsModelViewControllerProtocol!
     
     // MARK: - Public methods
     

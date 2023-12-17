@@ -15,15 +15,15 @@ final class CarsModelInteractor: CarsModelInteractorProtocol {
     
     // MARK: - Public properties
     
-    var presenter: CarsModelPresenter!
+    var presenter: CarsModelPresenterProtocol!
     
     // MARK: - Private properties
 
-    private let carsService: CarsService
+    private let carsService: CarsServiceProtocol
     
     // MARK: - Initializer
     
-    init(carsService: CarsService) {
+    init(carsService: CarsServiceProtocol) {
         self.carsService = carsService
     }
 

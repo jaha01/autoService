@@ -18,18 +18,18 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     
     // MARK: - Public properties
     
-    var presenter: ProfilePresenter!
-    var router: ProfileRouter!
+    var presenter: ProfilePresenterProtocol!
+    var router: ProfileRouterProtocol!
     
     // MARK: - Private properties
     
-    private let authService: AuthService
-    private let dbService: DBService
+    private let authService: AuthServiceProtocol
+    private let dbService: DBServiceProtocol
     
     // MARK: - Initializer
     
-    init(authService: AuthService,
-         dbService: DBService) {
+    init(authService: AuthServiceProtocol,
+         dbService: DBServiceProtocol) {
         self.authService = authService
         self.dbService = dbService
     }

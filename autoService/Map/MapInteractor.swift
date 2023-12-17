@@ -19,18 +19,18 @@ final class MapInteractor: NSObject, MapInteractorProtocol {
     
     // MARK: Public properties
     
-    var presenter: MapPresenter!
-    var router: MapRouter!
+    var presenter: MapPresenterProtocol!
+    var router: MapRouterProtocol!
     
     // MARK: - Private properties
     
-    private let dbService: DBService
+    private let dbService: DBServiceProtocol
     private let locationManager = CLLocationManager()
     private var mapPoints = [MapPoint]()
     
     // MARK: Initializer
     
-    init(dbService: DBService) {
+    init(dbService: DBServiceProtocol) {
         self.dbService = dbService
     }
     

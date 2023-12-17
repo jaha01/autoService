@@ -16,7 +16,7 @@ final class ProfilePresenter: ProfilePresenterProtocol {
     
     // MARK: - Public properties
     
-    weak var viewController: ProfileViewController!
+    weak var viewController: ProfileViewControllerProtocol!
     
     // MARK: - Public methods
     

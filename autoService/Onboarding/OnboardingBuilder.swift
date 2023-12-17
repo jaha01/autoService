@@ -18,7 +18,7 @@ final class OnboardingBuilder {
         interactor.presenter = presenter
         presenter.viewController = controller
         router.viewController = controller
-        interactor.router = router
+        interactor.router = router // Cannot assign value of type 'OnboardingRouter' to type 'OnboardingRouterProtocol?'
         
         return controller
     }

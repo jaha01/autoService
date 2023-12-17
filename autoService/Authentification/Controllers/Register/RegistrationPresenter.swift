@@ -13,7 +13,7 @@ protocol RegistrationPresenterProtocol {
 
 final class RegistrationPresenter: RegistrationPresenterProtocol {
     
-    weak var viewController: RegistrationViewController!
+    weak var viewController: RegistrationViewControllerProtocol!
     
     func showError(config: AlertConfig) {
         viewController.showErrorAlert(config: config)

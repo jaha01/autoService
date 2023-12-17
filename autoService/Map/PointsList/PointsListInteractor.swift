@@ -16,17 +16,17 @@ final class PointsListInteractor: PointsListInteractorProtocol {
    
     // MARK: Public properties
     
-    var presenter: PointsListPresenter!
-    var router: PointsListRouter!
+    var presenter: PointsListPresenterProtocol!
+    var router: PointsListRouterProtocol!
     
     // MARK: - Private properties
     
-    private let dbService: DBService
+    private let dbService: DBServiceProtocol
     private let points: [MapPoint]
     
     // MARK: - Initializer
     
-    init(points: [MapPoint], dbService: DBService) {
+    init(points: [MapPoint], dbService: DBServiceProtocol) {
         self.dbService = dbService
         self.points = points
     }

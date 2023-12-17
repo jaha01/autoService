@@ -14,7 +14,7 @@ protocol JournalPresenterProtocol {
 
 final class JournalPresenter: JournalPresenterProtocol {
     // MARK: - Public properties
-    var viewController: JournalViewController!
+    var viewController: JournalViewControllerProtocol!
     
     // MARK: - Public methods
     func prepareToShowJournalData(_ items: [JournalItem]) {

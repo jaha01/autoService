@@ -13,14 +13,14 @@ protocol OnboardingInteractorProtocol {
 }
 
 final class OnboardingInteractor: OnboardingInteractorProtocol {
-    var router: OnboardingRouter!
-    var presenter: OnboardingPresenter!
+    var router: OnboardingRouter! // заменил на протокол получил в builder ошибку
+    var presenter: OnboardingPresenterProtocol!
     
-    private let authService: AuthService
-    private let setupService: SetupService
+    private let authService: AuthServiceProtocol
+    private let setupService: SetupServiceProtocol
     
-    init(authService: AuthService,
-         setupService: SetupService) {
+    init(authService: AuthServiceProtocol,
+         setupService: SetupServiceProtocol) {
         self.authService = authService
         self.setupService = setupService
     }

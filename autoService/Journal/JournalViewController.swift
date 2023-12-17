@@ -7,14 +7,15 @@
 
 import UIKit
 
-protocol JournalViewControllerProtocol {
+protocol JournalViewControllerProtocol: AnyObject {
     func showJournal(_ items: [JournalItem])
+    func showErrorAlert(config: AlertConfig)
 }
 
 class JournalViewController: UIViewController, JournalViewControllerProtocol {
     
     // MARK: - Properties
-    var interactor: JounalInteractor!
+    var interactor: JounalInteractorProtocol!
     private var items = [JournalItem]()
     
     private let journalList: UITableView = {
