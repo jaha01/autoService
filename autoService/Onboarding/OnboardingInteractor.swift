@@ -13,7 +13,7 @@ protocol OnboardingInteractorProtocol {
 }
 
 final class OnboardingInteractor: OnboardingInteractorProtocol {
-    var router: OnboardingRouter! // заменил на протокол получил в builder ошибку
+    var router: OnboardingRouterProtocol!
     var presenter: OnboardingPresenterProtocol!
     
     private let authService: AuthServiceProtocol

@@ -12,7 +12,7 @@ protocol OnboardingRouterProtocol {
     func goToMain()
 }
 
-final class OnboardingRouter {
+final class OnboardingRouter: OnboardingRouterProtocol {
     weak var viewController: UIViewController!
     
     func goToLogin() {
