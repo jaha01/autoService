@@ -31,7 +31,7 @@ final class JounalInteractor: JounalInteractorProtocol {
     
     // MARK: - Public methods
     func onViewDidLoad() {
-        dbService.setupListeners(handler: { [weak self] items in
+        dbService.setupJournalListeners(handler: { [weak self] items in
             guard let self = self else { return }
             self.items = items
             self.presenter.prepareToShowJournalData(self.items)

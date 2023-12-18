@@ -9,17 +9,23 @@
 import FirebaseDatabase
 import FirebaseAuth
 
-protocol DBServiceProtocol {
-    func setupListeners(handler: @escaping ([JournalItem]) -> Void)
+protocol JournalServiceProtocol {
+    func setupJournalListeners(handler: @escaping ([JournalItem]) -> Void)
     func uploadJournalItem(text: String)
     func removeJournalItem(id: String)
+}
+
+protocol ProfileInfoProtocol {
     func setupProfileInfoListeners(handler: @escaping (ProfileInfo) -> Void)
     func uploadProfileInfo(profileInfo: ProfileInfo)
+}
+
+protocol MapPointProtocol {
     func setupMapPointsListeners(handler: @escaping ([MapPoint]) -> Void)
     func uploadMapPoint(pointInfo: MapPoint)
 }
 
-final class DBService: DBServiceProtocol {
+final class DBService: JournalServiceProtocol, ProfileInfoProtocol, MapPointProtocol {
     
     private let ref = Database.database().reference()
     private var allItems = [JournalItem]()
@@ -32,7 +38,7 @@ final class DBService: DBServiceProtocol {
         self.authService = authService
     }
     
-    func setupListeners(handler: @escaping ([JournalItem]) -> Void) {
+    func setupJournalListeners(handler: @escaping ([JournalItem]) -> Void) {
         ref.child(authService.getUserID()).child(journalHistoryItems).observe(.value) { [weak self] snapshot in
             guard let self = self else { return }
             if let dictionary = snapshot.value as? [String: Any] {
