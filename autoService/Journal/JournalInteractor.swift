@@ -21,17 +21,17 @@ final class JounalInteractor: JounalInteractorProtocol {
     // MARK: - Private properties
     private var items = [JournalItem]()
     private let authService: AuthServiceProtocol
-    private let dbService: DBServiceProtocol
+    private let dbService: JournalServiceProtocol
     
     init(authService: AuthServiceProtocol,
-         dbService: DBServiceProtocol) {
+         dbService: JournalServiceProtocol) {
         self.authService = authService
         self.dbService = dbService
     }
     
     // MARK: - Public methods
     func onViewDidLoad() {
-        dbService.setupJournalListeners(handler: { [weak self] items in
+        dbService.setupJournalListener(handler: { [weak self] items in
             guard let self = self else { return }
             self.items = items
             self.presenter.prepareToShowJournalData(self.items)

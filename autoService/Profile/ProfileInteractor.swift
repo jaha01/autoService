@@ -24,12 +24,12 @@ final class ProfileInteractor: ProfileInteractorProtocol {
     // MARK: - Private properties
     
     private let authService: AuthServiceProtocol
-    private let dbService: DBServiceProtocol
+    private let dbService: ProfileInfoServiceProtocol
     
     // MARK: - Initializer
     
     init(authService: AuthServiceProtocol,
-         dbService: DBServiceProtocol) {
+         dbService: ProfileInfoServiceProtocol) {
         self.authService = authService
         self.dbService = dbService
     }

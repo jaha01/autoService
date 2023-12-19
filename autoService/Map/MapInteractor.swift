@@ -24,13 +24,13 @@ final class MapInteractor: NSObject, MapInteractorProtocol {
     
     // MARK: - Private properties
     
-    private let dbService: DBServiceProtocol
+    private let dbService: MapPointsServiceProtocol
     private let locationManager = CLLocationManager()
     private var mapPoints = [MapPoint]()
     
     // MARK: Initializer
     
-    init(dbService: DBServiceProtocol) {
+    init(dbService: MapPointsServiceProtocol) {
         self.dbService = dbService
     }
     
