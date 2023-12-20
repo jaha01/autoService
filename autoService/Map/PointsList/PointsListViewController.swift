@@ -87,4 +87,12 @@ extension PointsListViewController: UITableViewDelegate, UITableViewDataSource {
                        longitude: points[indexPath.row].point.longitude)
         interactor.didTapPoint()
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            interactor.deletePoint(id: points[indexPath.row].id)
+            points.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }

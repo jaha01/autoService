@@ -90,19 +90,19 @@ class JournalViewController: UIViewController, JournalViewControllerProtocol {
 extension JournalViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = self.items[indexPath.row].name
+        cell.textLabel?.text = items[indexPath.row].name
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            interactor.deleteItem(id: self.items[indexPath.row].id)
-            self.items.remove(at: indexPath.row)
+            interactor.deleteItem(id: items[indexPath.row].id)
+            items.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
