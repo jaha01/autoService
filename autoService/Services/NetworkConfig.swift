@@ -7,7 +7,6 @@
 
 import Foundation
 
-//protocol ?
 class NetworkConfig {
     
     let url = "https://suggestions.dadata.ru"

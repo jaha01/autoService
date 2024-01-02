@@ -15,14 +15,20 @@ protocol LoginInteractorProtocol {
 
 final class LoginInteractor: LoginInteractorProtocol {
     
+    // MARK: - Public properties
+    
     var router: LoginRouterProtocol!
     var presenter: LoginPresenterProtocol!
+    
+    // MARK: - Private properties
     
     private let authService: AuthServiceProtocol
     
     init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
+    
+    // MARK: - Public methods
     
     func signIn(loginRequest: LoginUserCredentials) {
         authService.signIn(with: loginRequest) { [weak self] error in

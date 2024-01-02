@@ -41,6 +41,7 @@ final class OnboardingCollectionViewCell: UICollectionViewCell, OnboardingCollec
     }()
     
     // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -55,6 +56,7 @@ final class OnboardingCollectionViewCell: UICollectionViewCell, OnboardingCollec
     }
     
     // MARK: - Public methods
+    
     func setup(_ data: OnboardingInfo) {
         welcomeImages.image = UIImage(named: data.imageName)
         nextButton.setTitle("\(data.buttonName)", for: .normal)
@@ -67,6 +69,7 @@ final class OnboardingCollectionViewCell: UICollectionViewCell, OnboardingCollec
     }
     
     // MARK: - Constraints
+    
     private func setConstraints() {
         
         NSLayoutConstraint.activate([

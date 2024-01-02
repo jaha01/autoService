@@ -16,6 +16,8 @@ final class ForgotPasswordPresenter: ForgotPasswordPresenterProtocol {
     
     weak var viewController: ForgotPasswordViewControllerProtocol!
     
+    // MARK: - Public methods
+    
     func showError(config: AlertConfig) {
         viewController.showErrorAlert(config: config)
     }

@@ -14,6 +14,8 @@ protocol RegistrationRouterProtocol {
 final class RegistrationRouter: RegistrationRouterProtocol {
     weak var viewController: UIViewController!
     
+    // MARK: - Public methods
+    
     func goToMain() {
         let mainController: UIViewController = MainTabBabViewController()
         let window = viewController.view.window
