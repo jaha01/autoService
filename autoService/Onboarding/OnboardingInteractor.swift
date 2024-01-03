@@ -13,8 +13,12 @@ protocol OnboardingInteractorProtocol {
 }
 
 final class OnboardingInteractor: OnboardingInteractorProtocol {
+    // MARK: - Public properties
+    
     var router: OnboardingRouterProtocol!
     var presenter: OnboardingPresenterProtocol!
+    
+    // MARK: - Private properties
     
     private let authService: AuthServiceProtocol
     private let setupService: SetupServiceProtocol
@@ -25,11 +29,7 @@ final class OnboardingInteractor: OnboardingInteractorProtocol {
         self.setupService = setupService
     }
     
-    private let onboardingDetails = [
-        OnboardingInfo.init(imageName: "welcome_1", buttonName: "Next"),
-        OnboardingInfo.init(imageName: "welcome_2", buttonName: "Next"),
-        OnboardingInfo.init(imageName: "welcome_3", buttonName: "Done")
-    ]
+    // MARK: - Public methods
     
     func onViewDidLoad() {
         // business logic on screen startup
@@ -51,4 +51,12 @@ final class OnboardingInteractor: OnboardingInteractorProtocol {
         }
         
     }
+    
+    // MARK: - Private methods
+    
+    private let onboardingDetails = [
+        OnboardingInfo.init(imageName: "welcome_1", buttonName: "Next"),
+        OnboardingInfo.init(imageName: "welcome_2", buttonName: "Next"),
+        OnboardingInfo.init(imageName: "welcome_3", buttonName: "Done")
+    ]
 }

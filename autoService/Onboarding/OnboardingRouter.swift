@@ -15,6 +15,8 @@ protocol OnboardingRouterProtocol {
 final class OnboardingRouter: OnboardingRouterProtocol {
     weak var viewController: UIViewController!
     
+    // MARK: - Public methods
+    
     func goToLogin() {
         let window = viewController.view.window
         let builder = LoginBuilder()

@@ -14,6 +14,8 @@ protocol ForgotPasswordRouterProtocol {
 final class ForgotPasswordRouter: ForgotPasswordRouterProtocol {
     weak var viewController: UIViewController!
     
+    // MARK: - Public methods
+    
     func goToLogin() {
         let mainController: UIViewController = LoginBuilder().build()
         let window = viewController.view.window

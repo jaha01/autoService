@@ -37,6 +37,10 @@ final class PointsListInteractor: PointsListInteractorProtocol {
         presenter.preparePointsToShow(points: points)
     }
     
+    func deletePoint(id: String) {
+        self.dbService.removeMapPoint(id: id)
+    }
+    
     func didTapPoint() {
         router.close()
     }

@@ -14,10 +14,16 @@ protocol ForgotPasswordInteractorProtocol {
 
 final class ForgotPasswordInteractor: ForgotPasswordInteractorProtocol {
     
+    // MARK: - Public properties
+    
     var router: ForgotPasswordRouterProtocol!
     var presenter: ForgotPasswordPresenterProtocol!
     
+    // MARK: - Private properties
+    
     let authService: AuthServiceProtocol
+    
+    // MARK: - Public methods
     
     init(authService: AuthServiceProtocol) {
         self.authService = authService

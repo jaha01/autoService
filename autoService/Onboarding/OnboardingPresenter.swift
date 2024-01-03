@@ -14,6 +14,8 @@ protocol OnboardingPresenterProtocol {
 final class OnboardingPresenter: OnboardingPresenterProtocol {
     weak var viewController: OnboardingViewControllerProtocol!
     
+    // MARK: - Public methods
+    
     func prepareToShowOnboardingData(_ items: [OnboardingInfo]) {
         // mapping, etc...
         viewController.showOnboarding(items)

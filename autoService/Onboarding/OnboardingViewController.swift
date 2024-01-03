@@ -16,7 +16,7 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
     var interactor: OnboardingInteractorProtocol!
     
     // MARK: - Private properties
-    //private currentIndexPath: Int()
+
     private var currentIndexPath: IndexPath?
     
     private var onboardingDetails: [OnboardingInfo] = []
@@ -33,7 +33,8 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
         return collectionView
     }()
     
-    // MARK: - Public methods -
+    // MARK: - Public methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -53,6 +54,7 @@ final class OnboardingViewController: UIViewController, OnboardingViewController
     }
     
     // MARK: - Private methods
+    
     private func setupConstraints() {
         view.addSubview(onboardingCollection)
         

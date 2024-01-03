@@ -43,6 +43,6 @@ final class JounalInteractor: JounalInteractorProtocol {
     }
     
     func deleteItem(id: String) {
-        self.dbService.removeJournalItem(id: id)
+        dbService.removeJournalItem(id: id)
     }
 }

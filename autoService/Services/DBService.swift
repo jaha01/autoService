@@ -23,12 +23,12 @@ protocol ProfileInfoServiceProtocol {
 protocol MapPointsServiceProtocol {
     func setupMapPointsListeners(handler: @escaping ([MapPoint]) -> Void)
     func uploadMapPoint(pointInfo: MapPoint)
+    func removeMapPoint(id: String)
 }
 
 final class DBService: JournalServiceProtocol, ProfileInfoServiceProtocol, MapPointsServiceProtocol {
     
     private let ref = Database.database().reference()
-    private var allItems = [JournalItem]()
     private let authService: AuthServiceProtocol
     private let journalHistoryItems = "journalHistoryItems"
     private let profileInformation = "profileInformation"
@@ -37,19 +37,13 @@ final class DBService: JournalServiceProtocol, ProfileInfoServiceProtocol, MapPo
     init(authService: AuthServiceProtocol) {
         self.authService = authService
     }
-    
+
+    // MARK: - JournalServiceProtocol Implemenatation
+
     func setupJournalListener(handler: @escaping ([JournalItem]) -> Void) {
-        ref.child(authService.getUserID()).child(journalHistoryItems).observe(.value) { [weak self] snapshot in
-            guard let self = self else { return }
+        ref.child(authService.getUserID()).child(journalHistoryItems).observe(.value) { snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
-                self.allItems = []
-                for (_, value) in dictionary {
-                    if let itemData = value as? [String: Any] {
-                        let journalItem = JournalItem(dictionary: itemData)
-                        self.allItems.append(journalItem)
-                    }
-                }
-                handler(self.allItems)
+                handler(dictionary.map { JournalItem(dictionary: $0.value as! [String: Any])})
             }
         }
     }
@@ -67,12 +61,12 @@ final class DBService: JournalServiceProtocol, ProfileInfoServiceProtocol, MapPo
         ref.child(authService.getUserID()).child(journalHistoryItems).child(id).removeValue()
     }
     
+    // MARK: - ProfileInfoServiceProtocol Implemenatation
+    
     func setupProfileInfoListeners(handler: @escaping (ProfileInfo) -> Void) {
         ref.child(authService.getUserID()).child(profileInformation).observe(.value) { snapshot in
             if let dictionary = snapshot.value as? [String: Any] {
-                let profileDetails =
-                ProfileInfo(json: dictionary)
-                handler(profileDetails)
+                handler(ProfileInfo(json: dictionary))
             }
         }
     }
@@ -82,6 +76,8 @@ final class DBService: JournalServiceProtocol, ProfileInfoServiceProtocol, MapPo
         let values = profileInfo.toJson()
         parent.updateChildValues(values)
     }
+    
+    // MARK: - MapPointsServiceProtocol Implemenatation
     
     func setupMapPointsListeners(handler: @escaping ([MapPoint]) -> Void) {
         ref.child(authService.getUserID()).child(mapPoints).observe(.value) { snapshot in
@@ -94,11 +90,12 @@ final class DBService: JournalServiceProtocol, ProfileInfoServiceProtocol, MapPo
     func uploadMapPoint(pointInfo: MapPoint) {
         let parent = ref.child(authService.getUserID()).child(mapPoints)
         let id = parent.childByAutoId()
-        let values = ["id": id.key! ,
-                      "name": pointInfo.title.name,
-                      "description": pointInfo.title.description,
-                      "latitude": pointInfo.point.latitude,
-                      "longitude": pointInfo.point.longitude] as [String : Any]
+        var values = pointInfo.toJson()
+        values["id"] = id.key!
         id.updateChildValues(values)
+    }
+    
+    func removeMapPoint(id: String) {
+        ref.child(authService.getUserID()).child(mapPoints).child(id).removeValue()
     }
 }

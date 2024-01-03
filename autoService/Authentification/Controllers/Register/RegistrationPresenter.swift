@@ -15,6 +15,8 @@ final class RegistrationPresenter: RegistrationPresenterProtocol {
     
     weak var viewController: RegistrationViewControllerProtocol!
     
+    // MARK: - Public methods
+    
     func showError(config: AlertConfig) {
         viewController.showErrorAlert(config: config)
     }

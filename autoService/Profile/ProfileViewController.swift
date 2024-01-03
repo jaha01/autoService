@@ -199,7 +199,6 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         setupViews()
         setupConstraints()
         interactor.onViewDidLoad()
-        CarsModelViewController().delegate = self
     }
     
     func showErrorAlert(config: AlertConfig) {
