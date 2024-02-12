@@ -24,6 +24,7 @@ final class PointsListViewController: UIViewController, PointsListViewController
     weak var delegate: PointsListViewControllerDelegate?
     
     // MARK: - Private properties
+    
     private let cellIdentifier = "cell"
     
     private lazy var tableView: UITableView = {
